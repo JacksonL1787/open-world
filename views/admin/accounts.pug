@@ -1,0 +1,100 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/css/admin/accounts.css')
+		link(rel='stylesheet', href='/css/main.css')
+	body
+		include nav
+		.AD-dashboard-body
+			.AD-dashboard-body-header
+				.AD-dashboard-body-header-container
+					p Your Accounts
+					h5 Design Tech High School
+			.ADA-dashboard-body-top-info
+				.ADA-top-info-object.selected
+					.ADA-top-info-object-top
+						h5 Today
+					.ADA-top-info-object-bottom
+						.ADA-tiob-wrapper
+							h5 NaN
+							h6 Logins
+				.ADA-top-info-object
+					.ADA-top-info-object-top
+						h5 Admin Accounts
+					.ADA-top-info-object-bottom
+						.ADA-tiob-wrapper
+							h5 NaN
+							h6 NaN Data
+				.ADA-top-info-object
+					.ADA-top-info-object-top
+						h5 Teacher Accounts
+					.ADA-top-info-object-bottom
+						.ADA-tiob-wrapper
+							h5 NaN
+							h6 NaN Data
+				.ADA-top-info-object
+					.ADA-top-info-object-top
+						h5 Other Accounts
+					.ADA-top-info-object-bottom
+						.ADA-tiob-wrapper
+							h5 NaN
+							h6 NaN Data
+				.ADA-top-info-object
+					.ADA-top-info-object-top
+						h5 Classrooms
+					.ADA-top-info-object-bottom
+						.ADA-tiob-wrapper
+							h5 NaN
+							h6 NaN Data
+							
+			.ADA-dashboard-body-section-one
+				.ADA-dashboard-section-one-container
+			
+			.ADA-dashboard-body-section-two
+				.ADA-dashboard-section-two-container
+					.ADA-dashboard-section-two-object
+						.ADA-dashboard-section-two-object-header
+							.ADA-dashboard-section-two-object-header-container
+								p Account Activity
+							.ADA-dashboard-section-two-object-header-more-info-wrapper
+								p More
+								
+					.ADA-dashboard-section-two-object
+						.ADA-dashboard-section-two-object-header
+							.ADA-dashboard-section-two-object-header-container
+								p New Accounts
+							.ADA-dashboard-section-two-object-header-more-info-wrapper
+								p More
+						.ADA-dashboard-section-two-object-labels
+							.ADA-dashboard-section-two-object-labels-object.ADA-tolo-one
+								p Name
+							.ADA-dashboard-section-two-object-labels-object.ADA-tolo-two
+								p Grade
+							.ADA-dashboard-section-two-object-labels-object.ADA-tolo-three
+								p Date Added
+						.ADA-dashbaord-section-two-object-data-container
+							.ADA-dashbaord-section-two-object-data-container-object
+								.ADA-dstodco-container
+									.ADA-dstodco-container-left
+										.ADA-dstodco-avatar-wrapper
+											.ADA-dstodco-avatar 
+										.ADA-dstodco-user-data
+											p User Data
+									.ADA-dstodco-container-center
+										.ADA-dstodco-grade-wrapper
+											p Grade Data
+									.ADA-dstodco-container-right
+										.ADA-dstodco-date-added
+											p Date Data
+			.ADA-dashboard-body-section-three
+				.ADA-dashboard-section-three-container
+			
+	
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
+script.
+	
+	$('.AD-nav-three').addClass('selectedNAV')
+	

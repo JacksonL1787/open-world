@@ -1,0 +1,16 @@
+.pa-system-widget.ring-bell-widget.widget-wrap
+    .top-container
+        h1.title Ring Bell
+    button.ring-bell-btn Start Ringing
+.pa-system-widget.play-speech-widget.widget-wrap
+    .top-container
+        h1.title Play Speech
+    .play-speech-content
+        textarea.speech-textbox(data-gramm_editor="false" placeholder="Speech")
+        button.play-speech-btn Play Speech
+        form(method="POST" action="/teacher/test/ws")
+            input(type="submit")
+.pa-system-widget.play-music-widget.widget-wrap
+    .top-container
+        h1.title Play Music
+    

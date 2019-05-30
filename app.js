@@ -1,14 +1,32 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const createError = require('http-errors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const flash = require("connect-flash");
 
-var teacherRouter = require('./routes/teacher/index');
-var adminRouter = require('./routes/admin/index');
-var indexRouter = require('./routes/index');
+const favicon = require('serve-favicon');
+const mongoose = require('mongoose');
+const session = require('express-session');
 
-var app = express();
+const bodyParser = require('body-parser');
+
+const passport = require('passport');
+
+const teacherRouter = require('./routes/teacher/index');
+const adminRouter = require('./routes/admin/index');
+const indexRouter = require('./routes/index');
+const auth = require('./routes/auth');
+
+const app = express();
+
+const port = 4010
+var server = app.listen(port, () => console.log('Server started listening on port '+ port + "!"));
+
+require('./passport/passport')(passport)
+
+mongoose.connect('mongodb://localhost:27017/OpenWorld')
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -16,13 +34,27 @@ app.set('view engine', 'pug');
 
 app.use(logger('dev'));
 app.use(express.json());
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(flash());
+app.use(session({ secret: 'anything' }));
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use(session({ cookie: { maxAge: 60000 }, 
+                  secret: 'jacksonSucks',
+                  resave: false, 
+                  saveUninitialized: false}));
+
 app.use('/', indexRouter);
 app.use('/teacher', teacherRouter);
 app.use('/admin', adminRouter);
+app.use('/auth', auth)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -40,8 +72,17 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-var port = 4010
-app.listen(port, () => console.log('Server started listening on port '+ port + "!"));
+
+var io = require('socket.io').listen(server);
+
+io.on('connection', function(socket){
+	
+	socket.on('test', function(msg) {
+		console.log(msg)
+		socket.broadcast.emit('commands', 'longBeep')
+	})
+	
+});
 
 module.exports = app;
 

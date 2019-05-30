@@ -1,0 +1,74 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/css/admin/dashboard.css')
+		link(rel='stylesheet', href='/css/main.css')
+	body
+		include nav
+		.AD-dashboard-body
+			.AD-dashboard-body-header
+				.AD-dashboard-body-header-container
+					p Your School
+					h5 Design Tech High School
+			.AD-dashboard-body-body
+				.AD-dashboard-container
+					.AD-dashboard-quick-stats-wrapper
+						// p Quick Statistics
+						.AD-dashboard-qsw-wrapper
+							.AD-dashboard-qsw-object
+								.AD-dashboard-qsw-left
+									.AD-dashboard-qsw-left-container
+										p Population
+										h3 1192
+								.AD-dashboard-qsw-right
+									.AD-dashboard-qsw-right-icon
+										.AD-dashboard-qsw-right-icon-center
+							.AD-dashboard-qsw-object
+								.AD-dashboard-qsw-left
+									.AD-dashboard-qsw-left-container
+										p Administrators
+										h3 36
+								.AD-dashboard-qsw-right
+									.AD-dashboard-qsw-right-icon
+										.AD-dashboard-qsw-right-icon-center.ADD-qsw-icon-two
+							.AD-dashboard-qsw-object
+								.AD-dashboard-qsw-left
+									.AD-dashboard-qsw-left-container
+										p Notifications
+										h3 1
+								.AD-dashboard-qsw-right
+									.AD-dashboard-qsw-right-icon
+										.AD-dashboard-qsw-right-icon-center.ADD-qsw-icon-three
+							.AD-dashboard-qsw-object
+								.AD-dashboard-qsw-left
+									.AD-dashboard-qsw-left-container
+										p School PIN
+										h3 9927
+								.AD-dashboard-qsw-right
+									.AD-dashboard-qsw-right-icon
+										.AD-dashboard-qsw-right-icon-center.ADD-qsw-icon-four
+					.AD-dashboard-master-data-wrapper
+						.AD-dashboard-master-data-container
+							.AD-dashboard-master-data-container-header
+								.AD-dashbaord-master-data-container-header-wrapper
+									p Quick Data
+								.AD-dashboard-master-data-dataType-wrapper
+									.AD-dashboard-master-data-dataType-wrapper-object
+										input.selected(type="button" value="Recent Events")
+									.AD-dashboard-master-data-dataType-wrapper-object
+										input(type="button" value="Attendance Data")
+									.AD-dashboard-master-data-dataType-wrapper-object
+										input(type="button" value="Notifications")
+							.AD-dashboard-master-data-container-body
+								
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
+script.
+	
+	for(var i = 0; i < 30; i++) {
+		var time = new Date()
+		$('.AD-dashboard-master-data-container-body').append('<div class="AD-dashboard-master-data-container-body-object"> <div class="AD-dmdcbo-icon"> <div class="AD-dmdcbo-icon-con"></div> </div> <div class="AD-dmdcbo-title"> <h4>PA Alert</h4> </div> <div class="AD-dmdcbo-desc"> <h4>The PA was used to make an all school announcement at '+time+'</h4> </div> <div class="AD-dmdcbo-from"> <h4>#{user.firstName} #{user.lastName}</h4> </div> <div class="AD-dmdcbo-action"><input type="button" value="Details" /></div> </div>')
+	}
+	
+	$('.AD-nav-one').addClass('selectedNAV')

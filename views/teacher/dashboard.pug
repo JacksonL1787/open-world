@@ -1,0 +1,64 @@
+doctype html
+html
+	head
+		title= title
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		
+		// CSS Links
+		link(rel='stylesheet', href='/css/main.css')
+		link(rel='stylesheet', href='/css/teacher/dashboard.css')
+		
+		// Import Libraries
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
+		
+	body
+		//Declare Master Window Object
+		script.
+			var socket = io()
+			window.data = {
+				title: "#{title}",
+				user: {
+					firstName: "#{user.firstName}",
+					lastName: "#{user.lastName}",
+					email: "#{user.email}",
+					permission: "#{user.permission}",
+					permissionLevel: "#{user.permissionLevel}",
+					school: "#{user.school}",
+					position: "#{user.position}",
+					profilePicture: "#{user.profilePicture}"
+				}
+			}
+		include messages
+		include nav
+		.mainDashboard
+			.dashboard-outer-wrap
+				.top
+					p.title #{title}
+				.main-dashboard-content
+					case title
+						when 'Home'
+							link(rel='stylesheet', href="/css/teacher/home.css")
+							include pages/home
+							script(src="/js/teacher/home.js")
+						when 'Attendance'
+							link(rel='stylesheet', href="/css/teacher/attendance.css")
+							include pages/attendance
+							script(src="/js/teacher/attendance.js")
+						when 'PA System'
+							link(rel='stylesheet', href="/css/teacher/pa-system.css")
+							include pages/pa-system
+							script(src="/js/teacher/pa-system.js")
+						when 'Manage Students'
+							link(rel='stylesheet', href="/css/teacher/manage-students.css")
+							include pages/manage-students
+							script(src="/js/teacher/manage-students.js")
+						when 'Classroom Controls'
+							link(rel='stylesheet', href="/css/teacher/classroom-controls.css")
+							include pages/classroom-controls
+							script(src="/js/teacher/classroom-controls.js")
+						when 'Settings'
+							link(rel='stylesheet', href="/css/teacher/settings.css")
+							include pages/settings
+							script(src="/js/teacher/settings.js")
+	script(src="/js/teacher/main.js")

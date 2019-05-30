@@ -1,0 +1,112 @@
+.base-settings-widget
+    width 100%
+    .change-settings-form
+        width 500px
+        margin 20px auto
+        .profile-picture-wrap
+            width 200px
+            margin 0 auto 20px
+            position relative
+            .profile-pic
+                background-size cover
+                background-position center
+                background-repeat no-repeat
+                width 200px
+                height 200px
+                border-radius 200px
+            .hover-wrap
+                background rgba(20, 77, 113, 0.6)
+                cursor pointer
+                position absolute
+                width 200px
+                height 200px
+                top 0
+                left 0
+                border-radius 200px
+                opacity 0
+                transition opacity 0.5s
+                &:hover
+                    opacity 1
+                .change-pic
+                    color white
+                    font-size 15px
+                    margin 0
+                    font-weight bold
+                    top 50%
+                    left 50%
+                    transform translate(-50%, -50%)
+                    position absolute
+        .settings-option-wrap
+            margin 0 auto 20px
+            width fit-content
+            label
+                color #8c8c8c
+                display block
+                font-size 14px
+                margin-bottom -1px
+            input
+                background #fdfeff
+                border solid 1px #e6eaec
+                color #4c4c4c
+                outline none
+                font-size 15px
+                padding 7px 10px
+                width 225px
+        .update-basic-settings-btn
+            width 247px
+            padding 7px 0
+            height auto
+            margin-left 126.5px
+            margin-top 10px
+
+.change-password-widget
+    margin-top 10px
+    width 100%
+    padding 15px 0 25px
+    .change-password-form
+        display flex
+        width 100%
+        justify-content center
+        .input-wrap
+            margin 0 10px
+            label
+                color #8c8c8c
+                display block
+                font-size 14px
+                margin-bottom -1px
+            input
+                background #fdfeff
+                border solid 1px #e6eaec
+                color #4c4c4c
+                outline none
+                font-size 15px
+                padding 7px 10px
+                width 225px
+        .change-password-btn
+            padding 8px 10px
+            margin-left 10px
+            margin-top 18px
+            
+.settings-page-widget
+    .top-container
+        height fit-content
+        width 95%
+        margin-left 2.5%
+        padding 15px 0
+        .title
+            color #4c4c4c
+            font-weight bold
+            font-size 25px
+            margin 0
+    .update-basic-settings-btn,
+    .change-password-btn
+        border none
+        font-size 15px
+        color white
+        background #16BDF4
+        cursor pointer
+        outline none
+        height fit-content
+        transition background .25s
+        &:hover
+            background #14afe2

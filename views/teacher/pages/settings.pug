@@ -1,0 +1,30 @@
+.base-settings-widget.widget-wrap.settings-page-widget
+    .top-container
+        h1.title Basic Settings
+    .change-settings-form
+        .profile-picture-wrap
+            input.profile-picture-upload(type="file" style="display: none;")
+            .profile-pic
+            .hover-wrap
+                p.change-pic Change
+        .settings-option-wrap
+            label First Name
+            input.firstname(type="text")
+        .settings-option-wrap
+            label Last Name
+            input.lastname(type="text")
+        .settings-option-wrap
+            label Email
+            input.email(type="text")
+        input.update-basic-settings-btn(type="button" value="Update Information")
+.change-password-widget.widget-wrap.settings-page-widget
+    .top-container
+        h1.title Change Password
+    .change-password-form
+        .input-wrap
+            label New Password
+            input.new-password(type="password")
+        .input-wrap
+            label Confirm New Password
+            input.confirm-password(type="password")
+        input.change-password-btn(type="button" value="Change Password")

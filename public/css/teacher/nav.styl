@@ -1,0 +1,89 @@
+.side-nav
+    width 250px
+    height 100%
+    position absolute
+    top 0
+    left 0
+    z-index 3
+    background white
+    box-shadow 0 0 5px 3px rgba(0,0,0,0.03)
+    .top
+        width 100%
+        height fit-content
+        position relative
+        .icon
+            background-image url('../../img/BranchLogoVertical.png')
+            background-position center
+            background-size cover
+            background-repeat no-repeat
+            width 100px
+            height 100px
+            position absolute
+            left 50%
+            transform translateX(-50%)
+    .nav-content
+        margin-top 150px
+        .nav-btn-wrap
+            display flex
+            justify-content left
+            margin 20px 0 0 10px
+            cursor pointer
+            &.active
+                .icon
+                    background #16BDF4
+                    svg
+                        path
+                            fill white
+                p
+                    color #16BDF4
+            &:hover
+                .icon
+                    background #16BDF4
+                    svg
+                        path
+                            fill white
+                p
+                    color #16BDF4
+            .icon
+                background rgba(0,0,0,0.06)
+                width 50px
+                height 50px
+                border-radius 50px
+                position relative
+                transition background .3s
+                svg
+                    width 30px
+                    height 30px
+                    position absolute
+                    top calc(50% + 2px)
+                    left 50%
+                    transform translate(-50%, -50%)
+                    path
+                        transition fill .1s
+                        fill #a7a7a7
+            p
+                color #8e8e8e
+                margin 15px 0 0 10px
+                font-size 14px
+                transition color .3s
+    .bottom
+        padding 20px 0
+        position absolute
+        width 100%
+        bottom 0
+        left 0
+        background white
+        border-top 1px solid #e5e9ea
+        .nav-bottom-btn
+            color #8e8e8e
+            cursor pointer
+            transition color .3s
+            &.active
+                color #16BDF4
+            &:hover
+                color #16BDF4
+        .settings-btn
+            margin 20px 0 5px 20px
+        .logout-btn
+            margin 5px 0 20px 20px
+        

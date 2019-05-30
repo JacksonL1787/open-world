@@ -1,0 +1,195 @@
+
+.AD-left-nav
+    width 75px
+    height -webkit-fill-available
+    position absolute
+    -webkit-box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.4);
+    background white
+    z-index 10
+    box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.4);
+    transition .5s
+    &.activeHover
+        width 300px
+    
+.AD-top-nav
+    width 100%
+    height 75px
+    position absolute
+    background white
+    z-index 1
+    top 0px
+    -webkit-box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.4);
+    box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.4);
+    
+.AD-top-nav-logo
+    width 100%
+    height 75px
+    position relative
+    
+.AD-branch-logo
+    width 50px
+    height 50px
+    background-image url('/img/gradCap.svg')
+    background-size cover
+    background-position center
+    background-repeat no-repeat
+    transform translate(-50%, -50%)
+    top 50%
+    left 50%
+    position absolute
+
+.AD-center-left-nav
+    width 100%
+    height fit-content
+    transform translateY(-50%)
+    top 50%
+    position absolute
+
+.AD-center-left-nav-object-wrapper
+    width 100%
+    height 75px
+    position relative
+    // background gray
+    cursor pointer
+    display -webkit-box
+    transition .3s
+    &:hover
+        background #ececec
+        transform scale(1.2)
+        
+.selectedNAV        
+    background #ececec  
+.AD-center-left-nav-object-container
+    transform translate(-50%, -50%)
+    top 50%
+    left 50%
+    position relative
+    width fit-content
+    height fit-content
+    display -webkit-box
+                
+.AD-center-left-nav-object-icon
+    width 35px
+    height 35px
+    background-image url('/img/admin/speedometer.svg')
+    background-size cover
+    background-position center
+    background-repeat no-repeat
+
+.AD-top-nav-right-wrapper
+    width 50%
+    height 100%
+    right 0px
+    position absolute
+    display -webkit-box
+
+.AD-top-nav-right-user-wrapper    
+    width fit-content
+    height 100%
+    position absolute
+    display -webkit-box
+    right 10%
+    
+.AD-top-nav-right-avatar-wrapper
+    width fit-content
+    height fit-content
+    transform translateY(-50%)
+    top 50%
+    position relative
+    
+.user-avatar
+    width 40px
+    height 40px
+    border-radius 50%
+    background-image url("/img/dashboard/profile-picture.jpeg")
+    background-size cover
+    background-position center
+    background-repeat no-repeat
+    cursor pointer
+    
+.AD-top-nav-right-user-PMP
+    width fit-content
+    height fit-content
+    transform translateY(-50%)
+    top 50%
+    position relative
+    margin-left 20px
+    display -webkit-box
+    p
+        font-family helvetica
+        font-weight 300
+        margin 0
+        cursor pointer
+
+.dropdown-AD-wrapper
+    width: 15px;
+    height: 19px;
+    background-image: url(/img/admin/dropdown.svg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-left: 20px;
+    cursor pointer
+    
+.AD-top-nav-right-notifications-wrapper
+    width: 100px;
+    height 100%
+    position relative
+    float right
+    
+.AD-notifications-bell
+    width 28px
+    height 28px
+    background-image url('/img/admin/notification.svg')
+    background-size cover
+    background-position center
+    background-repeat no-repeat
+    transform translateY(-50%)
+    top 50%
+    position relative
+    cursor pointer
+    
+.AD-top-dropdown
+    width 250px
+    height 100px
+    background #292833
+    right 5%
+    position absolute
+    top 75px
+    display none
+    z-index 10
+    &.active
+        display block
+    input
+        width: 100%;
+        height: 50px;
+        background: transparent;
+        border: none;
+        outline: none;
+        color: #fff;
+        font-family: helvetica;
+        font-weight: 300;
+        font-size: 14px;
+        transition .3s
+        cursor pointer
+        &:hover
+            background #424048
+    
+.AD-navicon-two
+    background-image url('/img/admin/plan.svg')
+    
+.AD-navicon-three
+    background-image url('/img/admin/addressBook.svg')
+    background-size: 43px;
+    
+.AD-navicon-four
+    background-image url('/img/admin/chem.svg')
+
+.AD-navicon-five
+    background-image url('/img/admin/school.svg')
+    
+.AD-navicon-six
+    background-image url('/img/admin/cpg.svg')
+    

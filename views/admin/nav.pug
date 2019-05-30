@@ -1,0 +1,96 @@
+head
+    link(rel="stylesheet" href="/css/admin/nav.css")
+    
+body
+    .AD-left-nav
+        .AD-top-nav-logo
+            .AD-branch-logo
+        .AD-center-left-nav
+            .AD-center-left-nav-object-wrapper.AD-nav-one
+                .AD-center-left-nav-object-container
+                    .AD-center-left-nav-object-icon.AD-navicon-one
+
+            .AD-center-left-nav-object-wrapper.AD-nav-two
+                .AD-center-left-nav-object-container
+                    .AD-center-left-nav-object-icon.AD-navicon-two
+
+            .AD-center-left-nav-object-wrapper.AD-nav-three
+                .AD-center-left-nav-object-container
+                    .AD-center-left-nav-object-icon.AD-navicon-three
+
+            .AD-center-left-nav-object-wrapper.AD-nav-four
+                .AD-center-left-nav-object-container
+                    .AD-center-left-nav-object-icon.AD-navicon-four 
+                    
+            .AD-center-left-nav-object-wrapper.AD-nav-five
+                .AD-center-left-nav-object-container
+                    .AD-center-left-nav-object-icon.AD-navicon-five
+                    
+            .AD-center-left-nav-object-wrapper.AD-nav-six
+                .AD-center-left-nav-object-container
+                    .AD-center-left-nav-object-icon.AD-navicon-six
+    .AD-top-nav
+        .AD-top-nav-right-wrapper
+            .AD-top-nav-right-user-wrapper
+                .AD-top-nav-right-notifications-wrapper
+                    .AD-notifications-bell
+                .AD-top-nav-right-avatar-wrapper
+                    .user-avatar
+                .AD-top-nav-right-user-PMP
+                    p #{user.firstName} #{user.lastName}
+                    .dropdown-AD-wrapper
+    .AD-top-dropdown
+        input(type="button" value="Account Settings")
+        input(type="button" value="Logout")
+        
+    
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
+script.
+
+    // Dropdown Control
+    
+    $(document).mouseup(function(e) {
+        var container = $(".AD-top-dropdown");
+        if (!container.is(e.target) && container.has(e.target).length === 0) {
+            $('.AD-top-dropdown').removeClass('active')
+        }
+    });
+    
+    $('.dropdown-AD-wrapper, .user-avatar , .AD-top-nav-right-user-PMP p').click(function(){
+        $('.AD-top-dropdown').toggleClass('active')
+    })
+    
+    $('.AD-top-dropdown input[value="Account Settings"]').click(function(){
+        window.location.href = "/admin/home/account"
+    })
+
+    $('.AD-top-dropdown input[value="Logout"]').click(function(){
+        window.location.href = "/auth/logout"
+    })    
+    
+    // Nav-Controls
+    
+    $('.AD-nav-one').click(function(){
+        window.location.href = "/admin/home"
+    })
+    
+    $('.AD-nav-two').click(function(){
+        window.location.href = "/admin/school/attendance"
+    })
+    
+    $('.AD-nav-three').click(function(){
+        window.location.href = "/admin/school/accounts"
+    })
+    
+    $('.AD-nav-four').click(function(){
+        window.location.href = "/admin/school/data"
+    })
+    
+    $('.AD-nav-five').click(function(){
+        window.location.href = "/admin/school/controls"
+    })
+    
+    $('.AD-nav-six').click(function(){
+        window.location.href = "/admin/config"
+    })

@@ -1,7 +1,64 @@
 doctype html
 html
-  head
-    title= title
-    link(rel='stylesheet', href='/css/style.css')
-  body
-    h1 Test
+	head
+		title= title
+		link(rel='stylesheet', href='/css/index/index.css')
+		include main
+	body
+		.FS-index-wrapper
+			.FS-top-center-branch-logo
+				.branch-logo-FS
+			.FS-index-background
+			.FS-index-center-wrapper
+				.FS-index-login-top
+					.FS-index-login-top-container
+						.FS-index-login-top-container-header
+							.FS-index-login-top-container-header-cont
+								h1 Login
+								// p Login
+						.FS-index-login-top-container-body
+							.FS-index-login-form-wrapper
+								form(action="/auth/login" method="POST")
+									.FS-index-form-object
+										p Email
+										input(type="text" name="email")
+									br
+									.FS-index-form-object
+										p Password
+										input(type="password" name="password")
+									.FS-index-FGP
+										p Forgot Password
+				.FS-index-login-bottom
+					.FS-index-login-left
+						input(type="button" value="Support")
+					.FS-index-login-right
+						input(type="button" value="Sign In")
+	
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
+script.
+	
+	$('.FS-index-form-object input').focusin(function(){
+		$(this).siblings('p').addClass('active')
+	})
+	
+	$('.FS-index-form-object input').focusout(function(){
+		if($(this).val().length > 0) {
+		} else {
+			$(this).siblings('p').removeClass('active')
+		}
+	})
+	
+	$('.FS-index-login-right input').click(function(){
+		$('.FS-index-login-form-wrapper form').submit()
+	})
+	
+	$('form').keypress( function( e ) {
+		var code = e.keyCode || e.which;
+	
+		if( code === 13 ) {
+			$('.FS-index-login-form-wrapper form').submit()
+		}
+	})
+	
