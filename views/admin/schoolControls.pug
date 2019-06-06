@@ -1,76 +1,153 @@
 doctype html
 html
-	head
-		title= title
-		link(rel='stylesheet', href='/css/admin/schoolControls.css')
-		link(rel='stylesheet', href='/css/main.css')
-		include ../main
-	body
-		include nav
-		.AD-dashboard-body
-			.AD-dashboard-body-header
-				.AD-dashboard-body-header-container
-					p Your School
-					h5 Design Tech High School
-				.AD-dashboard-body-header-right
-					.AD-dashboard-body-header-right-switch-wrapper
-						.AD-dbhrs-label
-							p Floor 1
-						.AD-dashboard-body-header-right-switch
-							.AD-dashboard-body-header-right-switch-object
-						.AD-dbhrs-label
-							p Floor 2
-			.SC-dashboard-body
-				.SC-dashboard-body-container-floor
-					.SC-dashboard-body-container-floor-header
-						.SC-dashboard-body-container-floor-header-title
-							p Floor 1
-						
-					.SC-dashboard-body-container-floor-body
-						.SC-dashboard-body-floor
+    head
+        title= title
+        link(rel='stylesheet', href='/css/admin/schoolControls.css')
+        link(rel='stylesheet', href='/css/main.css')
+        include ../main
+    body
+        include nav
+        .AD-dashboard-body
+            .AD-dashboard-body-header
+                .AD-dashboard-body-header-container
+                    p Your School
+                    h5 Design Tech High School
+                .AD-dashboard-body-header-right
+                    .AD-dashboard-body-header-right-switch-wrapper
+                        .AD-dbhrs-label
+                            p Floor 1
+                        .AD-dashboard-body-header-right-switch
+                            .AD-dashboard-body-header-right-switch-object
+                        .AD-dbhrs-label
+                            p Floor 2
+            .SC-dashboard-body
+                .SC-dashboard-body-container-floor
+                    .SC-dashboard-body-container-floor-header
+                        .SC-dashboard-body-container-floor-header-title
+                            p Floor 1
+                        
+                    .SC-dashboard-body-container-floor-body
+                        .SC-dashboard-body-floor
+                            svg(version='1.1', xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', x='0px', y='0px', viewBox='0 0 1920 1080', style='enable-background:new 0 0 1920 1080;', xml:space='preserve')
+                              style(type='text/css').
+                                .st0{stroke:#000000;stroke-miterlimit:10;}
+                                .st1{display:inline;}
+                                .st2{fill:#FFFFFF;}
+                                .st3{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+                                .st4{fill:none;stroke:#000000;stroke-miterlimit:10;}
+                                .st5{fill:#FF0000;stroke:#000000;stroke-miterlimit:10;}
+                              g#fullMap.st0
+                                g.st1
+                                  polyline.st2(points='264.5,329.5 264.5,516.5 315.5,516.5 315.5,575.5 393.5,580.5 511.5,588.5 614.5,594.5 696.5,596.5 \
+                                  696.5,622.5 716.5,616.5 736.5,613.5 784.5,605.5 843.5,600.5 891.5,599.5 928.5,599.5 974.5,602.5 1019.5,607.5 1052.5,613.5 \
+                                  1048.5,633.5 1082.5,647.5 1113.5,661.5 1147.5,678.5 1178.5,696.5 1204.5,712.5 1228.5,726.5 1267.5,751.5 1298.5,768.5 \
+                                  1348.5,793.5 1378.5,806.5 1426.5,826.5 1476.5,844.5 1551.5,866.5 1593.5,875.5 1631.5,885.5 1639.5,855.5 1691.5,873.5 \
+                                  1735.5,726.5 1668.5,705.5 1672.5,691.5 1658.5,676.5 1639.5,655.5 1611.5,632.5 1579.5,610.5 1555.5,595.5 1533.5,583.5 \
+                                  1512.5,574.5 1497.5,567.5 1479.5,561.5 1438.5,544.5 1387.5,521.5 1341.5,498.5 1371.5,436.5 1236.5,366.5 1209.5,422.5 \
+                                  1171.5,402.5 1166.5,413.5 1138.5,401.5 1099.5,388.5 1055.5,374.5 1016.5,363.5 979.5,354.5 985.5,287.5 804.5,258.5 \
+                                  782.5,300.5 736.5,298.5 680.5,295.5 630.5,294.5 557.5,291.5 479.5,289.5 407.5,287.5 344.5,287.5 343.5,326.5 293.5,325.5 \
+                                  293.5,328.5 262.5,329.5 		')
+                                g.st1
+                                  polyline.st3(points='264.5,329.5 264.5,516.5 315.5,516.5 315.5,575.5 393.5,580.5 511.5,588.5 614.5,594.5 696.5,596.5 \
+                                  696.5,622.5 716.5,616.5 736.5,613.5 784.5,605.5 843.5,600.5 891.5,599.5 928.5,599.5 974.5,602.5 1019.5,607.5 1052.5,613.5 \
+                                  1048.5,633.5 1082.5,647.5 1113.5,661.5 1147.5,678.5 1178.5,696.5 1204.5,712.5 1228.5,726.5 1267.5,751.5 1298.5,768.5 \
+                                  1348.5,793.5 1378.5,806.5 1426.5,826.5 1476.5,844.5 1551.5,866.5 1593.5,875.5 1631.5,885.5 1639.5,855.5 1691.5,873.5 \
+                                  1735.5,726.5 1668.5,705.5 1672.5,691.5 1658.5,676.5 1639.5,655.5 1611.5,632.5 1579.5,610.5 1555.5,595.5 1533.5,583.5 \
+                                  1512.5,574.5 1497.5,567.5 1479.5,561.5 1438.5,544.5 1387.5,521.5 1341.5,498.5 1371.5,436.5 1236.5,366.5 1209.5,422.5 \
+                                  1171.5,402.5 1166.5,413.5 1138.5,401.5 1099.5,388.5 1055.5,374.5 1016.5,363.5 979.5,354.5 985.5,287.5 804.5,258.5 \
+                                  782.5,300.5 736.5,298.5 680.5,295.5 630.5,294.5 557.5,291.5 479.5,289.5 407.5,287.5 344.5,287.5 343.5,326.5 293.5,325.5 \
+                                  293.5,328.5 262.5,329.5 		')
+                                g.st1
+                                  polyline.st4(points='264.5,329.5 264.5,516.5 315.5,516.5 315.5,575.5 393.5,580.5 511.5,588.5 614.5,594.5 696.5,596.5 \
+                                  696.5,622.5 716.5,616.5 736.5,613.5 784.5,605.5 843.5,600.5 891.5,599.5 928.5,599.5 974.5,602.5 1019.5,607.5 1052.5,613.5 \
+                                  1048.5,633.5 1082.5,647.5 1113.5,661.5 1147.5,678.5 1178.5,696.5 1204.5,712.5 1228.5,726.5 1267.5,751.5 1298.5,768.5 \
+                                  1348.5,793.5 1378.5,806.5 1426.5,826.5 1476.5,844.5 1551.5,866.5 1593.5,875.5 1631.5,885.5 1639.5,855.5 1691.5,873.5 \
+                                  1735.5,726.5 1668.5,705.5 1672.5,691.5 1658.5,676.5 1639.5,655.5 1611.5,632.5 1579.5,610.5 1555.5,595.5 1533.5,583.5 \
+                                  1512.5,574.5 1497.5,567.5 1479.5,561.5 1438.5,544.5 1387.5,521.5 1341.5,498.5 1371.5,436.5 1236.5,366.5 1209.5,422.5 \
+                                  1171.5,402.5 1166.5,413.5 1138.5,401.5 1099.5,388.5 1055.5,374.5 1016.5,363.5 979.5,354.5 985.5,287.5 804.5,258.5 \
+                                  782.5,300.5 736.5,298.5 680.5,295.5 630.5,294.5 557.5,291.5 479.5,289.5 407.5,287.5 344.5,287.5 343.5,326.5 293.5,325.5 \
+                                  293.5,328.5 262.5,329.5 		')
+                              g#103(mytitle='203')
+                                polygon.st5(points='403.5,581.5 403.5,503.5 419.5,503.5 419.5,460.5 512.5,460.5 512.5,471.5 502.5,471.5 502.5,496.5 \
+                                502.5,548.5 512.5,548.5 512.5,581.5 500.5,581.5 500.5,587.5 	')
+                              g#104(mytitle='204')
+                                rect.st5(x='375.5', y='430.5', width='44', height='73')
+                              g#105(mytitle='205')
+                                polygon.st5(points='405.5,354.5 405.5,430.5 419.5,430.5 419.5,460.5 512.5,460.5 512.5,452.5 512.5,410.5 501.5,410.5 \
+                                501.5,368.5 501.5,348.5 482.5,348.5 482.5,335.5 450.5,337.5 423.5,340.5 423.5,354.5 	')
+                              g#106(mytitle='206')
+                                polygon.st5(points='501.5,335.5 501.5,410.5 512.5,410.5 512.5,471.5 502.5,471.5 502.5,480.92 600.5,480.5 600.5,430.5 \
+                                611.5,430.5 611.5,365.5 592.5,365.5 592.5,350.5 533.5,339.5 533.5,350.5 514.5,350.5 514.5,337.5 	')
+                              g#107(mytitle='207')
+                                rect.st5(x='600.5', y='430.5', width='43', height='73')
+                              g#108(mytitle='208')
+                                polygon.st5(points='613.5,592.5 613.5,503.5 600.5,503.5 600.5,480.5 502.5,480.5 502.5,548.5 512.5,548.5 512.5,581.5 \
+                                500.5,581.5 500.5,587.5 556.5,590.5 	')
+                              g#114(mytitle='214')
+                                polygon.st5(points='698.5,620.5 698.5,596.5 700.5,596.5 700.5,480.5 809.5,480.5 809.5,441.5 841.5,441.5 841.5,411.5 \
+                                860.5,411.5 860.5,400.5 908.5,408.5 944.5,416.5 942.5,428.5 971.5,430.5 953.5,592.5 942.5,592.5 942.5,600.5 889.5,598.5 \
+                                829.5,601.5 760.5,609.5 	')
+                              g#120(mytitle='220')
+                                polygon.st5(points='1048.5,633.5 1062.5,562.5 1075.5,538.5 1161.5,582.5 1181.5,544.5 1214.5,562.5 1195.5,600.5 \
+                                1184.5,622.5 1230.5,647.5 1200.5,709.5 1132.5,670.5 	')
+                              g#127(mytitle='227')
+                                polygon.st5(points='1297.5,767.5 1324.5,711.5 1350.5,724.5 1358.5,709.5 1459.5,748.5 1450.5,774.5 1439.5,770.5 \
+                                1431.5,793.5 1441.5,797.5 1432.5,822.5 1422.5,818.5 1420.5,824.5 1365.5,801.5 	')
+                              g#128(mytitle='228')
+                                polygon.st5(points='1310.5,704.5 1350.5,724.5 1382.5,658.5 1344.5,638.5 	')
+                              g#129(mytitle='229')
+                                polygon.st5(points='1382.5,596.5 1359.05,646.16 1382.5,658.5 1358.5,709.5 1459.5,748.5 1463.5,738.5 1453.5,734.5 \
+                                1459.5,715.5 1470.5,719.5 1483.5,683.5 1472.5,679.5 1486.5,641.5 1496.5,645.5 1506.5,616.5 1496.5,612.5 1492.5,623.5 \
+                                1475.5,616.5 1479.5,606.5 1449.5,599.5 1432.5,596.5 1406.5,594.5 1400.5,606.5 	')
+                              g#130(mytitle='230')
+                                polygon.st5(points='1597.5,681.5 1578.5,676.5 1582.5,661.5 1564.5,648.5 1541.5,633.5 1524.5,625.5 1521.5,634.5 \
+                                1502.82,627.17 1496.5,645.5 1486.5,641.5 1472.5,679.5 1483.5,683.5 1470.5,719.5 1459.5,715.5 1456.66,724.5 1543.5,758.5 \
+                                1553.5,727.5 1580.5,736.5 	')
+                              g#131(mytitle='231')
+                                polygon.st5(points='1593.5,740.5 1553.5,727.5 1532.5,796.5 1572.5,809.5 	')
+                              g#132(mytitle='232')
+                                polygon.st5(points='1549.5,866.5 1489.5,849.5 1420.5,824.5 1422.5,818.5 1432.5,822.5 1441.5,797.5 1432.5,793.5 \
+                                1439.5,770.5 1450.5,774.5 1459.5,748.5 1463.5,738.5 1453.5,734.5 1456.5,724.5 1543.5,758.5 1532.5,795.5 1559.29,805.21 \
+                                1543.5,856.5 1550.5,859.5 	')
 
 script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
 script.
-	
-	$('.AD-nav-five').addClass('selectedNAV')
-	
-	// 
-	// Global Vars
-	// 
-	
-	var rawClassDB = "#{classrooms}"
-	var classrooms = JSON.parse(rawClassDB.replace(/&quot;/g,'"'));
-	
-	var activeFloor = "floor1"
-	
-	$('.AD-dashboard-body-header-right-switch').click(function(){
-		$('.AD-dashboard-body-header-right-switch-object').toggleClass('trigger')
-		if($('.AD-dashboard-body-header-right-switch-object').hasClass('trigger')) {
-			activeFloor = "floor2"
-		} else {
-			activeFloor = "floor1"
-		}
-		triggerFloorChange(activeFloor)
-	})
-	
-	function triggerFloorChange(id) {
-		var floorNumber = id.slice(5)
-		$('.SC-dashboard-body-container-floor-header-title p').text('FLOOR ' + floorNumber)
-	}
-	
-	for(var i = 0; i < classrooms.length; i++) {
-		var level = "Level " + classrooms[i].floor
-		var inType = classrooms[i].classification
-		var type = FLuppercase(inType)
-		
-		$('.SC-dashboard-body-floor').append('<div class="SC-dashboard-floor-object"> <div class="SC-dashboard-floor-object-top"> <div class="SC-dashboard-floor-object-top-txt"> <p>'+level+'</p> <h6>'+type+'</h6> </div> </div> <div class="SC-dashboard-floor-object-bottom"> <div class="SC-dashboard-floor-object-bottom-txt"> <p>Room</p> <h6>'+classrooms[i].roomNumber+'</h6> </div> </div> </div>')
-	}
-	
-	function FLuppercase(id) {
-		var firstLetter = id.charAt(0).toUpperCase()
-		var splitIn = id.slice(1)
-		console.log(firstLetter)
-		return firstLetter + splitIn
-	}
+    
+    $('.AD-nav-five').addClass('selectedNAV')
+    
+    // 
+    // Global Vars
+    // 
+    
+    var rawClassDB = "#{classrooms}"
+    var classrooms = JSON.parse(rawClassDB.replace(/&quot;/g,'"'));
+    
+    var activeFloor = "floor1"
+    
+    $('.AD-dashboard-body-header-right-switch').click(function(){
+        $('.AD-dashboard-body-header-right-switch-object').toggleClass('trigger')
+        if($('.AD-dashboard-body-header-right-switch-object').hasClass('trigger')) {
+            activeFloor = "floor2"
+        } else {
+            activeFloor = "floor1"
+        }
+        triggerFloorChange(activeFloor)
+    })
+    
+    function triggerFloorChange(id) {
+        var floorNumber = id.slice(5)
+        $('.SC-dashboard-body-container-floor-header-title p').text('FLOOR ' + floorNumber)
+    }
+    
+    function FLuppercase(id) {
+        var firstLetter = id.charAt(0).toUpperCase()
+        var splitIn = id.slice(1)
+        console.log(firstLetter)
+        return firstLetter + splitIn
+    }
+    
+    $('g').click(function(){
+       window.alert($(this).attr('mytitle'))
+    })

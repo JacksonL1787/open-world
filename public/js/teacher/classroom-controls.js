@@ -95,6 +95,10 @@ function turnOnLights() {
     socket.emit('lightsOn', 'lightsOn')
 }
 
+function changeBrightness(msg) {
+    socket.emit('lightsBrightness', msg)
+}
+
 
 
 /*
@@ -104,9 +108,9 @@ function turnOnLights() {
 // Listen for click on turn on or off projector button
 $('.projector-control-widget .change-projector-status-btn').click(function() {
     if($('.status-light').hasClass('on')) {
-        loading('.change-projector-status-btn', 0, projectorOff, projectorWaiting,'top: calc(50% + 17px)')
+        loading('.change-projector-status-btn', 1500, projectorOff, projectorWaiting,'top: calc(50% + 17px)')
     } else {
-        loading('.change-projector-status-btn', 0, projectorOn, projectorWaiting,'top: calc(50% + 17px)')
+        loading('.change-projector-status-btn', 1500, projectorOn, projectorWaiting,'top: calc(50% + 17px)')
     }
 })
 
@@ -114,9 +118,9 @@ $('.projector-control-widget .change-projector-status-btn').click(function() {
 $('.door-control-widget .change-lock-status-btn').click(function() {
     console.log($('.door-control-widget .lock-status').text())
     if($('.door-control-widget .lock-status').text() == "Locked") {
-        loading('.change-lock-status-btn', 2000, unlock, unlockingDoor, 'top: calc(50% + 17px)')
+        loading('.change-lock-status-btn', 1500, unlock, unlockingDoor, 'top: calc(50% + 17px)')
     } else {
-        loading('.change-lock-status-btn', 2000, lock, lockingDoor, 'top: calc(50% + 17px)')
+        loading('.change-lock-status-btn', 1500, lock, lockingDoor, 'top: calc(50% + 17px)')
     }
 })
 
@@ -147,7 +151,23 @@ $('.lighting-control-widget .lighting-controls .light-switch-wrap .switch').clic
 })
 
 $('.lighting-control-widget .lighting-controls .brightness-range-input').on('input', function() {
-    
+    const brightness = Math.round($(this).val() * 2.55)
+    changeBrightness('lightingBrightness:' + brightness)
 })
 
-var colorPicker = new iro.ColorPicker('#color-picker-container');
+var colorPicker = new iro.ColorPicker('#color-picker-container', {
+    layout: [
+        {
+          component: iro.ui.Wheel,
+          options: {
+              width: 175
+          }
+        }
+    ]
+});
+
+colorPicker.on('color:change', function(color, changes){
+    var msg = "lightingColor:" + color.rgb.r + "," + color.rgb.g + "," + color.rgb.b
+    console.log(msg)
+    socket.emit('lightingColor', msg)
+})

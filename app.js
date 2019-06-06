@@ -76,14 +76,14 @@ app.use(function(err, req, res, next) {
 var io = require('socket.io').listen(server);
 
 io.on('connection', function(socket){
-	socket.on('test', function(msg) {
+	socket.on('ringBell', function(msg) {
 		socket.broadcast.emit('commands', 'longBeep')
 	})
 	socket.on('projectorOn', function(msg) {
-		socket.broadcast.emit('commands', 'on')
+		socket.broadcast.emit('commands', 'projectorOn')
 	})
 	socket.on('projectorOff', function(msg) {
-		socket.broadcast.emit('commands', 'off')
+		socket.broadcast.emit('commands', 'projectorOff')
 	})
 	socket.on('doorLock', function(msg) {
 		socket.broadcast.emit('commands', 'doorLock')
@@ -96,6 +96,21 @@ io.on('connection', function(socket){
 	})
 	socket.on('blindsClose', function(msg) {
 		socket.broadcast.emit('commands', 'fanOff')
+	})
+	socket.on('lightingColor', function(msg) {
+		socket.broadcast.emit('commands', msg)
+	})
+	socket.on('lightsOff', function(msg) {
+		socket.broadcast.emit('commands', 'roomLightsOff')
+	})
+	socket.on('lightsOn', function(msg) {
+		socket.broadcast.emit('commands', 'roomLightsOn')
+	})
+	socket.on('lightsBrightness', function(msg) {
+		socket.broadcast.emit('commands', msg)
+	})
+	socket.on('test', function(msg) {
+		console.log("TSTSETSTST")
 	})
 });
 
