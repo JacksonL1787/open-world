@@ -1,7 +1,7 @@
 .base-settings-widget
     width 100%
     .change-settings-form
-        width 500px
+        max-width 500px
         margin 20px auto
         .profile-picture-wrap
             width 200px
@@ -43,7 +43,7 @@
                 color #8c8c8c
                 display block
                 font-size 14px
-                margin-bottom -1px
+                margin-bottom 1px
             input
                 background #fdfeff
                 border solid 1px #e6eaec
@@ -52,17 +52,17 @@
                 font-size 15px
                 padding 7px 10px
                 width 225px
-        .update-basic-settings-btn
-            width 247px
-            padding 7px 0
-            height auto
-            margin-left 126.5px
-            margin-top 10px
+        .update-settings-btn-wrap
+            margin 10px auto
+            width fit-content
+            .update-basic-settings-btn
+                width 247px
+                padding 7px 0
+                height auto
 
 .change-password-widget
     margin-top 10px
     width 100%
-    padding 15px 0 25px
     .change-password-form
         display flex
         width 100%
@@ -73,7 +73,7 @@
                 color #8c8c8c
                 display block
                 font-size 14px
-                margin-bottom -1px
+                margin-bottom 1px
             input
                 background #fdfeff
                 border solid 1px #e6eaec
@@ -86,19 +86,61 @@
             padding 8px 10px
             margin-left 10px
             margin-top 18px
-            
-.settings-page-widget
-    .top-container
+
+.dashboard-settings-widget
+    padding 15px 0 25px
+    margin-top 10px
+    margin-bottom 30px
+    .dashboard-settings-container
+        margin 15px 0 0 5%
+        width 90%
+        position relative
+        height 70px
+        .dark-mode-wrap
+            position absolute
+            left 50%
+            width fit-content
+            transform translateX(-50%)
+            h2.dark-mode-title
+                color #8c8c8c
+                margin 0 0 7px
+                font-weight 500
+                font-size 17px
+            .switch
+                height 18px
+                width 50px
+                left calc(50% - 25px)
+                border-radius 18px
+                background rgba(0,0,0,0.2)
+                cursor pointer
+                position relative
+                transition background .3s
+                &.active
+                    background rgba(22, 189, 244, 0.5)
+                    .switch-circle
+                        left calc(100% - 19px) !important
+                .switch-circle
+                    width 20px
+                    height 20px
+                    position absolute
+                    border-radius 20px
+                    top -1px
+                    left 0
+                    background #16BDF4
+                    transition left .3s
+
+.settings-page-widget // All Widgets on Settings Page
+    .top-container // Title Container
         height fit-content
-        width 95%
-        margin-left 2.5%
+        width calc(100% - 10px)
+        margin-left 10px
         padding 15px 0
-        .title
+        .title // Title on Widget
             color #4c4c4c
             font-weight bold
             font-size 25px
             margin 0
-    .update-basic-settings-btn,
+    .update-basic-settings-btn, // Basic Button Settings
     .change-password-btn
         border none
         font-size 15px
@@ -110,3 +152,16 @@
         transition background .25s
         &:hover
             background #14afe2
+
+@media only screen and (max-width 1150px)
+    .change-password-widget
+        .change-password-form
+            flex-flow column !important
+            width fit-content
+            margin 0 auto
+            .input-wrap
+                width fit-content
+                margin 5px 0
+            .change-password-btn
+                width 245px !important
+                margin 15px 0 5px

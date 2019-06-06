@@ -1,0 +1,262 @@
+.search-bar-widget
+    width calc(60% - 5px)
+    height 160px
+    display inline-block
+    margin-right 10px
+    .search-student-content
+        width calc(100% - 40px)
+        margin-left 20px
+        height fit-content
+        padding 10px 0
+        display flex
+        .input-wrap
+            width fit-content
+            .student-search-input
+                width 300px
+                background #fdfeff
+                border solid 1px #e6eaec
+                outline none
+                font-size 16px
+                padding 7px
+                color #4c4c4c
+            p
+                font-size 11px
+                color grey
+                margin 5px 0 0 2px
+                width 250px
+        .filter-wrap
+            position relative
+            width fit-content
+            .add-filter-btn
+                color #16BDF4
+                cursor pointer
+                position relative
+                margin 6px 0 0 30px
+                &::after
+                    content ""
+                    position absolute
+                    top 2.5px
+                    right -24px
+                    width 24px
+                    height 24px
+                    background-image url('../../img/teacher/dropdown.svg')
+                    background-position center
+                    background-size cover
+                    background-repeat no-repeat
+                &:hover
+                    text-decoration underline
+            .filters-menu
+                width 300px
+                height fit-content
+                position absolute
+                left 65px
+                display none
+                box-shadow 0 0 5px 3px rgba(0,0,0,0.03)
+                padding 10px 0
+                margin-top 5px
+                background white
+                z-index 3
+                border solid 1px #eaeeef
+                border-radius .2em
+                &.active
+                    display block
+                .filter-menu-content
+                    width 90%
+                    margin-left 5%
+                    h2
+                        color #383838
+                    .filter-menu-period
+                        float left
+                        position relative
+                        width calc(50% - 20px)
+                        .change-filter-state-wrap
+                            right 15px !important
+                    .filter-menu-grade
+                        float right
+                        width calc(50% - 10px)
+                        position relative
+                    .filter-section
+                        font-weight 600
+                        font-size 15px
+                        margin 5px 0
+                        text-decoration underline
+                    .filter-option
+                        display flex
+                        width 100%
+                        margin 10px 0
+                        p
+                            font-size 14px
+                            margin 0
+                            color #565656
+                        .change-filter-state-wrap
+                            background #16BDF4
+                            width 20px
+                            height 20px
+                            border-radius .2em
+                            position absolute
+                            right 0
+                            cursor pointer
+                            transition background .3s
+                            &:hover
+                                background #14afe2
+                            p
+                                position absolute
+                                top 50%
+                                left 50%
+                                transform translate(-50%, -50%)
+                                font-size 17px
+                                font-weight bold
+                                color white
+                                &.active
+                                    top calc(50% - 2px)
+
+.active-filters-widget
+    float right
+    width calc(40% - 5px)
+    height 160px
+    overflow-y auto
+    .active-filters-wrap
+        width 90%
+        margin-left 5%
+        display flex
+        justify-content left
+        flex-flow row wrap
+        .filter-wrap
+            padding 5px 50px 5px 12px
+            border-radius .2em
+            width fit-content
+            height fit-content
+            margin 0 0 7px 15px
+            border solid 1px #eaeeef
+            background #F5F9FB
+            position relative
+            .filter-name
+                color grey
+                font-size 14px
+                margin 0
+            .close-filter
+                background-image url('../../img/teacher/close.svg')
+                background-size cover
+                background-position center
+                background-repeat no-repeat
+                width 25px
+                height 26px
+                position absolute
+                cursor pointer
+                right 2px
+                top calc(50% + 3px)
+                transform translateY(-50%)
+
+.all-students-widget
+    width 100%
+    margin-top 10px
+    height 500px
+    overflow-y auto
+    overflow-x hidden
+    margin-bottom 30px
+    .students-container
+        .student-wrap
+            background #F5F9FB
+            width 90%
+            border 1px solid rgba(0,0,0,0.03)
+            margin-left 5%
+            border-radius .3em
+            padding 12px 0
+            margin-bottom 10px
+            .student-content
+                width 95%
+                margin-left 2.5%
+                display flex
+                position relative
+                justify-content left
+                .name-info
+                    margin-left 0 !important
+                    width 160px
+                .email-info
+                    width 210px
+                .grade-info
+                    width 110px
+                .advisor-info
+                    width 150px
+                .student-info
+                    margin-left 20px
+                    label
+                        color grey
+                        font-weight bold
+                        font-size 11px
+                        text-transform uppercase
+                    a,p
+                        margin 0
+                        color #333
+                        font-size 15px
+                        display block
+                    a
+                        color #16BDF4
+                        text-decoration none
+                        &:hover
+                            text-decoration underline
+                .manage-student
+                    position absolute
+                    top 50%
+                    transform translateY(-50%)
+                    right 0
+                    background #16BDF4
+                    color white
+                    padding 7px 12px
+                    font-size 14px
+                    border none
+                    outline none
+                    cursor pointer
+                    transition background .25s
+                    &:hover
+                        background #14afe2
+.manage-students-widget
+    .top-container
+        height fit-content
+        width calc(100% - 10px)
+        margin-left 10px
+        padding 15px 0
+        .title
+            color #4c4c4c
+            font-weight bold
+            font-size 25px
+            margin 0 10px 0 10px
+
+@media only screen and (max-width 1335px)
+    .all-students-widget
+        .student-wrap
+            width 95% !important
+            margin-left 2.5% !important
+            .advisor-info
+                display none !important
+    .search-bar-widget
+        .input-wrap
+            input
+                width 200px !important
+            p
+                width 150px !important
+
+@media only screen and (max-width 1050px)
+    .mainDashboard
+        .dashboard-outer-wrap
+            width 95% !important
+
+@media only screen and (max-width 950px)
+    .mainDashboard
+        .dashboard-outer-wrap
+            width calc(95% - 80px) !important
+
+@media only screen and (max-width 800px)
+    .all-students-widget
+        .student-wrap
+            .grade-info
+                display none !important
+    .search-bar-widget
+        display block !important
+        width 100% !important
+        margin 0 !important
+    .active-filters-widget
+        float none !important
+        width 100% !important
+        height 120px !important
+        margin 10px 0 0 !important

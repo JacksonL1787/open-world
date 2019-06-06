@@ -5,13 +5,17 @@ html
 		meta(name="viewport" content="width=device-width, initial-scale=1.0")
 		
 		// CSS Links
+		//link(rel='stylesheet', href='/css/teacher/dark.css')
+		case user.darkMode
+			when true
+				link(rel='stylesheet', href='/css/teacher/dark.css')
 		link(rel='stylesheet', href='/css/main.css')
 		link(rel='stylesheet', href='/css/teacher/dashboard.css')
 		
 		// Import Libraries
 		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
-		
+		script(src="https://cdn.jsdelivr.net/npm/@jaames/iro/dist/iro.min.js")
 	body
 		//Declare Master Window Object
 		script.
@@ -26,12 +30,20 @@ html
 					permissionLevel: "#{user.permissionLevel}",
 					school: "#{user.school}",
 					position: "#{user.position}",
-					profilePicture: "#{user.profilePicture}"
-				}
+					profilePicture: "#{user.profilePicture}",
+					darkMode: "#{user.darkMode}",
+					rooms: "#{user.rooms}"
+				},
+				loader: '<div class="loader"><div class="loader-bar"></div></div>'
 			}
 		include messages
 		include nav
+		.overlay
 		.mainDashboard
+			.open-nav-btn
+				.bar.bar1
+				.bar.bar2
+				.bar.bar3
 			.dashboard-outer-wrap
 				.top
 					p.title #{title}
@@ -41,10 +53,6 @@ html
 							link(rel='stylesheet', href="/css/teacher/home.css")
 							include pages/home
 							script(src="/js/teacher/home.js")
-						when 'Attendance'
-							link(rel='stylesheet', href="/css/teacher/attendance.css")
-							include pages/attendance
-							script(src="/js/teacher/attendance.js")
 						when 'PA System'
 							link(rel='stylesheet', href="/css/teacher/pa-system.css")
 							include pages/pa-system

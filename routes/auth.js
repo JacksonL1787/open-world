@@ -56,6 +56,8 @@ router.post('/register', (req, res) => {
           lastName,
           email,
           profilePicture: "user.png",
+          darkMode: false,
+          rooms: ["test"],
           permission: "teacher",
           permissionLevel: "1",
           school: "TBD",

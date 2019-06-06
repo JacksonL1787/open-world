@@ -1,0 +1,316 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/css/admin/studentBuilder.css')
+		link(rel='stylesheet', href='/css/main.css')
+	body
+		include ../../main
+		.SB-full-wrap
+			.SB-center-obj
+				.SB-center-obj-left
+					.SB-center-obj-left-header
+						.SB-center-obj-left-header-text-wrapper
+							p Your Student
+							
+					.SB-center-object-left-body
+						.SB-center-object-left-body-avatar-wrapper-sect
+							.SB-center-object-left-body-avatar-wrapper
+								.SB-center-object-left-body-avatar
+						
+						.SB-center-object-left-body-user-MD-sect
+							.SB-center-object-body-user-MD
+								p.studentname Enter Student Name
+								h6.studentgrade Select A Grade
+						
+						.SB-center-object-left-body-user-SCH-sect
+							.SB-center-object-body-user-SCH
+								.SB-center-object-body-user-SCH-object
+									.SB-center-object-body-user-SCH-object-icon-wrapper
+										.SB-center-object-body-user-SCH-object-icon
+									.SB-center-object-body-user-SCH-object-titDESC
+										h6 @d.Tech
+										p.madTT Morning @d.Tech with Select Teacher
+
+						.SB-center-object-left-body-user-personal-de-sect
+							.SB-center-object-left-body-user-personal-de
+								.SB-center-object-left-body-user-personal-de-obj
+									h6 Student ID
+									p.schoolStudentIDO Enter Student ID
+								.SB-center-object-left-body-user-personal-de-obj
+									h6 School Email
+									p.schoolEmailO Enter Student Email
+								
+
+				.SB-center-obj-right
+					.SB-center-obj-right-header
+						.SB-center-obj-right-logo
+					.SB-center-obj-right-body
+						.SB-center-obj-right-body-container
+							h3 Basic Information
+							.SB-center-obj-right-body-container-form
+								.SB-center-obj-right-body-container-form-row
+									.SB-center-obj-right-body-container-form-object
+										p First Name
+										input.stuFirstNameInput(type="text" placeholder="First Name")
+									.SB-center-obj-right-body-container-form-object
+										p Last Name
+										input.stuLastNameInput(type="text" placeholder="Last Name")
+										
+								.SB-center-obj-right-body-container-form-row
+									.SB-center-obj-right-body-container-form-object
+										p School Email
+										input.stuEmailInput(type="text" placeholder="Student Email")
+									.SB-center-obj-right-body-container-form-object
+										p Student ID
+										input(type="button" value="Generate Student ID")
+										input.stuIDInput(type="text" placeholder="Student ID")
+								.SB-center-obj-right-body-container-form-row
+									.SB-center-obj-right-body-container-form-object
+										p Grade
+										select.gradeSelect
+											option Select Option
+											option Freshman
+											option Sophomore
+											option Junior
+											option Senior
+							h3 Class Information
+							.SB-center-obj-right-body-container-class-selector
+								.period-selector-row
+									.period-dtech-wrapper.advisor-wrapper
+										p @d.Tech
+										input(type="text" placeholder="Search Advisor Name")
+										.results-dtech.results
+									.period-one-wrapper.period-wrapper
+										p Period One
+										input#one(type="text" placeholder="Search Class Name")
+										.results-one.results
+									.period-two-wrapper.period-wrapper
+										p Period Two
+										input#two(type="text" placeholder="Search Class Name")
+										.results-two.results
+										
+								.period-selector-row
+									.period-three-wrapper.period-wrapper
+										p Period Three
+										input#three(type="text" placeholder="Search Class Name")
+										.results-three.results
+									.period-four-wrapper.period-wrapper
+										p Period Four
+										input#four(type="text" placeholder="Search Class Name")
+										.results-four.results
+									.period-five-wrapper.period-wrapper
+										p Period Five
+										input#five(type="text" placeholder="Search Class Name")
+										.results-five.results
+										
+								.period-selector-row
+									.period-six-wrapper.period-wrapper
+										p Period Six
+										input#six(type="text" placeholder="Search Class Name")
+										.results-six.results
+								.period-selector-row
+									input(type='button' value="Submit Student")
+										
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
+script.
+
+	var rawClassDB = "#{classDB}"
+	var classes = JSON.parse(rawClassDB.replace(/&quot;/g,'"'));
+	
+	var rawAdvisorDB = "#{advisorDB}"
+	var advisors = JSON.parse(rawAdvisorDB.replace(/&quot;/g,'"'));
+	
+	$('.SB-center-object-body-user-SCH-object:not(:first-child)').css('margin-top', '10px')
+	
+	
+	// 
+	// Master Data Form
+	// 
+		
+	var firstNameInput = ""
+	var lastNameInput = ""
+	var emailInput = ""
+	var studentIDInput = ""
+	var grade = ""
+	
+	var classInfo = []
+	
+	$('.stuFirstNameInput').on('keyup', function(){
+		firstNameInput = $(this).val()
+	})
+	
+	$('.stuLastNameInput').on('keyup', function(){
+		lastNameInput = $(this).val()
+	})
+	
+	$('.stuEmailInput').on('keyup', function(){
+		emailInput = $(this).val()
+	})
+	
+	$('.stuIDInput').on('keyup', function(){
+		studentIDInput = $(this).val()
+	})
+	
+	$(document).on('change','.gradeSelect',function(){
+		grade = $('.gradeSelect').val()
+		if(grade != "Select Option") {
+			$('.studentgrade').text(grade)
+		} else {
+			$('.studentgrade').text("Select A Grade")
+		}
+	});
+	
+	$('.stuLastNameInput, .stuFirstNameInput, .stuEmailInput, .stuIDInput').on('keyup', function(){
+		if(firstNameInput.length > 0 || lastNameInput.length > 0) {
+			var combined = firstNameInput + " " + lastNameInput
+			$('.studentname').text(combined)
+		} else {
+			$('.studentname').text('Enter Student Name')
+		}
+		
+		if(emailInput.length > 0) {
+			$('.schoolEmailO').text(emailInput)
+		} else {
+			$('.schoolEmailO').text('Enter Student Email')
+		}
+		
+		if(studentIDInput.length > 0) {
+			$('.schoolStudentIDO').text(studentIDInput)
+		} else {
+			$('.schoolStudentIDO').text('Enter Student ID')
+		}
+	})
+	
+	// 
+	// Class Searcher
+	// 
+	
+	var classSearcher = $('.period-wrapper input')
+	
+	$(classSearcher).on('keyup', function(){
+		var id = $(this).val()
+		var attr = $(this).attr('id')
+		searchClassDB(id, attr)
+	})
+	
+	function searchClassDB(id, attr) {
+		var searchByThis = id
+		var idLength = searchByThis.length
+		var se = attr
+		$(".results-" + se).empty()
+		if(idLength == 0) {
+			
+		} else {
+			for(var i = 0; i < classes.length; i++) {
+				if(classes[i].title.slice(0, idLength).toLowerCase() == searchByThis.toLowerCase()) {
+					$('.results-' + se).append('<div class="result-object" id="'+classes[i]._id+'"><p>'+classes[i].title+'</p></div>')
+				}
+			}
+		}
+	}
+	
+	function lookForClass(id) {
+		console.log(id)
+		for(var i = 0; i < classes.length; i++) {
+			if(id == classes[i]._id) {
+				return classes[i]
+			}
+		}
+	}
+	
+	$(document).on('click', '.result-object', function(){
+		
+		var selectedID = $(this).attr('id')
+		var classesS = lookForClass(selectedID)
+		$(this).parent().siblings('input').val(classesS.title)
+		$('.results').empty()
+		classInfo.push(selectedID)
+		classSel(selectedID)
+	})
+	
+	// 
+	// Advisor Searcher
+	// 
+	
+	var advisorSearcher = $('.period-dtech-wrapper input')
+	
+	$(advisorSearcher).on('keyup', function(){
+		var id = $(this).val()
+		$('.madTT').text('Morning @d.Tech with ' + id)
+		searchAdvisorDB(id)
+	})
+	
+	function searchAdvisorDB(id) {
+		var searchByThis = id
+		var idLength = searchByThis.length
+		$('.results-dtech').empty()
+		if(idLength == 0) {
+			
+		} else {
+			for(var i = 0; i < advisors.length; i++) {
+				if(advisors[i].title.slice(0, idLength).toLowerCase() == searchByThis.toLowerCase()) {
+					$('.results-dtech').append('<div class="result-object-advisor" id="'+advisors[i]._id+'"><p>'+advisors[i].title+'</p></div>')
+				}
+			}
+		}
+	}
+	
+	function lookForAdvisor(id) {
+		for(var i = 0; i < advisors.length; i++) {
+			if(id == advisors[i]._id) {
+				return advisors[i]
+			}
+		}
+	}
+	
+	$(document).on('click', '.result-object-advisor', function(){
+		
+		var selectedID = $(this).attr('id')
+		var advisor = lookForAdvisor(selectedID)
+		$(this).parent().siblings('input').val(advisor.title)
+		$('.results-dtech').empty()
+		$('.madTT').text('Morning @d.Tech with ' + advisor.title)
+		classInfo.push(selectedID)
+	})
+	
+	// 
+	// Searchbar Checkers
+	// 
+	
+	$(document).mouseup(function(e) {
+		var container = $(".result-object-advisor");
+		if (!container.is(e.target) && $('.results-dtech').children().length != 0 && container.has(e.target).length === 0) {
+			$('.results-dtech').empty()
+			$('.period-dtech-wrapper input').val('')
+		}
+	});
+	
+	// 
+	// Class Sidebar
+	// 
+	
+	var period = 1
+	function classSel(id) {
+		if(period == 7) {
+			
+		} else {
+			var curClass = lookForClass(id)
+			$('.SB-center-object-body-user-SCH').append('<div class="SB-center-object-body-user-SCH-object"> <div class="SB-center-object-body-user-SCH-object-icon-wrapper"> <div class="SB-center-object-body-user-SCH-object-icon"></div> </div> <div class="SB-center-object-body-user-SCH-object-titDESC"> <h6>Period '+period+'</h6> <p>'+curClass.title+' with '+curClass.teacher+'</p> </div> </div>')
+			$('.SB-center-object-body-user-SCH-object:not(:first-child)').css('margin-top', '10px')
+			period++
+		}
+	}
+	
+	$('.period-selector-row input[type="button"]').click(function(){
+		var data = {"firstName": firstNameInput, "lastName": lastNameInput, "email": emailInput, "ID": Number(studentIDInput), "grade": grade, "classes": classInfo}
+		console.log(data)
+		$.ajax({
+			type: "POST",
+			url: "/admin/school/accounts/builder/student/post",
+			data: data
+		})
+		location.reload()
+	})

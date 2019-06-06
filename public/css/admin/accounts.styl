@@ -73,6 +73,7 @@ body
     h5, h6
         margin 0
         font-size 13px
+        padding-left 5px
     h5
         font-size 30px
         color #3480e6
@@ -118,7 +119,13 @@ body
     -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.1);
     -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.1);
     box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.1);
-
+    transition .5s
+    opacity 1
+    &.hide
+        opacity 0
+    &.FS
+        width 100%
+        
 .ADA-dashboard-body-section-three
     width 100%
     height 500px
@@ -190,10 +197,14 @@ body
     
 .ADA-tolo-one
     width 50%
+    &.active
+        width 20%
 .ADA-tolo-two
-    width 25%
+    width 20%
 .ADA-tolo-three
-    width 25%
+    width 30%
+    &.active
+        width 20%
 
 .ADA-dashbaord-section-two-object-data-container
     width 100%
@@ -203,10 +214,14 @@ body
 
 .ADA-dashbaord-section-two-object-data-container-object
     width 100%
-    height 100px
+    height 80px
     position relative
-    background #e2e2e2
-    
+    background white
+    &.otherCL
+        background: #f9f9fd;
+        border-top: 1px solid #e9e9f7;
+        border-bottom: 1px solid #e9e9f7;
+        
 .ADA-dstodco-container
     width 100%
     height 100%
@@ -218,7 +233,8 @@ body
     height 100%
     position relative
     display -webkit-box
-    
+    &.active
+        width 20%
 .ADA-dstodco-avatar-wrapper
     width fit-content
     height fit-content
@@ -232,6 +248,9 @@ body
     height 40px
     border-radius 50%
     background black
+    background-size cover
+    background-position center
+    background-repeat no-repeat
     
 .ADA-dstodco-user-data
     width fit-content
@@ -243,8 +262,9 @@ body
     p  
         margin 0
 .ADA-dstodco-container-center
-    width 25%
+    width 20%
     height 100%
+    
 .ADA-dstodco-grade-wrapper
     width fit-content
     height fit-content
@@ -255,8 +275,10 @@ body
     p  
         margin 0
 .ADA-dstodco-container-right
-    width 25%
+    width 30%
     height 100%
+    &.active
+        width 20%
 .ADA-dstodco-date-added
     width fit-content
     height fit-content
@@ -267,3 +289,502 @@ body
     p  
         margin 0
     
+.ADA-dashboard-body-section-four
+    width 100%
+    height 180px
+    position relative
+    
+.ADA-dashboard-section-four-container
+    width 90%
+    height 80%
+    position relative
+    cursor pointer
+    display flex
+    transform translate(-50%, -50%)
+    top 50%
+    left 50%
+    justify-content space-around
+    
+.ADA-dashbaord-section-four-object
+    width 30%
+    height 100%
+    border-radius 10px
+    max-width 400px
+    background white
+    -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.1);
+    box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.1);
+    transition .5s
+    &:hover
+        transform scale(1.05)
+        -webkit-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.3);
+        -moz-box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.3);
+        box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.3);
+.ADA-dashboard-body-bottomspacer
+    width 100%
+    height 70px
+
+.ADA-dashboard-section-two-object-data-container-AA-object
+    width 100%
+    height 80px
+    position relative
+    background white
+    &.otherCL
+        background: #f9f9fd;
+        border-top: 1px solid #e9e9f7;
+        border-bottom: 1px solid #e9e9f7;
+        
+.ADA-dstodcAAo-container
+    width 100%
+    height 100%
+    position relative
+    display -webkit-box
+    
+.ADA-dstodcAAo-container-left
+    width 25%
+    height 100%
+    display -webkit-box
+    position relative
+    p
+        transform translateY(-50%)
+        top 50%
+        padding-left 20px
+        margin 0
+        position relative
+        height fit-content
+        
+        
+.ADA-dstodcAAo-container-center
+    width 45%
+    height 100%
+    position relative
+    p
+        transform translateY(-50%)
+        top 50%
+        margin 0
+        padding-left 34px
+        position relative
+.ADA-dstodcAAo-container-right
+    width 30%
+    height 100%
+    position relative
+    p
+        transform translateY(-50%)
+        top 50%
+        position relative
+        padding-left 34px
+        margin 0
+
+.ADA-tolo-one-AA
+    width 25%
+.ADA-tolo-two-AA
+    width 45%
+.ADA-tolo-three-AA
+    width 30%
+
+.ADA-dstodcAAo-container-left-icon-wrapper
+    transform translateY(-50%)
+    top 50%
+    position relative
+    width fit-content
+    height fit-content
+    margin-left 34px
+    
+.ADA-dstodcAAo-container-left-icon
+    width 40px
+    height 40px
+    background transparent
+    border-radius 10px
+    background-position center
+    background-repeat no-repeat
+    &.login
+        background-image url(/img/admin/padlockBlue.svg)
+        background-size 30px
+
+.ADA-dashbaord-section-two-object-data-container-AA
+    width 100%
+    height fit-content
+    max-height calc(100% - 150px)
+    overflow-y scroll
+
+.ADA-dashboard-section-one-container-header-container
+    width 100%
+    height 80px
+    position relative
+    display -webkit-box
+    
+.ADA-dashboard-section-one-container-header
+    width fit-content
+    height fit-content
+    transform translateY(-50%)
+    top 50%
+    position relative
+    margin-left 35px
+    p
+        margin: 0;
+        font-weight: 600;
+        font-size: 23px;
+        letter-spacing: .1px;
+        
+.ADA-dashboard-section-one-container-more-button
+    width fit-content
+    height fit-content
+    transform translateY(-50%)
+    top 50%
+    cursor pointer
+    position absolute
+    right 35px
+    p
+        margin 0
+    
+.ADA-dashboard-section-one-container-body
+    width 100%
+    height calc(100% - 80px)
+    position relative
+    display -webkit-box
+    
+.ADA-dashboard-section-one-container-body-left
+    width 30%
+    height 90%
+    transform translateY(-50%)
+    top 50%
+    position relative
+    
+.ADA-dashboard-section-one-container-body-right
+    width 70%
+    height 100%
+    position relative
+
+.ADA-dashboard-section-one-container-body-left-object
+    width 100%
+    position relative
+    height calc(100% / 3)
+
+.ADA-dashboard-section-one-container-body-left-object-container
+    width 70%
+    height 70%
+    position relative
+    transform translate(-50%, -50%)
+    top 50%
+    left 50%
+    max-width 300px
+    border 2.5px solid #e8e8e8
+    border-radius 10px
+    cursor pointer
+    &.selected
+        border 2.5px solid #4896fe
+    &:hover
+        border 2.5px solid #4896fe
+        .ADA-dsocblo-text p
+            color #4896fe
+            
+.ADA-dsocblo-text
+    width fit-content
+    height fit-content
+    position absolute
+    cursor pointer
+    top -12px
+    background white
+    left 10px
+    p
+        margin: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 13px;
+        font-weight: 600;
+        color: #444444
+        cursor pointer
+        &.selected
+            color #4896fe
+
+.ADA-dashboard-section-one-container-body-right-container
+    width 95%
+    height 85%
+    transform translateY(-50%)
+    top 50%
+    position relative
+
+#myChart
+    width 100% !important
+    height 100% !important
+
+.ADA-dsocblo-center-wrapper
+    width fit-content
+    height fit-content
+    transform translate(-50%, -50%)
+    top 50%
+    left 20%
+    position relative
+    display -webkit-box
+    
+.ADA-dsocblo-icon-wrapper
+    width fit-content
+    height fit-content
+    position relative
+    
+.ADA-dsocblo-icon
+    width 40px
+    height 40px
+    position relative
+    border-radius 50%
+    background #4896fe20
+    &.positive
+        background rgba(0, 255, 13, 0.29)
+    &.negative
+        background #ff00004a
+    
+    
+.ADA-dsocblo-stats-wrapper
+    width fit-content
+    height fit-content
+    position absolute
+    margin-left 20px
+    transform translateY(-50%)
+    top 50%
+    h5, h6
+        margin: 0;
+        font-weight: 500;
+        font-size: 20px;
+    h6
+        font-size: 14px;
+
+.ADA-dashboard-section-three-container-header-container
+    width 100%
+    height 80px
+    position relative
+    display -webkit-box
+    
+.ADA-dashboard-section-three-container-header
+    width fit-content
+    height fit-content
+    transform translateY(-50%)
+    top 50%
+    position relative
+    margin-left 35px
+    p
+        margin: 0;
+        font-weight: 600;
+        font-size: 23px;
+        letter-spacing: .1px;
+        
+.ADA-dashboard-section-three-container-more-button
+    width fit-content
+    height fit-content
+    transform translateY(-50%)
+    top 50%
+    cursor pointer
+    position absolute
+    right 35px
+    p
+        margin 0
+    
+.ADA-dashboard-section-three-container-body
+    width 100%
+    height calc(100% - 35px)
+    position relative
+    
+.ADA-dsto-two
+    right 0px
+    position absolute
+
+.ADA-dstodco-container-right-obj1
+    display none
+    width 20%
+    height 100%
+    &.active
+        display block
+    
+.ADA-dstodco-email
+    width fit-content
+    height fit-content
+    margin-left 34px
+    position absolute
+    transform translateY(-50%)
+    top 50%
+    p  
+        margin 0
+    
+.ADA-dstodco-container-right-obj2
+    display none
+    width 20%
+    height 100%
+    &.active
+        display block
+    
+.ADA-dstodco-button
+    width fit-content
+    height fit-content
+    position relative
+    transform translate(-50%, -50%)
+    top 50%
+    left 50%
+    input
+        width 160px
+        height 40px
+        background transparent
+        border 1px solid #4896fe
+        outline none
+        cursor pointer
+        border-radius 10px
+        transition .3s
+        &:hover
+            background #4896fe
+            color white
+
+.ADA-dashboard-section-three-container-body-nav
+    position relative
+    width 100%
+    display -webkit-box
+    height 20px
+
+.ADA-dashboard-section-three-container-more-button p
+    font-size 13px
+
+.ADA-dstcbn-obj
+    width calc(100% / 6)
+    height 100%
+    position relative
+    p
+        margin: 0;
+        transform: translateY(-50%);
+        top: 50%;
+        position: absolute;
+        margin-left: 34px;
+        color: #ababab;
+        font-weight: 700;
+        font-size: 13px;
+        letter-spacing: -.2px;
+    
+.ADA-dashboard-section-three-container-body-cont
+    width 100%
+    height calc(100% - 120px)
+    position relative
+    overflow-y scroll
+
+.ADA-dstcbc-object
+    width 100%
+    height 80px
+    position relative
+    display -webkit-box
+    &.otherCL
+        background: #f9f9fd;
+        border-top: 1px solid #e9e9f7;
+        border-bottom: 1px solid #e9e9f7;
+
+.ADA-dstcbc-object-tab
+    width calc(100% / 6)
+    height 100%
+    position relative
+
+.ADA-dstcbc-object-tab-center-wrapper
+    width 100%
+    height fit-content
+    transform translateY(-50%)
+    top 50%
+    position relative
+    display -webkit-box
+    
+.ADA-dstcbc-object-tab-avatar-wrapper
+    width fit-content
+    height fit-content
+    position relative
+    margin-left 35px
+    
+.ADA-dstcbc-object-tab-avatar
+    width 40px
+    height 40px
+    background-image url('/img/gradCap.svg')
+    background-size cover
+    background-position center
+    background-repeat no-repeat
+    border-radius 50%
+    
+.ADA-dstcbc-object-tab-user-details-wrapper  
+    width fit-content
+    height fit-content
+    position absolute
+    transform translateY(-50%)
+    top 50%
+    margin-left 20px
+    p
+        height fit-content
+        margin 0
+
+.ADA-dstcbc-object-tab-stuID-wrapper, .ADA-dstcbc-object-tab-email-wrapper, .ADA-dstcbc-object-tab-currentClass-wrapper, .ADA-dstcbc-object-tab-grade-wrapper, .ADA-dstcbc-object-tab-config-wrapper
+    width fit-content
+    height fit-content
+    position relative
+    transform translateY(-50%)
+    top 50%
+    left 35px
+    p
+        margin 0
+    input
+        width: 120px;
+        height: 30px;
+        background: #2e7be2;
+        color: white;
+        font-weight: 500;
+        font-size: 14px;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        border-radius: 6px;
+        
+.ADA-dstcbn-obj-one, .ADA-dstcbc-object-tab-one
+    width 20%
+.ADA-dstcbn-obj-two, .ADA-dstcbc-object-tab-two
+    width 12%
+.ADA-dstcbn-obj-three, .ADA-dstcbc-object-tab-three
+    width 20%
+.ADA-dstcbn-obj-four, .ADA-dstcbc-object-tab-four
+    width 20%
+.ADA-dstcbn-obj-five, .ADA-dstcbc-object-tab-five
+    width 13%
+.ADA-dstcbn-obj-six, .ADA-dstcbc-object-tab-six
+    width 15%
+
+.ADA-dashboard-section-four-object-center-wrapper
+    width 100%
+    height fit-content
+    position relative
+    transform translateY(-50%)
+    top 50%
+    display -webkit-box
+    
+.ADA-dashboard-section-four-object-icon-wrapper
+    width fit-content
+    height fit-content
+    position relative
+    margin-left 40px
+
+.ADA-dashboard-section-four-object-icon
+    width 60px
+    height 60px
+    background #61a5ff
+    background-image url('/img/admin/addAccount.svg')
+    background-size 25px
+    background-repeat no-repeat
+    background-position center
+    border-radius 50%
+    &.foi-two
+        background-image url('/img/admin/gradCap.svg')
+        background-size 35px
+    &.foi-three    
+        background-image url('/img/admin/schoolSecurity.svg')
+        background-size 40px
+        
+.ADA-dashboard-section-four-object-details-wrapper
+    width fit-content
+    height fit-content
+    transform translateY(-50%)
+    top 50%
+    position absolute
+    margin-left 20px
+    h6, h5
+        margin 0px
+    h6 
+        font-size 25px
+    h5
+        font-weight: 400;
+        

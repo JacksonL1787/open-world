@@ -16,7 +16,8 @@
         .settings-option-wrap
             label Email
             input.email(type="text")
-        input.update-basic-settings-btn(type="button" value="Update Information")
+        .update-settings-btn-wrap
+            button.update-basic-settings-btn Update Information
 .change-password-widget.widget-wrap.settings-page-widget
     .top-container
         h1.title Change Password
@@ -27,4 +28,18 @@
         .input-wrap
             label Confirm New Password
             input.confirm-password(type="password")
-        input.change-password-btn(type="button" value="Change Password")
+        button.change-password-btn Change Password
+
+.dashboard-settings-widget.widget-wrap.settings-page-widget
+    .top-container
+        h1.title Dashboard Settings
+    .dashboard-settings-container
+        .dark-mode-wrap
+            h2.dark-mode-title Dark Mode
+            case user.darkMode
+                when true
+                    .switch.active
+                        .switch-circle
+                when false
+                    .switch
+                        .switch-circle

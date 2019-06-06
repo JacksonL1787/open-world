@@ -53,4 +53,17 @@ module.exports = {
             })
         }
     },
+    darkMode: (req,res,next) => {
+        if(req.user && req.user.permission == "teacher") {
+            MongoClient.connect("mongodb://localhost:27017", function(err, client) {
+                if(err) throw err
+                var db = client.db('OpenWorld');
+                console.log(req.body)
+                db.collection('users').updateOne({"email": req.user.email}, { $set: {"darkMode": req.body.status}})
+                res.send(200)
+                
+                
+            })
+        }
+    }
 }

@@ -1,0 +1,69 @@
+script.
+	var studentsraw = "#{students}"
+	window.data.students = JSON.parse(studentsraw.replace(/&quot;/g,'"'));
+	
+.search-bar-widget.widget-wrap.manage-students-widget
+	.top-container
+		h1.title Search for Student
+	.search-student-content
+		.input-wrap
+			input.student-search-input(type="text" placeholder="Search...")
+			p You can search for students by their name or email.
+		.filter-wrap
+			p.add-filter-btn Filters
+			.filters-menu
+				.filter-menu-content
+					.filter-menu-period
+						h2.filter-section By Period
+						.filter-option.period-1-option
+							p Period 1
+							.change-filter-state-wrap
+								p.change-filter-state +
+						.filter-option.period-2-option
+							p Period 2
+							.change-filter-state-wrap
+								p.change-filter-state +
+						.filter-option.period-3-option
+							p Period 3
+							.change-filter-state-wrap
+								p.change-filter-state +
+						.filter-option.period-4-option
+							p Period 4
+							.change-filter-state-wrap
+								p.change-filter-state +
+						.filter-option.period-5-option
+							p Period 5
+							.change-filter-state-wrap
+								p.change-filter-state +
+						.filter-option.period-6-option
+							p Period 6
+							.change-filter-state-wrap
+								p.change-filter-state +
+					.filter-menu-grade
+						h2.filter-section By Grade
+						.filter-option.freshman-option
+							p Freshman
+							.change-filter-state-wrap
+								p.change-filter-state +
+						.filter-option.sophomore-option
+							p Sophomore
+							.change-filter-state-wrap
+								p.change-filter-state +
+						.filter-option.junior-option
+							p Junior
+							.change-filter-state-wrap
+								p.change-filter-state +
+						.filter-option.senior-option
+							p Senior
+							.change-filter-state-wrap
+								p.change-filter-state +
+
+.active-filters-widget.widget-wrap.manage-students-widget
+	.top-container
+		h1.title Active Filters
+	.active-filters-wrap
+
+.all-students-widget.widget-wrap.manage-students-widget
+	.top-container
+		h1.title Students
+	.students-container

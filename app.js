@@ -76,12 +76,27 @@ app.use(function(err, req, res, next) {
 var io = require('socket.io').listen(server);
 
 io.on('connection', function(socket){
-	
 	socket.on('test', function(msg) {
-		console.log(msg)
 		socket.broadcast.emit('commands', 'longBeep')
 	})
-	
+	socket.on('projectorOn', function(msg) {
+		socket.broadcast.emit('commands', 'on')
+	})
+	socket.on('projectorOff', function(msg) {
+		socket.broadcast.emit('commands', 'off')
+	})
+	socket.on('doorLock', function(msg) {
+		socket.broadcast.emit('commands', 'doorLock')
+	})
+	socket.on('doorUnlock', function(msg) {
+		socket.broadcast.emit('commands', 'doorUnlock')
+	})
+	socket.on('blindsOpen', function(msg) {
+		socket.broadcast.emit('commands', 'fanOn')
+	})
+	socket.on('blindsClose', function(msg) {
+		socket.broadcast.emit('commands', 'fanOff')
+	})
 });
 
 module.exports = app;

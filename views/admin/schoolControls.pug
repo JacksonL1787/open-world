@@ -8,7 +8,27 @@ html
 	body
 		include nav
 		.AD-dashboard-body
-			input.fuckyou(type="button" value="LongBeep")
+			.AD-dashboard-body-header
+				.AD-dashboard-body-header-container
+					p Your School
+					h5 Design Tech High School
+				.AD-dashboard-body-header-right
+					.AD-dashboard-body-header-right-switch-wrapper
+						.AD-dbhrs-label
+							p Floor 1
+						.AD-dashboard-body-header-right-switch
+							.AD-dashboard-body-header-right-switch-object
+						.AD-dbhrs-label
+							p Floor 2
+			.SC-dashboard-body
+				.SC-dashboard-body-container-floor
+					.SC-dashboard-body-container-floor-header
+						.SC-dashboard-body-container-floor-header-title
+							p Floor 1
+						
+					.SC-dashboard-body-container-floor-body
+						.SC-dashboard-body-floor
+
 script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
@@ -16,3 +36,41 @@ script.
 	
 	$('.AD-nav-five').addClass('selectedNAV')
 	
+	// 
+	// Global Vars
+	// 
+	
+	var rawClassDB = "#{classrooms}"
+	var classrooms = JSON.parse(rawClassDB.replace(/&quot;/g,'"'));
+	
+	var activeFloor = "floor1"
+	
+	$('.AD-dashboard-body-header-right-switch').click(function(){
+		$('.AD-dashboard-body-header-right-switch-object').toggleClass('trigger')
+		if($('.AD-dashboard-body-header-right-switch-object').hasClass('trigger')) {
+			activeFloor = "floor2"
+		} else {
+			activeFloor = "floor1"
+		}
+		triggerFloorChange(activeFloor)
+	})
+	
+	function triggerFloorChange(id) {
+		var floorNumber = id.slice(5)
+		$('.SC-dashboard-body-container-floor-header-title p').text('FLOOR ' + floorNumber)
+	}
+	
+	for(var i = 0; i < classrooms.length; i++) {
+		var level = "Level " + classrooms[i].floor
+		var inType = classrooms[i].classification
+		var type = FLuppercase(inType)
+		
+		$('.SC-dashboard-body-floor').append('<div class="SC-dashboard-floor-object"> <div class="SC-dashboard-floor-object-top"> <div class="SC-dashboard-floor-object-top-txt"> <p>'+level+'</p> <h6>'+type+'</h6> </div> </div> <div class="SC-dashboard-floor-object-bottom"> <div class="SC-dashboard-floor-object-bottom-txt"> <p>Room</p> <h6>'+classrooms[i].roomNumber+'</h6> </div> </div> </div>')
+	}
+	
+	function FLuppercase(id) {
+		var firstLetter = id.charAt(0).toUpperCase()
+		var splitIn = id.slice(1)
+		console.log(firstLetter)
+		return firstLetter + splitIn
+	}

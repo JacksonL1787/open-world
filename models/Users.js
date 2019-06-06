@@ -40,6 +40,14 @@ const UserSchema = new mongoose.Schema({
   profilePicture: {
     type: String,
     required: true
+  },
+  darkMode: {
+    type: Boolean,
+    required: true
+  },
+  rooms: {
+    type: Array,
+    required: false
   }
 });
 

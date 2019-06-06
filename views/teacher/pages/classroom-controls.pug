@@ -1,19 +1,49 @@
+script.
+    const classroomsraw = "#{classrooms}"
+    window.data.rooms = JSON.parse(classroomsraw.replace(/&quot;/g,'"'));
+
 .projector-control-widget.widget-wrap.classroom-controls-widget
     .top-container
         h1.title Projector
+        .status-light.off
+    button.change-projector-status-btn Turn On
 
 .door-control-widget.widget-wrap.classroom-controls-widget
     .top-container
         h1.title Door
-
-.climate-control-widget.widget-wrap.classroom-controls-widget
-    .top-container
-        h1.title Climate
+        p.lock-status Locked
+    button.change-lock-status-btn Unlock
         
 .blinds-control-widget.widget-wrap.classroom-controls-widget
     .top-container
         h1.title Blinds
+    h2.controls-title Controls
+    .blind-controls-wrap
+        .up-down-wrap
+            .blinds-up-btn
+                .icon
+            .blinds-down-btn
+                .icon
+        .preset-controls
+            button.open-blinds-btn Open Blinds
+            button.close-blinds-btn Close Blinds
+    p.blinds-control-error
 
 .lighting-control-widget.widget-wrap.classroom-controls-widget
     .top-container
         h1.title Lighting
+    .lighting-controls
+        .light-switch-wrap
+            p Light Switch
+            .switch
+                .switch-circle
+        .light-brightness-wrap
+            p Brightness
+            input.brightness-range-input(type="range" min="1" max="100")
+        .light-color-wrap
+            p Colored Lighting
+            div(id="color-picker-container")
+.climate-control-widget.widget-wrap.classroom-controls-widget
+    .top-container
+        h1.title Climate
+

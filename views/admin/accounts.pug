@@ -17,29 +17,29 @@ html
 						h5 Today
 					.ADA-top-info-object-bottom
 						.ADA-tiob-wrapper
-							h5 NaN
+							h5.loginsToday NaN
 							h6 Logins
 				.ADA-top-info-object
 					.ADA-top-info-object-top
 						h5 Admin Accounts
 					.ADA-top-info-object-bottom
 						.ADA-tiob-wrapper
-							h5 NaN
-							h6 NaN Data
+							h5.adminAccounts NaN
+							h6 Active Accounts
 				.ADA-top-info-object
 					.ADA-top-info-object-top
 						h5 Teacher Accounts
 					.ADA-top-info-object-bottom
 						.ADA-tiob-wrapper
-							h5 NaN
-							h6 NaN Data
+							h5.teacherAccounts NaN
+							h6 Active Accounts
 				.ADA-top-info-object
 					.ADA-top-info-object-top
-						h5 Other Accounts
+						h5 Student Accounts
 					.ADA-top-info-object-bottom
 						.ADA-tiob-wrapper
-							h5 NaN
-							h6 NaN Data
+							h5.studentAccounts NaN
+							h6 Active Accounts
 				.ADA-top-info-object
 					.ADA-top-info-object-top
 						h5 Classrooms
@@ -50,51 +50,419 @@ html
 							
 			.ADA-dashboard-body-section-one
 				.ADA-dashboard-section-one-container
-			
+					.ADA-dashboard-section-one-container-header-container
+						.ADA-dashboard-section-one-container-header
+							p School Activity
+						.ADA-dashboard-section-one-container-more-button
+							p Activity
+					.ADA-dashboard-section-one-container-body
+						.ADA-dashboard-section-one-container-body-left
+							.ADA-dashboard-section-one-container-body-left-object
+								.ADA-dashboard-section-one-container-body-left-object-container.selected
+									.ADA-dsocblo-text
+										p.selected School
+									.ADA-dsocblo-center-wrapper
+										.ADA-dsocblo-icon-wrapper
+											.ADA-dsocblo-icon
+										.ADA-dsocblo-stats-wrapper
+											h5.graphOneDCP NaN
+											h6 +0
+							.ADA-dashboard-section-one-container-body-left-object
+								.ADA-dashboard-section-one-container-body-left-object-container
+									.ADA-dsocblo-text
+										p School
+									.ADA-dsocblo-center-wrapper
+										.ADA-dsocblo-icon-wrapper
+											.ADA-dsocblo-icon
+										.ADA-dsocblo-stats-wrapper
+											h5 NaN
+											h6 +0
+							.ADA-dashboard-section-one-container-body-left-object
+								.ADA-dashboard-section-one-container-body-left-object-container
+									.ADA-dsocblo-text
+										p School
+									.ADA-dsocblo-center-wrapper
+										.ADA-dsocblo-icon-wrapper
+											.ADA-dsocblo-icon
+										.ADA-dsocblo-stats-wrapper
+											h5 NaN
+											h6 +0
+						.ADA-dashboard-section-one-container-body-right
+							.ADA-dashboard-section-one-container-body-right-container
+								<canvas id="myChart" width="100%" height="100%"></canvas>
+						
 			.ADA-dashboard-body-section-two
 				.ADA-dashboard-section-two-container
-					.ADA-dashboard-section-two-object
+					.ADA-dashboard-section-two-object.ADA-dsto-one
 						.ADA-dashboard-section-two-object-header
 							.ADA-dashboard-section-two-object-header-container
 								p Account Activity
 							.ADA-dashboard-section-two-object-header-more-info-wrapper
-								p More
+								// p More
+						.ADA-dashboard-section-two-object-labels
+							.ADA-dashboard-section-two-object-labels-object.ADA-tolo-one-AA
+								p Type & User
+							.ADA-dashboard-section-two-object-labels-object.ADA-tolo-two-AA
+								p Description
+							.ADA-dashboard-section-two-object-labels-object.ADA-tolo-three-AA
+								p Time
+						.ADA-dashbaord-section-two-object-data-container-AA
+							
 								
-					.ADA-dashboard-section-two-object
+					.ADA-dashboard-section-two-object.ADA-dsto-two
 						.ADA-dashboard-section-two-object-header
 							.ADA-dashboard-section-two-object-header-container
-								p New Accounts
-							.ADA-dashboard-section-two-object-header-more-info-wrapper
+								p Accounts
+							.ADA-dashboard-section-two-object-header-more-info-wrapper.ADA-dstohmiw-two-mi
 								p More
 						.ADA-dashboard-section-two-object-labels
 							.ADA-dashboard-section-two-object-labels-object.ADA-tolo-one
 								p Name
 							.ADA-dashboard-section-two-object-labels-object.ADA-tolo-two
-								p Grade
+								p Status
 							.ADA-dashboard-section-two-object-labels-object.ADA-tolo-three
 								p Date Added
 						.ADA-dashbaord-section-two-object-data-container
-							.ADA-dashbaord-section-two-object-data-container-object
-								.ADA-dstodco-container
-									.ADA-dstodco-container-left
-										.ADA-dstodco-avatar-wrapper
-											.ADA-dstodco-avatar 
-										.ADA-dstodco-user-data
-											p User Data
-									.ADA-dstodco-container-center
-										.ADA-dstodco-grade-wrapper
-											p Grade Data
-									.ADA-dstodco-container-right
-										.ADA-dstodco-date-added
-											p Date Data
+		
 			.ADA-dashboard-body-section-three
 				.ADA-dashboard-section-three-container
-			
+					.ADA-dashboard-section-three-container-header-container
+						.ADA-dashboard-section-three-container-header
+							p All Students
+						.ADA-dashboard-section-three-container-more-button
+							p Controls
+					.ADA-dashboard-section-three-container-body
+						.ADA-dashboard-section-three-container-body-nav
+							.ADA-dstcbn-obj-one.ADA-dstcbn-obj
+								p Name
+							.ADA-dstcbn-obj-two.ADA-dstcbn-obj
+								p Student ID
+							.ADA-dstcbn-obj-three.ADA-dstcbn-obj
+								p Email
+							.ADA-dstcbn-obj-four.ADA-dstcbn-obj
+								p Current Class
+							.ADA-dstcbn-obj-five.ADA-dstcbn-obj
+								p Grade
+							.ADA-dstcbn-obj-six.ADA-dstcbn-obj
+								p Config
+						.ADA-dashboard-section-three-container-body-cont
+						
+						
+			.ADA-dashboard-body-section-four
+				.ADA-dashboard-section-four-container
+					.ADA-dashbaord-section-four-object.ADA-dsfo-one
+						.ADA-dashboard-section-four-object-center-wrapper
+							.ADA-dashboard-section-four-object-icon-wrapper
+								.ADA-dashboard-section-four-object-icon
+							.ADA-dashboard-section-four-object-details-wrapper
+								h6 Create Account
+								h5 Click to add a user
+					.ADA-dashbaord-section-four-object.ADA-dsfo-two
+						.ADA-dashboard-section-four-object-center-wrapper
+							.ADA-dashboard-section-four-object-icon-wrapper
+								.ADA-dashboard-section-four-object-icon.foi-two
+							.ADA-dashboard-section-four-object-details-wrapper
+								h6 Add Student
+								h5 Click to create a student account
+					.ADA-dashbaord-section-four-object.ADA-dsfo-three
+						.ADA-dashboard-section-four-object-center-wrapper
+							.ADA-dashboard-section-four-object-icon-wrapper
+								.ADA-dashboard-section-four-object-icon.foi-three
+							.ADA-dashboard-section-four-object-details-wrapper
+								h6 School Controls
+								h5 Click to control your school
+			.ADA-dashboard-body-bottomspacer
+					
 	
 script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js")
 script.
+	
+	var rawuserdb = "#{userDB}"
+	var users = JSON.parse(rawuserdb.replace(/&quot;/g,'"'));
+	
+	var rawlogdb = "#{logs}"
+	var logs = JSON.parse(rawlogdb.replace(/&quot;/g,'"'));
+	
+	var rawgraphdb = "#{graphs}"
+	var graphs = JSON.parse(rawgraphdb.replace(/&quot;/g,'"'));
+	
+	var rawStudentDB = "#{students}"
+	var students = JSON.parse(rawStudentDB.replace(/&quot;/g,'"'));
 	
 	$('.AD-nav-three').addClass('selectedNAV')
 	
+	// 
+	//  New Accounts For Loop and Styles
+	// 
+	
+	for(var i = 0; i < users.length; i++) {
+		var datePV = moment().format("MMM Do YYYY")
+		$('.ADA-dashbaord-section-two-object-data-container').append('<div class="ADA-dashbaord-section-two-object-data-container-object" id="'+users[i]._id+'"> <div class="ADA-dstodco-container"> <div class="ADA-dstodco-container-left"> <div class="ADA-dstodco-avatar-wrapper"> <div class="ADA-dstodco-avatar"> </div> </div> <div class="ADA-dstodco-user-data"> <p>'+users[i].firstName+' '+users[i].lastName+' </p> </div> </div> <div class="ADA-dstodco-container-center"> <div class="ADA-dstodco-grade-wrapper"> <p>'+users[i].permission+'</p> </div> </div> <div class="ADA-dstodco-container-right"> <div class="ADA-dstodco-date-added"> <p>'+datePV+'</p> </div> </div> <div class="ADA-dstodco-container-right-obj1"> <div class="ADA-dstodco-email"> <p>'+users[i].email+'</p>  </div> </div> <div class="ADA-dstodco-container-right-obj2"> <div class="ADA-dstodco-button" id="button'+users[i]._id+'"> <input type="button" value="Config"> </input> </div> </div> </div> </div> </div>')
+		$('#' + users[i]._id).children().find('.ADA-dstodco-container-left').find('.ADA-dstodco-avatar-wrapper').children().css('background-image', 'url(/uploads/'+users[i].profilePicture+')')
+		
+	}
+	
+	$(".ADA-dashbaord-section-two-object-data-container-object:nth-child(even)").addClass('otherCL')
+
+	// 
+	// Quick Data jQuery
+	// 
+	
+	// Count
+	
+	var adminCount = 0
+	var teacherCount = 0
+	var studentCount = 0
+	var loginsToday = 0
+	
+	for(var l = 0; l < users.length; l++) {
+		if(users[l].permission == "admin") {
+			adminCount++
+		}
+		if(users[l].permission == "teacher") {
+			teacherCount++
+		}
+	}
+	
+	for(var i = 0; i < students.length; i++) {
+		studentCount++
+	}
+	
+	for(var i = 0; i < logs.length; i++) {
+		if(logs[i].data.type == "login") {
+			loginsToday++
+		}
+	}
+	
+	
+	// Set
+	
+	$('.adminAccounts').text(adminCount)
+	$('.teacherAccounts').text(teacherCount)
+	$('.studentAccounts').text(studentCount)
+	$('.loginsToday').text(loginsToday)
+	
+	// 
+	// Account Activity For Loop and Styles
+	// 
+	
+	for(var i = 0; i < logs.length; i++) {
+		var datePV = moment(logs[i].data.time).format("MMM Do, h:mm:ss a")
+		var lastNameFOR = logs[i].pushUser.lastName.charAt(0)
+		$('.ADA-dashbaord-section-two-object-data-container-AA').prepend('<div class="ADA-dashboard-section-two-object-data-container-AA-object" id="actA'+logs[i]._id+'"> <div class="ADA-dstodcAAo-container"> <div class="ADA-dstodcAAo-container-left"> <div class="ADA-dstodcAAo-container-left-icon-wrapper"> <div class="ADA-dstodcAAo-container-left-icon"></div> </div> <p>'+logs[i].pushUser.firstName+' '+lastNameFOR+'</p> </div> <div class="ADA-dstodcAAo-container-center"> <p>'+logs[i].data.description+'</p> </div> <div class="ADA-dstodcAAo-container-right"> <p>'+datePV+'</p> </div> </div> </div>')
+		$('#actA' + logs[i]._id).children().find('.ADA-dstodcAAo-container-left').find('.ADA-dstodcAAo-container-left-icon-wrapper').children().addClass('login')
+	}
+	
+	$(".ADA-dashboard-section-two-object-data-container-AA-object:nth-child(even)").addClass('otherCL')
+
+	// 
+	// School Activity Graphs
+	// 
+	
+	var dataG1 = []
+	var labelsG1 = []
+	var finalDPG1 = 0
+
+	for(var i = 0; i < graphs.length; i++) {
+		if(graphs[i].graph == "schoolActivity") {
+			for(var b = 0; b < graphs[i].data.length; b++) {
+				if(b + 1 == graphs[i].data.length) {
+					finalDPG1 = graphs[i].data[b].data
+				}
+				dataG1.push(graphs[i].data[b].data)
+				labelsG1.push(graphs[i].data[b].label)
+			}
+		}
+	}
+	
+	$('.graphOneDCP').text(finalDPG1)
+
+	new Chart(document.getElementById("myChart"), {
+		type: 'line',
+		data: {
+		labels: labelsG1,
+		datasets: [{ 
+			data: dataG1,
+			borderColor: "#4896fe",
+			fill: true,
+			backgroundColor: "#4896fe20",
+		  }
+		]
+		},
+		options: {
+			title: {
+				display: true,
+			},
+			responsive: true,
+			aspectRatio: 1,
+			maintainAspectRatio: false,
+			legend: {
+		        display: false
+		    },
+		    scales: {
+			    yAxes: [{
+			      gridLines: {
+			        drawBorder: false,
+			      },
+			    }],
+			    xAxes: [{
+				  gridLines: {
+				    display: false,
+				  },
+				}],
+			  },
+		    tooltips: {
+		        callbacks: {
+		           label: function(tooltipItem) {
+		                  return tooltipItem.yLabel;
+		           }
+		        }
+		    }
+		},
+	});
+	
+	
+	// 
+	// Accounts Full Riser
+	// 
+	
+	$('.ADA-dstohmiw-two-mi').click(function(){
+		$('.ADA-dsto-one').toggleClass('hide')
+		setTimeout(function(){
+			$('.ADA-dsto-two').toggleClass('FS')
+			$('.ADA-dsto-one').toggle()
+			$(".ADA-tolo-one").toggleClass('active')
+			$(".ADA-tolo-three").toggleClass('active')
+			$('.ADA-dstodco-container-right').toggleClass('active')
+			$('.ADA-dstodco-container-left').toggleClass('active')
+			$('.ADA-dstodco-container-right-obj1').toggleClass('active')
+			$('.ADA-dstodco-container-right-obj2').toggleClass('active')
+		}, 500)
+	})
+	
+	$('.ADA-dstodco-button input').click(function(){
+		var id = $(this).parent().attr('id').substring(6)
+		console.log(id)
+	});
+	
+	// 
+	// Current Class ALG
+	// 
+	
+	var normalSchedule = [{"times":{startTime: "1536", endTime: "0844"}, "id": "0"}, {"times":{startTime: "0845", endTime: "0915"}, "id": "1"}, {"times":{startTime: "0916", endTime: "1012"}, "id": "2"}, {"times":{startTime: "1013", endTime: "1020"}, "id": "3"}, {"times":{startTime: "1021", endTime: "1117"}, "id": "4"}, {"times":{startTime: "1118", endTime: "1214"}, "id": "5"}, {"times":{startTime: "1215", endTime: "1244"}, "id": "6"}, {"times":{startTime: "1245", endTime: "1341"}, "id": "7"}, {"times":{startTime: "1342", endTime: "1438"}, "id": "8"}, {"times":{startTime: "1439", endTime: "1535"}, "id": "9"}]
+	
+	var dt = new Date();
+	
+	var timeDay = dt.getDay()
+	var timeHours = dt.getHours() 
+	var timeMinutes = dt.getMinutes()
+	
+	var finalTM, finalTH, MilTime
+	
+	if(timeMinutes.toString().length == 1) {
+		finalTM = 0 + "" + timeMinutes 
+	} else {
+		finalTM = timeMinutes
+	}
+	
+	if(timeHours.toString().length == 1) {
+		finalTH = 0 + "" + timeHours 
+	} else {
+		finalTH = timeHours
+	}
+	
+	MilTime = finalTH + "" + finalTM
+	
+	var currentSet;
+	
+	if(timeDay == 1 || timeDay == 2 || timeDay == 4 || timeDay == 5) {
+		for(var i = 0; i < normalSchedule.length; i++) {
+			var selectedTime = normalSchedule[i].id
+			console.log(normalSchedule[i].times)
+			console.log(MilTime)
+			if(MilTime < normalSchedule[0].times.endTime || MilTime > normalSchedule[0].times.startTime) {
+				console.log("OOS")
+				currentSet = 0
+				break
+			} else {
+				if(normalSchedule[i].times.startTime < MilTime && normalSchedule[i].times.endTime > MilTime) {
+					console.log("SAT")
+					currentSet = selectedTime
+					break
+				}
+			}
+		}
+	}
+	
+	if(timeDay == 6 || timeDay == 7) {
+		console.log('Weekend')
+		currentSet = 0
+	}
+	
+	if(timeDay == 3) {
+		console.log('Wednesday Schedule Not SetUp')
+	}
+	
+	// 
+	// Student For Loops and Styles
+	// 
+	
+	for(var i = 0; i < students.length; i++) {
+		var currentClass;
+		if(currentSet == 0) {
+			currentClass = "Out Of School"
+		} else {
+			if(currentSet == 1) {
+				currentClass = "@d.Tech"
+			}
+			if(currentSet == 2) {
+				currentClass = students[i].classes[0].title
+			}
+			if(currentSet == 3) {
+				currentClass = "PAB"
+			}
+			if(currentSet == 4) {
+				currentClass = students[i].classes[1].title
+			}
+			if(currentSet == 5) {
+				currentClass = students[i].classes[2].title
+			}
+			if(currentSet == 6) {
+				currentClass = "Lunch"
+			}
+			if(currentSet == 7) {
+				currentClass = students[i].classes[3].title
+			}
+			if(currentSet == 8) {
+				currentClass = students[i].classes[4].title
+			}
+			if(currentSet == 9) {
+				currentClass = students[i].classes[5].title
+			}
+		}
+		$('.ADA-dashboard-section-three-container-body-cont').prepend('<div class="ADA-dstcbc-object" id="'+students[i]._id+'"> <div class="ADA-dstcbc-object-tab ADA-dstcbc-object-tab-one"> <div class="ADA-dstcbc-object-tab-center-wrapper"> <div class="ADA-dstcbc-object-tab-avatar-wrapper"> <div class="ADA-dstcbc-object-tab-avatar"></div> </div> <div class="ADA-dstcbc-object-tab-user-details-wrapper"> <p>'+students[i].firstName+' '+students[i].lastName+'</p> </div> </div> </div> <div class="ADA-dstcbc-object-tab ADA-dstcbc-object-tab-two"> <div class="ADA-dstcbc-object-tab-stuID-wrapper"> <p>'+students[i].studentID+'</p> </div> </div> <div class="ADA-dstcbc-object-tab ADA-dstcbc-object-tab-three"> <div class="ADA-dstcbc-object-tab-email-wrapper"> <p>'+students[i].email+'</p> </div> </div> <div class="ADA-dstcbc-object-tab ADA-dstcbc-object-tab-four"> <div class="ADA-dstcbc-object-tab-currentClass-wrapper"> <p>'+currentClass+'</p> </div> </div> <div class="ADA-dstcbc-object-tab ADA-dstcbc-object-tab-five"> <div class="ADA-dstcbc-object-tab-grade-wrapper"> <p>'+students[i].grade+'</p> </div> </div> <div class="ADA-dstcbc-object-tab ADA-dstcbc-object-tab-six"> <div class="ADA-dstcbc-object-tab-config-wrapper"><input type="button" value="Controls" /></div> </div> </div>')
+	}
+	
+	$(".ADA-dstcbc-object:nth-child(even)").addClass('otherCL')
+	
+	// 
+	// Buttons
+	// 
+	
+	$('.ADA-dsfo-one').click(function(){
+		window.location.href = "/admin/school/accounts/builder/account"	
+	})
+	
+	$('.ADA-dsfo-two').click(function(){
+		window.location.href = "/admin/school/accounts/builder/student"	
+	})
+	
+	$('.ADA-dsfo-three').click(function(){
+		window.location.href = "/admin/school/controls"	
+	})
