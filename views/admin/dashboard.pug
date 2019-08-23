@@ -1,74 +1,513 @@
 doctype html
 html
 	head
-		title= title
+		title Branch Administrator
 		link(rel='stylesheet', href='/css/admin/dashboard.css')
 		link(rel='stylesheet', href='/css/main.css')
 	body
+		include alerts
 		include nav
-		.AD-dashboard-body
-			.AD-dashboard-body-header
-				.AD-dashboard-body-header-container
-					p Your School
-					h5 Design Tech High School
-			.AD-dashboard-body-body
-				.AD-dashboard-container
-					.AD-dashboard-quick-stats-wrapper
-						// p Quick Statistics
-						.AD-dashboard-qsw-wrapper
-							.AD-dashboard-qsw-object
-								.AD-dashboard-qsw-left
-									.AD-dashboard-qsw-left-container
-										p Population
-										h3 1192
-								.AD-dashboard-qsw-right
-									.AD-dashboard-qsw-right-icon
-										.AD-dashboard-qsw-right-icon-center
-							.AD-dashboard-qsw-object
-								.AD-dashboard-qsw-left
-									.AD-dashboard-qsw-left-container
-										p Administrators
-										h3 36
-								.AD-dashboard-qsw-right
-									.AD-dashboard-qsw-right-icon
-										.AD-dashboard-qsw-right-icon-center.ADD-qsw-icon-two
-							.AD-dashboard-qsw-object
-								.AD-dashboard-qsw-left
-									.AD-dashboard-qsw-left-container
-										p Notifications
-										h3 1
-								.AD-dashboard-qsw-right
-									.AD-dashboard-qsw-right-icon
-										.AD-dashboard-qsw-right-icon-center.ADD-qsw-icon-three
-							.AD-dashboard-qsw-object
-								.AD-dashboard-qsw-left
-									.AD-dashboard-qsw-left-container
-										p School PIN
-										h3 9927
-								.AD-dashboard-qsw-right
-									.AD-dashboard-qsw-right-icon
-										.AD-dashboard-qsw-right-icon-center.ADD-qsw-icon-four
-					.AD-dashboard-master-data-wrapper
-						.AD-dashboard-master-data-container
-							.AD-dashboard-master-data-container-header
-								.AD-dashbaord-master-data-container-header-wrapper
-									p Quick Data
-								.AD-dashboard-master-data-dataType-wrapper
-									.AD-dashboard-master-data-dataType-wrapper-object
-										input.selected(type="button" value="Recent Events")
-									.AD-dashboard-master-data-dataType-wrapper-object
-										input(type="button" value="Attendance Data")
-									.AD-dashboard-master-data-dataType-wrapper-object
-										input(type="button" value="Notifications")
-							.AD-dashboard-master-data-container-body
+		include introFS
+		.AD-MWRP
+			.AD-hoempage-header
+				p.homepageHeader Dashboard
+				include accountTL
+			// canvas(id="chart" width="800" height="400")
+			.AD-homepage-section-one
+				.AD-homepage-section-one-container
+					.AD-homepage-section-one-object-one
+						.AD-homepage-section-one-object-wrapper
+							h5 Student Population
+							h6.studentPopulation Pending
+					.AD-homepage-section-one-object-two
+						.AD-homepage-section-two-object-wrapper
+							.AD-homepage-section-two-object-wrapper-headline
+								h5 Systems
+							.AD-homepage-section-two-object-wrapper-sysONL
+								.AD-homepage-section-two-object-wrapper-sysONL-object
+								.AD-homepage-section-two-object-wrapper-sysONL-object.sysONL2
+								.AD-homepage-section-two-object-wrapper-sysONL-object.sysONL3
+								.AD-homepage-section-two-object-wrapper-sysONL-object.sysONL4
 								
+					.AD-homepage-section-one-object-three
+						.AD-homepage-section-one-object-wrapper
+							h5 Branch Accounts
+							h6.branchAccounts Pending
+						
+					.AD-homepage-section-one-object-four
+						.AD-homepage-section-one-object-wrapper
+							input(type="button" value="See Your School")
+							input(type="button" value="See Your Students")
+			.AD-homepage-section-two
+				.AD-homepage-section-two-object
+					.AD-homepage-section-two-object-container
+						.AD-homepage-section-two-object-container-left
+							.AD-hstocl
+								.AD-hstocl-top
+									p Energy 
+								.AD-hstocl-bottom
+									.AD-hstocl-bottom-data
+										h5 0 Kw
+										h6 0
+						.AD-homepage-section-two-object-container-right
+							.AD-hstocr-top
+								.AD-hstocr-top-container
+									.AD-hstocr-dir
+									p 0%
+							.AD-hstocr-bottom
+								canvas.AD-hstocr-bottom-graph-one#chart
+						.AD-homepage-section-two-object-container-vl
+							
+				.AD-homepage-section-two-object
+					.AD-homepage-section-two-object-container
+						.AD-homepage-section-two-object-container-left
+							.AD-hstocl
+								.AD-hstocl-top
+									p Water 
+								.AD-hstocl-bottom
+									.AD-hstocl-bottom-data
+										h5 0 Litres
+										h6 0
+						.AD-homepage-section-two-object-container-right
+							.AD-hstocr-top
+								.AD-hstocr-top-container
+									.AD-hstocr-dir
+									p 0%
+							.AD-hstocr-bottom
+								canvas.AD-hstocr-bottom-graph-one#chart2
+						.AD-homepage-section-two-object-container-vl
+						
+				.AD-homepage-section-two-object
+					.AD-homepage-section-two-object-container
+						.AD-homepage-section-two-object-container-left
+							.AD-hstocl
+								.AD-hstocl-top
+									p Attendance 
+								.AD-hstocl-bottom
+									.AD-hstocl-bottom-data
+										h5 0
+										h6 0
+						.AD-homepage-section-two-object-container-right
+							.AD-hstocr-top
+								.AD-hstocr-top-container
+									.AD-hstocr-dir
+									p 0%
+							.AD-hstocr-bottom
+								canvas.AD-hstocr-bottom-graph-one#chart3
+						.AD-homepage-section-two-object-container-vl
+						
+				.AD-homepage-section-two-object
+					.AD-homepage-section-two-object-container
+						.AD-homepage-section-two-object-container-left
+							.AD-hstocl
+								.AD-hstocl-top
+									p Logins 
+								.AD-hstocl-bottom
+									.AD-hstocl-bottom-data
+										h5.hstocl-g4-dp1 0
+										h6.hstocl-g4-dp2 0
+						.AD-homepage-section-two-object-container-right
+							.AD-hstocr-top
+								.AD-hstocr-top-container
+									.AD-hstocr-dir.hstocl-g4-dir1
+									p.hstocl-g4-dp3 0%
+							.AD-hstocr-bottom
+								canvas.AD-hstocr-bottom-graph-one#chart4
+								
+			.AD-homepage-section-three
+				.AD-homepage-section-three-container
+					.AD-homepage-section-three-object
+						.AD-homepage-section-three-object-top
+							.AD-homepage-section-three-object-top-left
+								p Recent Events
+							.AD-homepage-section-three-object-top-right
+								input(type="button" value="See More")
+								
+						.AD-homepage-section-three-object-bottom
+							.AD-homepage-section-three-object-bottom-RE
+								
+								p.nme No More Events
+					.AD-homepage-section-three-object
+						.AD-homepage-section-three-object-top
+							.AD-homepage-section-three-object-top-left
+								p Comparison
+							.AD-homepage-section-three-object-top-right
+								input(type="button" value="See More")
+								
+						.AD-homepage-section-three-object-bottom
+							.AD-homepage-section-three-object-bottom-container
+								.AD-homepage-section-three-object-bottom-container-top
+									.AD-homepage-section-three-object-bottom-container-top-left
+										.AD-hstobctl-wrapper
+											.AD-hstobctl-object
+												.AD-hstobctl-object-DP
+													p 1Y
+											.AD-hstobctl-object
+												.AD-hstobctl-object-DP
+													p 6M
+											.AD-hstobctl-object
+												.AD-hstobctl-object-DP
+													p 1M
+											.AD-hstobctl-object
+												.AD-hstobctl-object-DP
+													p 7D
+											.AD-hstobctl-object
+												.AD-hstobctl-object-DP
+													p 24H
+											.AD-hstobctl-object.active
+												.AD-hstobctl-object-DP
+													p.active 6H
+											
+									.AD-homepage-section-three-object-bottom-container-top-right
+										.AD-hstobctl-wrapper
+											select
+												option Energy
+												option Water
+												option Attendance
+												option Logins
+												
+												
+											select
+												option Target
+												option Last Rec
+												option Best Rec
+												
+
+								.AD-homepage-section-three-object-bottom-container-bottom
+									canvas.comparison-graph#comparison-graph
+include socketer			
 script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js")
 script.
 	
-	for(var i = 0; i < 30; i++) {
-		var time = new Date()
-		$('.AD-dashboard-master-data-container-body').append('<div class="AD-dashboard-master-data-container-body-object"> <div class="AD-dmdcbo-icon"> <div class="AD-dmdcbo-icon-con"></div> </div> <div class="AD-dmdcbo-title"> <h4>PA Alert</h4> </div> <div class="AD-dmdcbo-desc"> <h4>The PA was used to make an all school announcement at '+time+'</h4> </div> <div class="AD-dmdcbo-from"> <h4>#{user.firstName} #{user.lastName}</h4> </div> <div class="AD-dmdcbo-action"><input type="button" value="Details" /></div> </div>')
+	$('.naviObject-1').find('.AD-nav-wrapper-hover-object').addClass('base')	
+	
+	var serverArr = {"firstName": "Branch", "lastName": "Server", "_id": "serverIDF"}
+	
+	var rawLogs = "#{logsDB}"
+	var logs = JSON.parse(rawLogs.replace(/&quot;/g,'"'));
+	
+	var rawUsers = "#{userDB}"
+	var users = JSON.parse(rawUsers.replace(/&quot;/g,'"'));
+	
+	var rawStudents = "#{students}"
+	var students = JSON.parse(rawStudents.replace(/&quot;/g,'"'));
+	
+	var rawGraphs = "#{graphs}"
+	var graphs = JSON.parse(rawGraphs.replace(/&quot;/g,'"'));
+	
+	function findUser(id) {
+		for(var i = 0; i < users.length; i++) {
+			if(users[i]._id == id) {
+				return users[i]
+			}
+			if(id == "Server") {
+				return serverArr
+			}
+		}
 	}
 	
-	$('.AD-nav-one').addClass('selectedNAV')
+	for(var i = 0; i < logs.length; i++) {
+		var eventType = capFirst(logs[i].data.type)
+		var date = moment(logs[i].data.time).format('MMM Do YYYY')
+		var time = moment(logs[i].data.time).format('h:mm:ss a');
+		var selUser = findUser(logs[i].pushUser._id)
+		// console.log(selUser)
+		$('.AD-homepage-section-three-object-bottom-RE').prepend('<div class="AD-homepage-section-three-object-bottom-RE-object"> <div class="AD-hstobre-wrapper"> <div class="AD-hstobre-left"> <div class="AD-hstobre-left-icon-wrapper"> <div class="AD-hstobre-left-icon"></div> </div> </div> <div class="AD-hstobre-center"> <div class="AD-hstobre-center-wrapper"> <p class="hstobre-event">'+eventType+'</p> <h6 class="hstobre-name">'+selUser.firstName+' '+selUser.lastName+'</h6> </div> </div> <div class="AD-hstobre-right"> <div class="AD-hstobre-right-wrapper"> <p class="hstobre-date">'+date+'</p> <div class="AD-hstobre-right-wrapper-br"></div> <p class="hstobre-time">'+time+'</p> </div> </div> </div> </div>')
+	}
+	
+	// 
+	// Graph Initialization
+	// 
+	
+	var loginGraphDATAIN = []
+	
+	// Count Logins
+	
+	var cLogins = 0
+	var cpLogins = 0
+	for(var i = 0; i < logs.length; i++) {
+		if(logs[i].data.type == "login") {
+			cLogins++
+		}
+	}
+	
+	for(var i = 0; i < graphs.length; i++) {
+		 if(graphs[i].graph == "loginAct") {
+		 	for(var a = 0; a < graphs[i].data.length; a++) {
+		 		if(a == graphs[i].data.length - 2) {
+		 			cpLogins = graphs[i].data[a].data
+		 		}
+		 		if(a + 1 == graphs[i].data.length) {
+		 			loginGraphDATAIN.push(cLogins)
+		 		} else {
+		 			loginGraphDATAIN.push(graphs[i].data[a].data)
+		 		}
+		 	}
+		 }
+	}
+	
+	function calcPercChange(data) {
+		var change = data[0] - data[1]
+		return change / data[0] * 100
+	}	
+	
+	var loginPercChange = calcPercChange([cpLogins, cLogins])
+	
+	$('.hstocl-g4-dp1').text(cLogins)
+	$('.hstocl-g4-dp2, .hstocl-g4-dp3').text(loginPercChange.toString().replace('-', '') + "%")
+	
+	if(loginPercChange.toString().startsWith("-")){
+		$('.hstocl-g4-dir1').css('background-image', "url('/img/admin/triUP.svg')")
+	} else {
+		if(!loginPercChange == 0) {
+			$('.hstocl-g4-dir1').css('background-image', "url('/img/admin/triDown.svg')")
+		}
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	$('.branchAccounts').text(users.length)	
+	$('.studentPopulation').text(students.length)	
+		
+	function capFirst(datain) {
+		return datain.charAt(0).toUpperCase() + datain.slice(1)
+	}
+		
+	var energyCtx = document.getElementById("chart").getContext("2d"); 
+	var waterCtx = document.getElementById("chart2").getContext("2d"); 
+	var attendanceCtx = document.getElementById("chart3").getContext("2d"); 
+	var loginsCtx = document.getElementById("chart4").getContext("2d"); 
+	var comparisonCtx = document.getElementById("comparison-graph").getContext("2d"); 
+	
+	var comparisonGraphGradient = comparisonCtx.createLinearGradient(0, 0, 0, 240);
+	
+	comparisonGraphGradient.addColorStop(0, 'rgba(66, 134, 244, .5)');   
+	comparisonGraphGradient.addColorStop(1, 'rgba(66, 134, 244, 0)');
+	
+	var gradient = energyCtx.createLinearGradient(0, 0, 0, 87);
+	gradient.addColorStop(0, 'rgba(66, 134, 244, .5)');   
+	gradient.addColorStop(1, 'rgba(66, 134, 244, 0)');
+	
+	var energyGraphData = {
+		labels: ["1", '2', '3', '4', '5', '6'],
+		datasets: [
+			{
+				backgroundColor : gradient,
+				strokeColor : "#4896fe",
+				borderColor: "#4896fe",
+				pointColor : "#4896fe",
+				pointStrokeColor : "#4896fe",
+				pointHighlightFill: "#4896fe",
+				pointHighlightStroke: "#4896fe",
+				data : [30,50,10,80,30,40]
+			}
+		]
+	}
+	
+	var compData1 = [40, 20, 60, 10, 30, 50]
+	var compData2 = [20, 50, 70, 20, 40, 10]
+	
+	var energyGraphOptions = {
+		responsive: true,
+		datasetStrokeWidth : 3,
+		pointDotStrokeWidth : 4,
+		maintainAspectRatio: false,
+		tooltipFillColor: "rgba(0,0,0,0.8)",
+		tooltipFontStyle: "bold",
+		tooltipTemplate: "<%if (label){%><%=label + ' hod' %>: <%}%><%= value + '°C' %>",
+		scaleLabel : "<%= Number(value).toFixed(0).replace('.', ',') + '°C'%>",
+		layout: {
+			padding: {
+				right: 10
+			}
+		},
+		elements: {
+			point:{
+				radius: 0
+			}
+		},
+		title: {
+				display: true,
+			},
+			responsive: true,
+			aspectRatio: 1,
+			maintainAspectRatio: false,
+			legend: {
+				display: false
+			},
+			scales: {
+				yAxes: [{
+				  gridLines: {
+					drawBorder: false,
+					display: false
+				  },
+				  ticks: {
+					stepSize: 10,
+					beginAtZero:true,
+					display: false //this will remove only the label
+				  }
+				}],
+				xAxes: [{
+				  gridLines: {
+					display: false,
+					drawBorder: false,
+				  },
+				  ticks: {
+					stepSize: 10,
+					display: false //this will remove only the label
+				  }
+				}],
+			  },
+			tooltips: {
+				callbacks: {
+				   label: function(tooltipItem) {
+						  return tooltipItem.yLabel;
+				   }
+				}
+			}
+	};
+	
+	var comparisonGraphData = {
+		labels: ["1", '2', '3', '4', '5', '6'],
+		datasets: [
+			{
+				backgroundColor : "transparent",
+				strokeColor : "#4896fe",
+				borderColor: "#4896fe",
+				pointColor : "#4896fe",
+				pointStrokeColor : "#4896fe",
+				pointHighlightFill: "#4896fe",
+				pointHighlightStroke: "#4896fe",
+				data : compData1
+			}, {
+				backgroundColor : "transparent",
+				strokeColor : "#ffb6a0",
+				borderColor: "#ffb6a0",
+				pointColor : "#ffb6a0",
+				pointStrokeColor : "#ffb6a0",
+				pointHighlightFill: "#ffb6a0",
+				pointHighlightStroke: "#ffb6a0",
+				data : compData2	
+			}
+		]
+	};
+	
+	var comparisonGraphOptions = {
+		responsive: true,
+		datasetStrokeWidth : 3,
+		pointDotStrokeWidth : 4,
+		maintainAspectRatio: false,
+		tooltipFillColor: "rgba(0,0,0,0.8)",
+		tooltipFontStyle: "bold",
+		tooltipTemplate: "<%if (label){%><%=label + ' hod' %>: <%}%><%= value + '°C' %>",
+		scaleLabel : "<%= Number(value).toFixed(0).replace('.', ',') + '°C'%>",
+		layout: {
+			padding: {
+				right: 10
+			}
+		},
+		elements: {
+			point:{
+				radius: 2.5
+			}
+		},
+		title: {
+				display: true,
+			},
+			responsive: true,
+			aspectRatio: 1,
+			maintainAspectRatio: false,
+			legend: {
+				display: false
+			},
+			scales: {
+				yAxes: [{
+				  gridLines: {
+					drawBorder: false,
+					display: false
+				  },
+				  ticks: {
+					stepSize: 10,
+					beginAtZero:true,
+					display: false //this will remove only the label
+				  }
+				}],
+				xAxes: [{
+				  gridLines: {
+					display: false,
+					drawBorder: false,
+				  },
+				  ticks: {
+					stepSize: 10,
+					display: false //this will remove only the label
+				  }
+				}],
+			  },
+			tooltips: {
+				callbacks: {
+				   label: function(tooltipItem) {
+						  return tooltipItem.yLabel;
+				   }
+				}
+			}
+	};
+	
+	var loginGraphData = {
+		labels: ["1", '2', '3', '4', '5', '6'],
+		datasets: [
+			{
+				backgroundColor : gradient,
+				strokeColor : "#4896fe",
+				borderColor: "#4896fe",
+				pointColor : "#4896fe",
+				pointStrokeColor : "#4896fe",
+				pointHighlightFill: "#4896fe",
+				pointHighlightStroke: "#4896fe",
+				data : loginGraphDATAIN
+			}
+		]
+	}
+	
+	var energyGraph = new Chart(energyCtx, {
+		data: energyGraphData, 
+		options: energyGraphOptions,
+		type: "line"
+	});
+	
+	var comparisonGraph = new Chart(comparisonCtx, {
+		data: comparisonGraphData, 
+		options: comparisonGraphOptions,
+		type: "line"
+	});
+	
+	var waterGraph = new Chart(waterCtx, {
+		data: energyGraphData, 
+		options: energyGraphOptions,
+		type: "line"
+	});
+	
+	var attendanceGraph = new Chart(attendanceCtx, {
+		data: energyGraphData, 
+		options: energyGraphOptions,
+		type: "line"
+	});
+	
+	var loginsGraph = new Chart(loginsCtx, {
+		data: loginGraphData, 
+		options: energyGraphOptions,
+		type: "line"
+	});
+	
+	

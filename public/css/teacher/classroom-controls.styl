@@ -54,6 +54,7 @@
 
 .blinds-control-widget
     height 230px !important
+    margin-bottom 30px
     .controls-title
         text-align center
         font-weight 300
@@ -184,7 +185,7 @@
                 text-align center
             #color-picker-container
                 width 175px
-.climate-control-widget,
+
 .blinds-control-widget,
 .lighting-control-widget
     margin-top 10px
@@ -192,8 +193,127 @@
     height 300px
 
 .climate-control-widget
-    margin-bottom 30px
-
+    margin-top 10px
+    width 100%
+    height fit-content
+    .climate-controls
+        display flex
+        justify-content center
+        flex-flow row wrap
+        margin 10px auto 0
+        width fit-content
+    .current-climate-wrap
+        width fit-content
+        height fit-content
+        margin 0 30px
+        .content-title
+            color #9a9a9a
+            font-size 15px
+            margin 0 0 5px
+            text-align center
+        .outer-climate-guage-wrap
+            width fit-content
+            height fit-content
+            position relative
+            .climate-guage-wrap
+                width 300px
+                height 150px
+                border 5px solid lightgrey
+                border-bottom none !important
+                border-top-right-radius 100000px
+                border-top-left-radius 100000px
+                box-shadow inset 0 0 0 1px lightgrey
+                background linear-gradient(to right, #f5b942 1%, red);
+                position relative
+                overflow hidden
+                .cover
+                    width 250px
+                    height 125px
+                    border 5px solid lightgrey
+                    border-bottom none
+                    z-index 3
+                    border-top-right-radius 100000px
+                    border-top-left-radius 100000px
+                    position absolute
+                    bottom 0
+                    background white
+                    left 50%
+                    transform translateX(-50%)
+                    .current-temp
+                        color #4C4C4C
+                        position absolute
+                        top calc(50% - 15px)
+                        left 50%
+                        transform translate(-50%, -50%)
+                        font-weight bold
+                        font-size 25px
+                .border-cover
+                    background #dbdbdb
+                    width 300px
+                    height 150px
+                    bottom 0
+                    z-index 2
+                    left 50%
+                    transform translateX(-50%)
+                    transform-origin bottom
+                    position absolute
+                    transition transform .5s linear
+            .box
+                background #b5b5b5
+                width 40px
+                height 6px
+                z-index 4
+                position absolute
+                bottom 0
+                &.right-box
+                    right -5px
+                &.left-box
+                    left -5px
+    .set-climate-wrap
+        width 310px
+        height fit-content
+        margin 45px 20px 0
+        .content-title
+            color #9a9a9a
+            font-size 15px
+            margin 0 0 5px
+            text-align center
+        .set-climate-content
+            display flex
+            justify-content center
+            text-align center
+            .current-set-temp
+                color: #4c4c4c;
+                margin 11px 25px 0
+                font-weight: bold;
+                font-size: 25px;
+            .climate-control
+                width 55px
+                height 55px
+                border-radius .4em
+                border 1px solid lightgrey
+                cursor pointer
+                transition background .3s
+                position relative
+                &:hover
+                    background #e2e2e2
+                .icon
+                    width 55px
+                    height 55px
+                    opacity 0.6
+                    background-image url('/img/teacher/climate-arrow.svg')
+                    background-position center
+                    background-size cover
+                    background-repeat no-repeat
+                    position absolute
+                    left 50%
+                    transform translate(-50%, -50%)
+                    transition opacity .3s
+                &.climate-up .icon
+                    top calc(50% + 4px)
+                &.climate-down .icon
+                    top calc(50% - 3px)
+                    transform translate(-50%, -50%) rotate(180deg) 
 .classroom-controls-widget
     .top-container
         height fit-content
@@ -219,6 +339,16 @@
         transition background .25s
         &:hover
             background #14afe2
+
+@media only screen and (max-width 1125px)
+    .climate-control-widget
+        .climate-controls
+            flex-flow column !important
+        .set-climate-wrap
+            margin 0 !important
+        .current-climate-wrap
+            margin 0 0 30px !important
+            
 
 @media only screen and (max-width 1100px)
     .lighting-control-widget

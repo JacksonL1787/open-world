@@ -1,98 +1,124 @@
 head
-    link(rel="stylesheet" href="/css/admin/nav.css")
-    
+	link(rel="stylesheet" href="/css/admin/nav.css")
+	
 body
-    .AD-left-nav
-        .AD-top-nav-logo
-            .AD-branch-logo
-        .AD-center-left-nav
-            .AD-center-left-nav-object-wrapper.AD-nav-one
-                .AD-center-left-nav-object-container
-                    .AD-center-left-nav-object-icon.AD-navicon-one
-
-            .AD-center-left-nav-object-wrapper.AD-nav-two
-                .AD-center-left-nav-object-container
-                    .AD-center-left-nav-object-icon.AD-navicon-two
-
-            .AD-center-left-nav-object-wrapper.AD-nav-three
-                .AD-center-left-nav-object-container
-                    .AD-center-left-nav-object-icon.AD-navicon-three
-
-            .AD-center-left-nav-object-wrapper.AD-nav-four
-                .AD-center-left-nav-object-container
-                    .AD-center-left-nav-object-icon.AD-navicon-four 
-                    
-            .AD-center-left-nav-object-wrapper.AD-nav-five
-                .AD-center-left-nav-object-container
-                    .AD-center-left-nav-object-icon.AD-navicon-five
-                    
-            .AD-center-left-nav-object-wrapper.AD-nav-six
-                .AD-center-left-nav-object-container
-                    .AD-center-left-nav-object-icon.AD-navicon-six
-    .AD-top-nav
-        .AD-top-nav-right-wrapper
-            .AD-top-nav-right-user-wrapper
-                .AD-top-nav-right-notifications-wrapper
-                    .AD-notifications-bell
-                .AD-top-nav-right-avatar-wrapper
-                    .user-avatar
-                .AD-top-nav-right-user-PMP
-                    p #{user.firstName} #{user.lastName}
-                    .dropdown-AD-wrapper
-    .AD-top-dropdown
-        input(type="button" value="Account Settings")
-        input(type="button" value="Logout")
-        
-    
+	.AD-nav-wrapper
+		.AD-nav-wrapper-top
+			.AD-nav-wrapper-top-header
+				.AD-nav-wrapper-top-header-icon
+		.AD-nav-wrapper-navi
+			.AD-nav-wrapper-navi-container
+				.AD-nav-wrapper-navi-object.naviObject-1
+					.AD-nav-wrapper-hover-object
+					.AD-nav-wrapper-navi-object-wrapper
+						.AD-nav-wrapper-navi-object-icon-wrapper
+							.AD-nav-wrapper-navi-object-icon.naviIcon-1
+						.AD-nav-wrapper-navi-object-desc-wrapper
+							p Dashboard
+				.AD-nav-wrapper-navi-object.naviObject-2
+					.AD-nav-wrapper-hover-object
+					.AD-nav-wrapper-navi-object-wrapper
+						.AD-nav-wrapper-navi-object-icon-wrapper
+							.AD-nav-wrapper-navi-object-icon.naviIcon-2
+						.AD-nav-wrapper-navi-object-desc-wrapper
+							p School
+				.AD-nav-wrapper-navi-object.naviObject-3
+					.AD-nav-wrapper-hover-object
+					.AD-nav-wrapper-navi-object-wrapper
+						.AD-nav-wrapper-navi-object-icon-wrapper
+							.AD-nav-wrapper-navi-object-icon.naviIcon-3
+						.AD-nav-wrapper-navi-object-desc-wrapper
+							p Accounts
+				.AD-nav-wrapper-navi-object.naviObject-4
+					.AD-nav-wrapper-hover-object
+					.AD-nav-wrapper-navi-object-wrapper
+						.AD-nav-wrapper-navi-object-icon-wrapper
+							.AD-nav-wrapper-navi-object-icon.naviIcon-4
+						.AD-nav-wrapper-navi-object-desc-wrapper
+							p System
+				.AD-nav-wrapper-navi-object.naviObject-5
+					.AD-nav-wrapper-hover-object
+					.AD-nav-wrapper-navi-object-wrapper
+						.AD-nav-wrapper-navi-object-icon-wrapper
+							.AD-nav-wrapper-navi-object-icon.naviIcon-5
+						.AD-nav-wrapper-navi-object-desc-wrapper
+							p Security
+				.AD-nav-wrapper-navi-object.naviObject-6
+					.AD-nav-wrapper-hover-object
+					.AD-nav-wrapper-navi-object-wrapper
+						.AD-nav-wrapper-navi-object-icon-wrapper
+							.AD-nav-wrapper-navi-object-icon.naviIcon-6
+						.AD-nav-wrapper-navi-object-desc-wrapper
+							p Logout
+	
 script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
 script.
 
-    // Dropdown Control
-    
-    $(document).mouseup(function(e) {
-        var container = $(".AD-top-dropdown");
-        if (!container.is(e.target) && container.has(e.target).length === 0) {
-            $('.AD-top-dropdown').removeClass('active')
-        }
-    });
-    
-    $('.dropdown-AD-wrapper, .user-avatar , .AD-top-nav-right-user-PMP p').click(function(){
-        $('.AD-top-dropdown').toggleClass('active')
-    })
-    
-    $('.AD-top-dropdown input[value="Account Settings"]').click(function(){
-        window.location.href = "/admin/home/account"
-    })
+	var rawUsersNV = "#{userDB}"
+	var usersNV = JSON.parse(rawUsersNV.replace(/&quot;/g,'"'));
 
-    $('.AD-top-dropdown input[value="Logout"]').click(function(){
-        window.location.href = "/auth/logout"
-    })    
-    
-    // Nav-Controls
-    
-    $('.AD-nav-one').click(function(){
-        window.location.href = "/admin/home"
-    })
-    
-    $('.AD-nav-two').click(function(){
-        window.location.href = "/admin/school/attendance"
-    })
-    
-    $('.AD-nav-three').click(function(){
-        window.location.href = "/admin/school/accounts"
-    })
-    
-    $('.AD-nav-four').click(function(){
-        window.location.href = "/admin/school/data"
-    })
-    
-    $('.AD-nav-five').click(function(){
-        window.location.href = "/admin/school/controls"
-    })
-    
-    $('.AD-nav-six').click(function(){
-        window.location.href = "/admin/config"
-    })
-    
-    $('.user-avatar').css('background-image', "url(/uploads/#{user.profilePicture})")
+	var email = "#{user.email}"
+	var currentUser = findUser()
+
+	function findUser() {
+		for(var i = 0; i < usersNV.length; i++) {
+			if(usersNV[i].email == email) {
+				return usersNV[i]
+			}
+		}
+	}
+	
+	$(document).ready(function(){
+		$('.ATL-TL-user-status-desc p').text( capFirst(currentUser.activity.status))
+		if(currentUser.activity.status == 'away') {
+			$('.ATL-TL-user-status-CLR').css('background-color', "#ffa500")
+			$('.ATL-TL-user-status-desc p').css('color', "#ffa500")
+		}
+		
+		if(currentUser.activity.status == 'online') {
+			$('.ATL-TL-user-status-CLR').css('background-color', "#adffa0")
+			$('.ATL-TL-user-status-desc p').css('color', "rgb(100, 183, 86)")
+		}
+	});
+	
+	function capFirst(datain) {
+		return datain.charAt(0).toUpperCase() + datain.slice(1)
+	}
+	
+	// Nav Hovers
+	
+	$('.AD-nav-wrapper-navi-object-wrapper').hover(function(){
+		if($(this).siblings('.AD-nav-wrapper-hover-object').hasClass('base')) {
+			$(this).siblings('.AD-nav-wrapper-hover-object').toggleClass('selectedDouble')
+		} else {
+			setTimeout(function(){
+				$('.AD-nav-wrapper-hover-object').toggleClass('hide')
+			}, 500)
+			$(this).siblings('.AD-nav-wrapper-hover-object').toggleClass('selected')   
+		}
+	})
+	
+	$('.naviObject-1').click(function(){
+		window.location.href = '/admin/home'
+	})
+	
+	$('.naviObject-2').click(function(){
+		window.location.href = '/admin/school/controls'
+	})
+	
+	$('.naviObject-3').click(function(){
+		window.location.href = '/admin/school/accounts'
+	})
+	
+	$('.naviObject-4').click(function(){
+		window.location.href = '/admin/system'
+	})
+	
+	$('.naviObject-5').click(function(){
+		window.location.href = '/admin/security'
+	})
+	
+	$('.naviObject-6').click(function(){
+		window.location.href = '/auth/logout'
+	})

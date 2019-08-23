@@ -15,7 +15,7 @@
                 height 200px
                 border-radius 200px
             .hover-wrap
-                background rgba(20, 77, 113, 0.6)
+                background rgba(20, 77, 113, 0.75)
                 cursor pointer
                 position absolute
                 width 200px
@@ -27,15 +27,22 @@
                 transition opacity 0.5s
                 &:hover
                     opacity 1
-                .change-pic
-                    color white
-                    font-size 15px
-                    margin 0
-                    font-weight bold
-                    top 50%
+                .content
+                    top calc(50% + 5px)
                     left 50%
                     transform translate(-50%, -50%)
                     position absolute
+                    text-align center
+                    width 95%
+                    .change-pic
+                        color white
+                        font-size 15px
+                        margin 0
+                        font-weight bold
+                    .file-inpt-info
+                        color lightgrey
+                        font-size 11px
+                        margin 5px 0 0
         .settings-option-wrap
             margin 0 auto 20px
             width fit-content

@@ -1,0 +1,94 @@
+include alerts
+
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
+script(src='https://cdn.rawgit.com/admsev/jquery-play-sound/master/jquery.playSound.js')
+script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js")
+script.
+
+	// var rawFire = "#{fireDB}"
+	// var fire = JSON.parse(rawFire.replace(/&quot;/g,'"'));
+
+	var socket = io();
+	var audio = new Audio("/emergSounds/toplevel.mp3");
+	var audioEMERG = new Audio("/emergSounds/Emergency In Building.m4a");
+	
+	socket.on('Lockdown', function(msg){
+		console.log('suys')
+		triggerAlert({"type": "lockdown", "id": msg.id})
+	})
+	socket.on('emergency', function(msg){
+		// $.playSound("/emergSounds/Lockdown.m4a")
+		audioEMERG.play()
+	})
+	
+	socket.on('activityAlert', function(msg){
+		$('.ATL-TL-user-status-desc p').text(capFirst(msg.data))
+		if(msg.data == 'away') {
+			$('.ATL-TL-user-status-CLR').css('background-color', "#ffa500")
+			$('.ATL-TL-user-status-desc p').css('color', "#ffa500")
+		}
+		
+		if(msg.data == 'online') {
+			$('.ATL-TL-user-status-CLR').css('background-color', "#adffa0")
+			$('.ATL-TL-user-status-desc p').css('color', "rgb(100, 183, 86)")
+		}
+	});	
+	
+	function capFirst(datain) {
+		return datain.charAt(0).toUpperCase() + datain.slice(1)
+	}
+
+	var timeout = null;
+	var AFK = false
+	$(document).on('mousemove', function() {
+		updateStatus('IM')
+		AFK = false
+		// console.log('Present')
+		clearTimeout(timeout);
+	
+		timeout = setTimeout(function() {
+			AFK = true
+			updateStatus('AFK')
+			console.log('Away')
+		}, 30000);
+	});
+	
+	var userEmail = "#{user.email}"
+	
+	$(document).ready(function(){
+		$.ajax({
+			type: "POST",
+			url: "/admin/status/set",
+			data: {"phase": "online"}
+		})
+		socket.emit('activityAlert', {"associatedUser": userEmail, "data": "online"});
+	})	
+	
+	function updateStatus(id) {
+		if(id == "AFK") {
+			$.ajax({
+				type: "POST",
+				url: "/admin/status/set",
+				data: {"phase": "away"}
+			})
+			socket.emit('activityAlert', {"associatedUser": userEmail, "data": "away"});
+		} else {
+			if(id == "IM") {
+				if(!AFK) {
+					
+				} else {
+					$.ajax({
+						type: "POST",
+						url: "/admin/status/set",
+						data: {"phase": "online"}
+					})
+					socket.emit('activityAlert', {"associatedUser": userEmail, "data": "online"});
+				}
+			}
+		}
+	}

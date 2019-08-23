@@ -11,23 +11,30 @@ script.
 .door-control-widget.widget-wrap.classroom-controls-widget
     .top-container
         h1.title Door
-        p.lock-status Locked
-    button.change-lock-status-btn Unlock
-        
-.blinds-control-widget.widget-wrap.classroom-controls-widget
+        p.lock-status Unlocked
+    button.change-lock-status-btn Lock
+
+.climate-control-widget.widget-wrap.classroom-controls-widget
     .top-container
-        h1.title Blinds
-    h2.controls-title Controls
-    .blind-controls-wrap
-        .up-down-wrap
-            .blinds-up-btn
-                .icon
-            .blinds-down-btn
-                .icon
-        .preset-controls
-            button.open-blinds-btn Open Blinds
-            button.close-blinds-btn Close Blinds
-    p.blinds-control-error
+        h1.title Climate
+    .climate-controls
+        .current-climate-wrap
+            p.content-title Current Classroom Temperature
+            .outer-climate-guage-wrap
+                .climate-guage-wrap
+                    .cover
+                        p.current-temp
+                    .border-cover
+                .box.left-box
+                .box.right-box
+        .set-climate-wrap
+            p.content-title Set Classroom Temperature
+            .set-climate-content
+                .climate-up.climate-control
+                    .icon
+                p.current-set-temp 74°F
+                .climate-down.climate-control
+                    .icon
 
 .lighting-control-widget.widget-wrap.classroom-controls-widget
     .top-container
@@ -42,8 +49,19 @@ script.
             input.brightness-range-input(type="range" min="1" max="100")
         .light-color-wrap
             p Colored Lighting
-            div(id="color-picker-container")
-.climate-control-widget.widget-wrap.classroom-controls-widget
-    .top-container
-        h1.title Climate
+            #color-picker-container
 
+.blinds-control-widget.widget-wrap.classroom-controls-widget
+    .top-container
+        h1.title Blinds
+    h2.controls-title Controls
+    .blind-controls-wrap
+        .up-down-wrap
+            .blinds-up-btn
+                .icon
+            .blinds-down-btn
+                .icon
+        .preset-controls
+            button.open-blinds-btn Open Blinds
+            button.close-blinds-btn Close Blinds
+    p.blinds-control-error

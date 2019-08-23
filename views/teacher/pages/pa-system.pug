@@ -1,3 +1,11 @@
+.modal.send-speech-modal
+    .modal-top
+        span.close &#10005;
+        h2.modal-title Make Announcement
+    .modal-main
+        p Are you sure that you want to play an announcement over the PA System?
+        button.confirm-delete-note Make Announcement
+
 .pa-system-widget.ring-bell-widget.widget-wrap
     .top-container
         h1.title Ring Bell
@@ -7,6 +15,7 @@
         h1.title Play Speech
     .play-speech-content
         textarea.speech-textbox(data-gramm_editor="false" placeholder="Speech")
+        span.char-limit
         button.play-speech-btn Play Speech
 // .pa-system-widget.play-music-widget.widget-wrap
 //     .top-container

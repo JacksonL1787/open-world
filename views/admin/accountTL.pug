@@ -1,0 +1,27 @@
+head
+    link(rel="stylesheet" href="/css/admin/accountTL.css")
+    
+body
+
+    .ATL-TL-wrapper
+        .ATL-TL-left
+            .ATL-TL-left-notification
+        .ATL-TL-right
+            .ATL-TL-avatar-wrapper
+                .ATL-TL-avatar
+            .ATL-TL-user-desc
+                .ATL-TL-user-FNLN
+                    p #{user.firstName} #{user.lastName}
+                .ATL-TL-user-status
+                    .ATL-TL-user-status-CLR
+                    .ATL-TL-user-status-desc
+                        p Pending
+            .ATL-TL-dropdown-button
+                
+
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
+script.
+    var avatar = "#{user.profilePicture}"
+    
+    $('.ATL-TL-avatar').css('background-image', 'url("/uploads/'+avatar+'")')

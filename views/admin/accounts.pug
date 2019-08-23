@@ -11,6 +11,7 @@ html
 				.AD-dashboard-body-header-container
 					p Your Accounts
 					h5 Design Tech High School
+				include accountTL
 			.ADA-dashboard-body-top-info
 				.ADA-top-info-object.selected
 					.ADA-top-info-object-top
@@ -183,6 +184,8 @@ script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js")
 script.
 	
+	$('.naviObject-3').find('.AD-nav-wrapper-hover-object').addClass('base')
+	
 	var rawuserdb = "#{userDB}"
 	var users = JSON.parse(rawuserdb.replace(/&quot;/g,'"'));
 	
@@ -240,7 +243,14 @@ script.
 		}
 	}
 	
-	
+	function findUser(id) {
+		for(var i = 0; i < users.length; i++) {
+			if(id == users[i]._id) {
+				return users[i]
+			}
+		}
+	}
+ 	
 	// Set
 	
 	$('.adminAccounts').text(adminCount)
@@ -254,7 +264,8 @@ script.
 	
 	for(var i = 0; i < logs.length; i++) {
 		var datePV = moment(logs[i].data.time).format("MMM Do, h:mm:ss a")
-		var lastNameFOR = logs[i].pushUser.lastName.charAt(0)
+		var user = findUser(logs[i].pushUser._id)
+		var lastNameFOR = user.lastName.charAt(0)
 		$('.ADA-dashbaord-section-two-object-data-container-AA').prepend('<div class="ADA-dashboard-section-two-object-data-container-AA-object" id="actA'+logs[i]._id+'"> <div class="ADA-dstodcAAo-container"> <div class="ADA-dstodcAAo-container-left"> <div class="ADA-dstodcAAo-container-left-icon-wrapper"> <div class="ADA-dstodcAAo-container-left-icon"></div> </div> <p>'+logs[i].pushUser.firstName+' '+lastNameFOR+'</p> </div> <div class="ADA-dstodcAAo-container-center"> <p>'+logs[i].data.description+'</p> </div> <div class="ADA-dstodcAAo-container-right"> <p>'+datePV+'</p> </div> </div> </div>')
 		$('#actA' + logs[i]._id).children().find('.ADA-dstodcAAo-container-left').find('.ADA-dstodcAAo-container-left-icon-wrapper').children().addClass('login')
 	}

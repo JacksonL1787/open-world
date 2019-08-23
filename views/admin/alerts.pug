@@ -1,0 +1,160 @@
+doctype html
+html
+	head
+		title= title
+		link(rel="stylesheet", href="/css/admin/alerts.css")
+		link(rel='stylesheet', href='/css/main.css')
+	body
+		.AA-lockdown-wrapper
+			.AA-lockdown-wrapper-alert-symbol-wrapper
+				.AA-lockdown-wrapper-alert-symbol
+				.AA-lockdown-wrapper-alert-symbol-bgw
+			.AA-lockdown-wrapper-alert-controller
+				.AA-lockdown-wrapper-alert-controller-container
+					.AA-lockdown-wrapper-alert-controller-top-buffer
+					.AA-lockdown-wrapper-alert-controller-top-heading
+						p Lockdown Alert
+					.AA-lockdown-wrapper-alert-controller-body
+						.AA-lockdown-wrapper-alert-controller-body-desc
+							p A Lockdown has been triggered from a remote device. Authorities have been notified and precautions are being taken as displayed below. Take further action and/or controll school from the active action page. 
+						.AA-lockdown-wrapper-alert-controller-body-actions
+							.AA-lockdown-wrapper-alert-controller-body-actions-action
+								.AA-lockdown-wrapper-alert-controller-body-actions-action-left
+									p Door Locks
+								.AA-lockdown-wrapper-alert-controller-body-actions-action-right
+									.AA-lockdown-wrapper-alert-controller-body-actions-action-right-info-wrapper
+										p.doorStatus Pending...
+										
+							.AA-lockdown-wrapper-alert-controller-body-actions-action
+								.AA-lockdown-wrapper-alert-controller-body-actions-action-left
+									p Cameras
+								.AA-lockdown-wrapper-alert-controller-body-actions-action-right
+									.AA-lockdown-wrapper-alert-controller-body-actions-action-right-info-wrapper
+										p.camerasStatus Pending...
+							.AA-lockdown-wrapper-alert-controller-body-actions-action
+								.AA-lockdown-wrapper-alert-controller-body-actions-action-left
+									p Authorities
+								.AA-lockdown-wrapper-alert-controller-body-actions-action-right
+									.AA-lockdown-wrapper-alert-controller-body-actions-action-right-info-wrapper
+										p.authoritiesStatus Pending...
+							.AA-lockdown-wrapper-alert-controller-body-actions-action
+								.AA-lockdown-wrapper-alert-controller-body-actions-action-left
+									p Alarm
+								.AA-lockdown-wrapper-alert-controller-body-actions-action-right
+									.AA-lockdown-wrapper-alert-controller-body-actions-action-right-info-wrapper
+										p.alarmStatus Pending...
+							.AA-lockdown-wrapper-alert-controller-body-actions-action
+								.AA-lockdown-wrapper-alert-controller-body-actions-action-left
+									p Blinds
+								.AA-lockdown-wrapper-alert-controller-body-actions-action-right
+									.AA-lockdown-wrapper-alert-controller-body-actions-action-right-info-wrapper
+										p.blindsStatus Pending...
+							.AA-lockdown-wrapper-alert-controller-body-actions-action.finalBUTT
+								input(type="button" value="Active Alert Center")
+	
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
+script(src='https://cdn.rawgit.com/admsev/jquery-play-sound/master/jquery.playSound.js')
+script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js")
+script.
+	
+	var lockdownID;
+	
+	var socket = io();
+	var alert = new Audio("/emergSounds/lockdownINF.m4a");
+	
+	var rawLogs = "#{logsDB}"
+	var logs = JSON.parse(rawLogs.replace(/&quot;/g,'"'));
+	
+	var rawUsers = "#{userDB}"
+	var users = JSON.parse(rawUsers.replace(/&quot;/g,'"'));
+	
+	var rawschool = "#{schoolsDB}"
+	var school = JSON.parse(rawschool.replace(/&quot;/g,'"'));
+	
+	
+	function triggerAlert(data) {
+		if(data.type == "lockdown") {
+			$('.AA-lockdown-wrapper').show()
+			$(".alerterC-background").fadeIn()
+			setTimeout(function(){
+				$('.AA-lockdown-wrapper-alert-symbol-wrapper').addClass('active')
+				$('.AA-lockdown-wrapper-alert-symbol-bgw').addClass('active')
+			}, 2500)
+			setTimeout(function(){
+				$('.AA-lockdown-wrapper-alert-controller').addClass('active')
+				setTimeout(function(){
+					$(".AA-lockdown-wrapper-alert-controller-container").fadeIn()
+					checkLockdownStatus()
+					lockdownID = data.id
+				}, 800)
+			}, 3500)
+			alert.pause()
+			alert.play()
+		}
+	}
+	
+	function checkLockdownStatus() {
+		setTimeout(function(){
+			$('.AA-lockdown-wrapper-alert-controller-body-actions-action-right-info-wrapper p').text('Loading')
+			setTimeout(function(){
+				checkDoors()
+				checkCameras()
+				checkAuthorities()
+				checkAlarm()
+				checkBlinds()
+			}, 300)
+		}, 1500)
+	}
+	
+	function checkDoors() {
+		socket.emit('lockdownResponse', 'checkDoors')
+	}
+	
+	function checkCameras() {
+		socket.emit('lockdownResponse', 'checkCameras')
+		var status = school[0].systems.cameras.online
+		if(status) {
+			$('.camerasStatus').text('Online')
+			$('.camerasStatus').parent().addClass('online')
+		} else {
+			$('.camerasStatus').text('Offline')
+			$('.camerasStatus').parent().addClass('offline')
+		}
+	
+	}
+	
+	function checkAuthorities() {
+		socket.emit('lockdownResponse', 'checkAuthorities')
+		setTimeout(function(){
+			$('.authoritiesStatus').text('Notified')
+			$('.authoritiesStatus').parent().addClass('online')
+		}, 1000)
+	}
+	
+	function checkAlarm() {
+		socket.emit('lockdownResponse', 'checkAlarm')
+	}
+	
+	function checkBlinds() {
+		socket.emit('lockdownResponse', 'checkBlinds')
+	}
+	
+	$('.AA-lockdown-wrapper-alert-controller-body-actions-action input').click(function(){
+		$.ajax({
+		  type: "POST",
+		  url: "/admin/update/logs",
+		  data: {lockdownID}
+		});
+		window.location.href = "/admin/security/center"
+	})
+	
+	// Notifications
+	
+	function notificationAlert(data) {
+		
+	}

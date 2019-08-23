@@ -48,7 +48,31 @@ const UserSchema = new mongoose.Schema({
   rooms: {
     type: Array,
     required: false
-  }
+  },
+  chqID: {
+    type: String,
+    required: true
+  },
+  activeTFA: {
+    type: Boolean,
+    required: false
+  },
+  visibility: {
+    type: Boolean,
+    required: false
+  },
+  activity: {
+    type: Object,
+    required: false
+  },
+  checks: {
+    type: Object,
+    required: false
+  },
+  TFA: {
+    type: Object,
+    required: false
+  },
 });
 
 const User = mongoose.model('User', UserSchema);

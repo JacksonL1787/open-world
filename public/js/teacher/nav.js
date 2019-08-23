@@ -2,14 +2,16 @@
 /* global hideOverlay */
 /* global showOverlay */
 
-
-
 $('.home-btn-wrap').click(function() {
     window.location.href="/teacher/home" // Redirects to home page
 })
 
 $('.pa-system-btn-wrap').click(function() {
     window.location.href="/teacher/pa-system" // Redirects to pa system page
+})
+
+$('.security-btn-wrap').click(function() {
+    window.location.href="/teacher/security" // Redirects to security page
 })
 
 $('.manage-students-btn-wrap').click(function() {
@@ -40,5 +42,7 @@ $(document).ready(function() {
         $('.classroom-controls-btn-wrap').addClass('active')
     } else if (window.location.pathname == "/teacher/settings") {
         $('.side-nav .bottom .settings-btn').addClass('active')
+    } else if (window.location.pathname == "/teacher/security") {
+        $('.security-btn-wrap').addClass('active')
     }
 })

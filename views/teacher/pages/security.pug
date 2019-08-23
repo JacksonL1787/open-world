@@ -1,0 +1,53 @@
+script.
+	var emergenciesraw = "#{emergencies}"
+	window.data.emergencies = JSON.parse(emergenciesraw.replace(/&quot;/g,'"'));
+
+.lockdown-modal
+	.modal-content
+		.modal-top
+				span.close &#10005;
+				h2.modal-title Begin Lockdown
+		.modal-main
+			p.add-info-desc <b>If possible</b>, add any information as to why you are triggering a lockdown.
+			textarea.extra-info-textarea(placeholder="Additional Information...")
+			p.enter-lockdown-desc Please type in the word <b>Lockdown</b> to proceed.
+			input.lockdown-inpt(type="text" placeholder="Lockdown")
+			button.confirm-begin-lockdown Begin Lockdown
+.lockdown-widget.widget-wrap.security-widget
+	.top-container
+		h1.title Lockdown
+		.icon
+	.content
+		button.open-lockdown-prompt Begin Lockdown
+		p.warning Clicking this button will open a confirmation prompt
+.fire-alarm-widget.widget-wrap.security-widget
+	.top-container
+		h1.title Fire Alarm
+		.icon
+
+.earthquake-alert-widget.widget-wrap.security-widget
+	.top-container
+		h1.title Earthquake Alert
+		.icon
+
+.medical-emergency-widget.widget-wrap.security-widget
+	.top-container
+		h1.title Medical Emergency
+		.icon(style="top: calc(50% + 6px);")
+
+.previous-emergencies-widget.widget-wrap.security-widget
+	.top-container
+		h1.title Previous Emergencies
+	.widget-content
+		.select-emergency-wrap
+			.option-wrap.all-emergencies.active
+				button All
+			.option-wrap.lockdown
+				button Lockdown
+			.option-wrap.fire-alarm
+				button Fire
+			.option-wrap.earthquake-alert
+				button Earthquake
+			.option-wrap.medical-emergency
+				button Medical
+		.emergencies-wrap

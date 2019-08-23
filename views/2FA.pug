@@ -1,0 +1,57 @@
+doctype html
+html
+    head
+        title Branch Administrator
+        link(rel='stylesheet', href='/css/admin/2FA.css')
+        link(rel='stylesheet', href='/css/main.css')
+        include main
+    body
+        .TFA-wrapper
+            .TFA-container
+                .TFA-branch-top
+                .TFA-center
+                    .TFA-center-wrapper
+                        .TFA-center-wrapper-left
+                            .TFA-center-wrapper-left-icon    
+                        .TFA-center-wrapper-right
+                            .TFA-center-wrapper-right-text-wrapper
+                                .TFA-center-wrapper-right-text
+                                    h7 Branch Two Factor Authentication
+                                    p Use your selected method of verification to verify your identity.
+                            .TFA-center-wrapper-right-inputs-wrapper
+                                .TFA-center-wrapper-right-inputs
+                                    input(type="text" placeholder="Two Factor Auth" maxlength="6")
+                                    input(type="button" value="Verify")
+            
+      
+script.
+
+    $('input[type="button"]').click(function(){
+        var data = {"val": $('input[type="text"]').val()}
+        // console.log(data)
+        $.ajax({
+            type: "POST",
+            url: "/2FA/verify",
+            data: data,
+            success : function(text)
+            {
+                gotResponse(text)
+                // console.log(text)74635809-
+                
+            }
+        });  
+    })
+    var tries = 0
+    function gotResponse(resp) {
+        if(resp == "verified") {
+            // console.log('cop')
+            window.location.href = "/dashboard"
+        } else {
+            window.alert('incorrect')
+            tries++
+            if(tries == 3) {
+                window.location.href = "/auth/logout"
+            }
+            
+        }
+    }

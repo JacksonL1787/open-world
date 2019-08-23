@@ -1,0 +1,71 @@
+doctype html
+html
+	head
+		title Lockdown
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		
+		// CSS Links
+		link(rel='stylesheet', href='/css/main.css')
+		link(rel='stylesheet', href='/css/teacher/lockdown.css')
+		
+		// Import Libraries
+		script(src="https://momentjs.com/downloads/moment.js")
+		script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
+		script(src="https://cdn.jsdelivr.net/npm/@jaames/iro/dist/iro.min.js")
+	body
+		//Declare Master Window Object
+		script.
+			var socket = io()
+			var rawLockdownDB = "#{currentLockdown}"
+			window.data = {
+				title: "#{title}",
+				user: {
+					firstName: "#{user.firstName}",
+					lastName: "#{user.lastName}",
+					email: "#{user.email}",
+					permission: "#{user.permission}",
+					permissionLevel: "#{user.permissionLevel}",
+					school: "#{user.school}",
+					position: "#{user.position}",
+					profilePicture: "#{user.profilePicture}",
+					darkMode: "#{user.darkMode}",
+					rooms: "#{user.rooms}"
+				},
+				currentLockdown: JSON.parse(rawLockdownDB.replace(/&quot;/g, '"')),
+				loader: '<div class="loader"><div class="loader-bar"></div></div>'
+			}
+		.modal.end-lockdown-modal
+			.modal-top
+				span.close &#10005;
+				h2.modal-title End Lockdown
+			.modal-main
+				p Please type in your password to end the lockdown.
+				input.password-inpt(type="password" placeholder="Password")
+				p.incorrect Incorrect Password
+				button.confirm-end-lockdown End Lockdown
+		.modal-overlay
+		.main-wrap
+			.logo
+			button.end-lockdown End Lockdown
+			.content
+				.header-wrap
+					img.icon(src="/img/teacher/security/lockdown-icon-dark.svg")
+					h1.title Currently in Lockdown
+					h3.lockdown-length Lockdown has been active for <span class="time"></span>
+				.divider
+				.update-outer-wrap
+					h1.title Updates
+					.inner-update-wrap
+		.chat-wrap
+			.top-wrap
+				h2.title Live Chat
+			.content
+				.messages-wrap
+					p.no-messages No Messages
+			.sender-wrap
+				.inpt-wrap
+					input.message-inpt(type="text" placeholder="Send a message")
+				.send-btn-wrap
+					button.send-message Send
+	script(src="/js/lockdown.js")

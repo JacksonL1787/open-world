@@ -1,0 +1,130 @@
+script.
+    var studentraw = "#{student}"
+    window.data.student = JSON.parse(studentraw.replace(/&quot;/g,'"'));
+.modal.delete-note-modal
+    .modal-top
+        span.close &#10005;
+        h2.modal-title Delete Note
+    .modal-main
+        p Are you sure you want to delete this note?
+        button.confirm-delete-note Delete Note
+.basic-info-widget.widget-wrap.student-widget
+    .top-container
+        h1.title Student Information
+    .info-content-wrap
+        .info-wrap.name-wrap
+            label Name
+            p Jackson Lawrence
+        .info-wrap.email-wrap
+            label Email
+            a 
+        .info-wrap.grade-wrap
+            label Grade
+            p 
+        .info-wrap.student-id-wrap
+            label Student ID
+            p 
+        .info-wrap.advisor-wrap
+            label Advisor
+            p 
+        .info-wrap.advisor-email-wrap
+            label Advisor Email
+            a 
+.notes-widget.widget-wrap.student-widget
+    .top-container
+        h1.title Student Notes
+    .notes-content
+        .add-note-wrap
+            label Add Note
+            .input-wrap
+            input.note-input(type="text" placeholder="Note")
+            button.add-note-btn Add
+        .all-notes-wrap
+            p.no-notes No Notes
+.schedule-widget.widget-wrap.student-widget
+    .top-container
+        h1.title Schedule
+    .schedule-content
+        .current-class-wrap
+            label Current Class
+            p Algebra 2 - <b>Room 108</b>
+        .day-schedule-wrap
+            h2 Full Schedule
+            .period-wrap.period-1-wrap
+                label.period-label Period 1
+                span English 2
+                .period-info-menu
+                    .info-wrap.teacher-name-info
+                        label Teacher Name
+                        p 
+                    .info-wrap.teacher-email-info
+                        label Teacher Email
+                        p 
+                    .info-wrap.room-info
+                        label Room
+                        p 
+            .period-wrap.period-2-wrap
+                label.period-label Period 2
+                span World History
+                .period-info-menu
+                    .info-wrap.teacher-name-info
+                        label Teacher Name
+                        p 
+                    .info-wrap.teacher-email-info
+                        label Teacher Email
+                        p 
+                    .info-wrap.room-info
+                        label Room
+                        p 
+            .period-wrap.period-3-wrap
+                label.period-label Period 3
+                span Algebra 2
+                .period-info-menu
+                    .info-wrap.teacher-name-info
+                        label Teacher Name
+                        p 
+                    .info-wrap.teacher-email-info
+                        label Teacher Email
+                        p 
+                    .info-wrap.room-info
+                        label Room
+                        p 
+            .period-wrap.period-4-wrap
+                label.period-label Period 4
+                span Chemistry
+                .period-info-menu
+                    .info-wrap.teacher-name-info
+                        label Teacher Name
+                        p 
+                    .info-wrap.teacher-email-info
+                        label Teacher Email
+                        p 
+                    .info-wrap.room-info
+                        label Room
+                        p 
+            .period-wrap.period-5-wrap
+                label.period-label Period 5
+                span TA
+                .period-info-menu
+                    .info-wrap.teacher-name-info
+                        label Teacher Name
+                        p 
+                    .info-wrap.teacher-email-info
+                        label Teacher Email
+                        p 
+                    .info-wrap.room-info
+                        label Room
+                        p 
+            .period-wrap.period-6-wrap
+                label.period-label Period 6
+                span Spanish 1
+                .period-info-menu
+                    .info-wrap.teacher-name-info
+                        label Teacher Name
+                        p 
+                    .info-wrap.teacher-email-info
+                        label Teacher Email
+                        p 
+                    .info-wrap.room-info
+                        label Room
+                        p 

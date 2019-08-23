@@ -1,0 +1,341 @@
+doctype html
+html
+	head
+		title= title
+		link(rel="stylesheet", href="/css/admin/security.css")
+		link(rel='stylesheet', href='/css/main.css')
+	body
+		include nav
+		include alerterController
+		.AD-security-nav
+			.AD-security-nav-topl
+			.AD-security-nav-wrapper
+				.AD-security-nav-object.selected
+					.LBsecurity
+				.AD-security-nav-object.icon2
+				.AD-security-nav-object.icon3
+				.AD-security-nav-object.icon4
+				.AD-security-nav-object.icon5
+			.AD-security-nav-back
+				
+		.AD-MWRP
+			.AD-hoempage-header
+				p.homepageHeader Security
+				include accountTL
+			.AD-security-body
+				.AD-security-body-container
+					.AD-security-bc-top
+						.AD-sbct-object
+							.AD-sbct-object-top
+								.AD-sbct-object-top-left
+									p Overview
+								.AD-sbct-object-top-right
+									.AD-sbct-object-top-right-wrapper
+										.AD-sbct-object-top-right-object
+											input.selected(type="button" value="School")
+										.AD-sbct-object-top-right-object
+											input(type="button" value="Branch")
+										.AD-sbct-object-top-right-object
+											input(type="button" value="Network")
+								
+							.AD-sbct-object-bottom
+								.AD-sbct-ob-object
+									.AD-sbct-object-left
+										p.camerasSTAT PEND.
+									.AD-sbct-object-right
+										.AD-sbct-object-right-icon-wrapper
+										
+								.AD-sbct-ob-object
+									.AD-sbct-object-left
+										p.doorsSTAT PEND.
+									.AD-sbct-object-right
+										.AD-sbct-object-right-icon-wrapper.door
+										
+								.AD-sbct-ob-object
+									.AD-sbct-object-left
+										p.networkSTAT PEND.
+									.AD-sbct-object-right
+										.AD-sbct-object-right-icon-wrapper.world
+										
+								.AD-sbct-ob-object
+									.AD-sbct-object-left
+										p.securitySTAT PEND.
+									.AD-sbct-object-right
+										.AD-sbct-object-right-icon-wrapper.secbadge
+										
+								.AD-sbct-ob-object
+									.AD-sbct-object-left
+										p.alarmsSTAT PEND.
+									.AD-sbct-object-right
+										.AD-sbct-object-right-icon-wrapper.copcap
+										
+								.AD-sbct-ob-object
+									.AD-sbct-object-left
+										p.systemSTAT PEND.
+									.AD-sbct-object-right
+										.AD-sbct-object-right-icon-wrapper.system
+								
+						.AD-sbct-object
+							.AD-sbct-object-container
+								.AD-sbct-object-top
+									.AD-sbct-object-top-left
+										p Regiones
+									.AD-sbct-object-top-right
+										.AD-sbct-object-top-right-wrapper
+											.AD-sbct-object-top-right-object
+												input.selected(type="button" value="Students")
+											.AD-sbct-object-top-right-object
+												input(type="button" value="Teachers")
+											.AD-sbct-object-top-right-object
+												input(type="button" value="Others")
+								.AD-sbct-object-bottom-runner
+									.AD-sbct-object-bottom-obj-top
+										.AD-sbct-obot-one
+											p Name
+										.AD-sbct-obot-two
+											p Status
+										.AD-sbct-obot-three
+											p PIN
+										.AD-sbct-obot-four
+											p Status
+										
+									.AD-sbct-object-bottom-obj-bottom
+									
+					.AD-security-bc-bottom
+						.AD-sbcb-header
+							p Recent Security Events
+						.AD-sbcb-bottom
+							.AD-sbcb-bottom-container
+								.RSE-titles
+									.RSE-titles-one
+										p ID.
+									.RSE-titles-two
+										p Type
+									.RSE-titles-three
+										p Description
+									.RSE-titles-four
+										p Severity
+									.RSE-titles-five
+										p Need Action
+									.RSE-titles-six
+										p Actions
+								.RSE-objects-wrapper
+
+									h5.RSEEOA End Of Events
+						
+				
+				
+	
+include socketer			
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js")
+script.
+
+	var rawSystem = "#{system}"
+	var system = JSON.parse(rawSystem.replace(/&quot;/g,'"'));
+	
+	// var rawLogs = "#{logs}"
+	// var logs = JSON.parse(rawLogs.replace(/&quot;/g,'"'));
+
+
+	$('.naviObject-5').find('.AD-nav-wrapper-hover-object').addClass('base')	
+	
+	$(document).ready(function(){
+		setTimeout(function(){
+			$(".AD-nav-wrapper").addClass('securityPage')
+			$('.AD-MWRP').addClass('securityPage')
+			setTimeout(function(){
+				$('.AD-MWRP').addClass('darkMode')
+				$('.ATL-TL-user-FNLN p').addClass('darkmode')
+				$('.homepageHeader').addClass('darkmode')
+				$('.AD-security-nav').show()
+				$('.AD-security-body').addClass("active")
+				setTimeout(function(){
+					$('.AD-MWRP').addClass('SPleftnav')
+					$('.ATL-TL-wrapper').addClass('active')
+					secStart()
+				},1500)
+			},1500)
+				
+		}, 500)	
+	})
+	
+
+	$('.AD-security-nav-back').click(function(){
+		window.location.href = '/dashboard'
+	})
+	
+	for(var i = 0; i < 10; i++) {
+		$('.AD-sbct-object-bottom-obj-bottom').prepend('<div class="AD-sbct-object-bottom-obj" id="'+i+'"> <div class="AD-sbct-obot-one"> <p>Aiden Appleby</p> </div> <div class="AD-sbct-obot-two"> <p>Junior</p> </div> <div class="AD-sbct-obot-three"> <p>10603</p> </div> <div class="AD-sbct-obot-four"> <div class="pos"></div> </div> </div>')
+	}
+	
+	$('.AD-sbct-object-bottom-obj:odd').css('background', "transparent")
+	
+	$(document).on('click', '.RSE-OS-input input[value="Trigger Alert"]', function(){
+		var data = $(this).parent().parent().parent().attr('id')
+		EMERGSYS(data)
+	})
+	
+	$(document).on('click', '.RSE-OS-input input', function(){
+		var id = $(this).parent().parent().attr('id').slice(7)
+		console.log(id)
+		$.ajax({
+		  type: "POST",
+		  url: "/admin/update/sec/logs",
+		  data: {id}
+		});
+	})
+	
+	// 
+	// Recent Security Events
+	// 
+	
+	socket.on('Lockdown', function(msg){
+		$('.RSE-objects-wrapper').prepend('<div class="RSE-object pre" id="RSEOBJ'+msg.id+'"> <div class="RSE-object-one"> <p class="tac">IO.</p> </div> <div class="RSE-object-two"> <p>Lockdown</p> </div> <div class="RSE-object-three"> <p>A lockdown has been triggered within the building.</p> </div> <div class="RSE-object-four"> <p>4</p> </div> <div class="RSE-object-five"> <p>Yes</p> </div> <div class="RSE-object-six" id="actions'+msg.id+'"> </div> </div>')
+		$("#RSEOBJ" + msg.id).children().hide();
+		$("#RSEOBJ" + msg.id).removeClass('pre')
+		setTimeout(function(){
+			$("#RSEOBJ" + msg.id).children().fadeIn();
+		})
+		
+	})
+	
+	for(var i = 0; i < logs.length; i++) {
+		var severity = 0
+		var action = "No"
+		var actionREQ = 0
+		if(logs[i].logType == "Security") {
+			if(logs[i].data.type == "Lockdown") {
+				severity = 4
+				actionREQ = 4
+			}
+			if(!logs[i].actionTaken) {
+				action = "Yes"
+				if(logs[i].data.type == "Action") {
+					action = "Log"
+				}
+			}
+			$('.RSE-objects-wrapper').prepend('<div class="RSE-object" id="RSEOBJ'+logs[i].logID+'"> <div class="RSE-object-one"> <p class="tac">'+i+'.</p> </div> <div class="RSE-object-two"> <p>'+logs[i].data.type+'</p> </div> <div class="RSE-object-three"> <p>'+logs[i].data.description+'</p> </div> <div class="RSE-object-four"> <p>'+severity+'</p> </div> <div class="RSE-object-five"> <p>'+action+'</p> </div> <div class="RSE-object-six" id="actions'+logs[i].logID+'"> </div> </div>')
+			if(logs[i].data.type == "Lockdown") {
+				if(!logs[i].actionTaken) {
+					$('#actions' + logs[i].logID).append('<div class="RSE-OS-input"><input class="ms" type="button" value="Active Alert Center" /></div> <div class="RSE-OS-input"><input type="button" value="Cameras" /></div>')
+				} else {
+					$('#actions' + logs[i].logID).append('<div class="RSE-OS-input"><input class="ms" type="button" value="Inspect" /></div> <div class="RSE-OS-input"><input type="button" value="Cameras" /></div><div class="RSE-OS-input"><input type="button" value="School Status" /></div>')
+				}
+			}
+			if(logs[i].data.type == "Action") {
+				$('#actions' + logs[i].logID).append('<div class="RSE-OS-input"><input class="ms" type="button" value="Master Logs" /></div> <div class="RSE-OS-input"><input type="button" value="Inspect" /></div>')
+			}
+			
+			
+		}
+	}
+	
+	// 
+	// 
+	// 
+	
+	function secStart() {
+		var pingstat = pingWebsite("https://app.aiden.engineer")
+		checkOVstatus({"stat": "online", "sel": "security"})
+		checkSystemStatus()
+		checkAlarmStatus()
+		setTimeout(function(){
+			checkDoorStatus()
+		}, 200)
+		setTimeout(function(){
+			checkCameraStatus()
+		}, 1000)
+	}
+	
+	function checkSystemStatus() {
+		if(system[0].contactCTRL == false) {
+			checkOVstatus({"stat": "offline", "sel": "system"})
+		} else {
+			checkOVstatus({"stat": "online", "sel": "system"})
+		}
+	}
+	function checkCameraStatus() {
+		if(system[0].cameras == false) {
+			checkOVstatus({"stat": "offline", "sel": "cameras"})
+		} else {
+			checkOVstatus({"stat": "online", "sel": "cameras"})
+		}
+	}
+	function checkDoorStatus() {
+		if(system[0].doors == false) {
+			checkOVstatus({"stat": "offline", "sel": "doors"})
+		} else {
+			checkOVstatus({"stat": "online", "sel": "doors"})
+		}
+	}
+	function checkAlarmStatus() {
+		var status = pingSchool({"message": "alarmStatus"})
+		if (status == "online") {
+			checkOVstatus({"stat": "online", "sel": "alarms"})
+		} else {
+			checkOVstatus({"stat": "offline", "sel": "alarms"})
+		}
+	}
+	
+	function pingSchool(data) {
+		var reply = "empty"
+		socket.emit('pingSchool', {"message": data.message});
+		setTimeout(function(){
+			if(reply == 'empty') {
+				return "offline"
+			} else {
+				return "online"
+			}
+		}, 6000)
+	}
+	
+	function pingWebsite(website) {
+		var ping = false
+		
+		$.ajax({ type: "GET",
+		    url: website,
+		    cache:false,
+		    success: function(output){ 
+		        ping = true
+		        if(ping) {
+		        	checkOVstatus({"stat": "online", "sel": "network"})
+		        }
+		    	return ping
+		    }
+		});
+	}
+	
+	function checkOVstatus(data) {
+		var stat = data.stat
+		var sel = data.sel
+		if(sel == "cameras") {
+			$('.camerasSTAT').text(stat)
+			$('.camerasSTAT').parent().siblings('.AD-sbct-object-right').children('.AD-sbct-object-right-icon-wrapper').addClass(`${stat}`)
+		}
+		if(sel == "doors") {
+			$('.doorsSTAT').text(stat)
+			$('.doorsSTAT').parent().siblings('.AD-sbct-object-right').children('.AD-sbct-object-right-icon-wrapper').addClass(`${stat}`)
+		}
+		if(sel == "network") {
+			$('.networkSTAT').text(stat)
+			$('.networkSTAT').parent().siblings('.AD-sbct-object-right').children('.AD-sbct-object-right-icon-wrapper').addClass("" + stat)
+		}
+		if(sel == "security") {
+			$('.securitySTAT').text(stat)
+			$('.securitySTAT').parent().siblings('.AD-sbct-object-right').children('.AD-sbct-object-right-icon-wrapper').addClass(`${stat}`)
+		}
+		if(sel == "alarms") {
+			$('.alarmsSTAT').text(stat)
+			$('.alarmsSTAT').parent().siblings('.AD-sbct-object-right').children('.AD-sbct-object-right-icon-wrapper').addClass(`${stat}`)
+		}
+		if(sel == "system") {
+			$('.systemSTAT').text(stat)
+			$('.systemSTAT').parent().siblings('.AD-sbct-object-right').children('.AD-sbct-object-right-icon-wrapper').addClass(`${stat}`)
+		}
+	}

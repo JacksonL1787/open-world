@@ -1,0 +1,476 @@
+.AD-hoempage-header
+    width 100%
+    height 150px
+    position relative
+    
+.homepageHeader
+    font-weight: 600;
+    margin 0
+    font-size: 40px;
+    letter-spacing: 3px;
+    transform: translateY(-50%);
+    top: 50%;
+    position: relative;
+    margin-left: 5%;
+    transition 1s
+    color: #e1e3e6;
+    &.darkmode
+        color #525456
+    
+.AD-security-body
+    width 100%
+    height calc(100% - 150px)
+    position relative
+    transition .4s
+    opacity 0
+    &.active
+        opacity 1
+        
+.AD-security-nav
+    width 85px
+    height -webkit-fill-available
+    position absolute
+    left 0px
+    top 0px
+    display none
+    background #202231
+    
+    
+.AD-security-nav-topl
+    width 100%
+    height 85px
+    // background #2d335a
+    background-image url(/img/admin/gradCap.svg)
+    background-size 50px
+    background-position center
+    background-repeat no-repeat
+    
+.AD-security-nav-wrapper
+    width 100%
+    height fit-content
+    margin-top 100px
+
+.AD-security-nav-object
+    width 100%
+    height 85px
+    transition .3s
+    background-image url("/img/admin/darkMode/overviewDM.svg")
+    background-size 40px
+    background-repeat no-repeat
+    background-position center
+    cursor pointer
+    position relative
+    &:hover
+        background-color #282a3a
+    &.selected
+        -webkit-box-shadow: 0px 0px 29px 0px rgba(0,0,0,0.45);
+        -moz-box-shadow: 0px 0px 29px 0px rgba(0,0,0,0.45);
+        box-shadow: 0px 0px 29px 0px rgba(0,0,0,0.45);
+    
+.LBsecurity
+    width 3px
+    height 100%
+    background white
+    left 0px
+    position absolute
+    
+.icon2
+    background-image url("/img/admin/darkMode/securityDM.svg")
+    background-size 35px
+    
+.icon3
+    background-image url("/img/admin/darkMode/schoolDM.svg")
+    background-size: 45px;
+    
+.icon4
+    background-image url("/img/admin/darkMode/permissionsDM.svg")
+      
+.icon5
+    background-image url("/img/admin/darkMode/settingsDM.svg")
+    background-size 35px
+    
+.AD-security-nav-back
+    width: 100%;
+    height: 85px;
+    background-image: url(/img/admin/leftArrow.svg);
+    background-size: 30px;
+    background-position: center;
+    position: absolute;
+    bottom: 70px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    
+.AD-security-body-container
+    width 90%
+    height 100%
+    position relative
+    margin 0 auto
+
+.AD-security-bc-top
+    width 100%
+    height 45%
+    display -webkit-box
+    position relative
+    
+.AD-security-bc-bottom
+    width 100%
+    height 55%
+
+.AD-sbct-object
+    width 50%
+    height 100%
+    position relative
+    
+.AD-sbct-object-top
+    width 100%
+    height 100px
+    display -webkit-box
+    
+.AD-sbct-object-top-left
+    width 50%
+    height 100%
+    p
+        margin: 0;
+        transform: translateY(-50%);
+        top: 50%;
+        position: relative;
+        color: white;
+        font-family: nunito;
+        font-weight: 700;
+        font-size: 24px;
+        margin-left: 5px;
+        
+.AD-sbct-object-top-right 
+    width 50%
+    height 100%
+
+.AD-sbct-object-bottom
+    width 100%
+    height calc(100% - 100px)
+    display flex
+    justify-content space-between
+    flex-wrap wrap
+
+.AD-sbct-ob-object
+    width: 31.5%;
+    height: 45%;
+    background: #202231;
+    display -webkit-box
+    border-radius: 10px;
+    -webkit-box-shadow: 0 0 13px 15px rgba(0,0,0,0.1)
+    -moz-box-shadow: 0 0 13px 15px rgba(0,0,0,0.1)
+    box-shadow: 0 0 13px 15px rgba(0,0,0,0.1)
+
+.AD-sbct-object-top-right-wrapper
+    width 100%
+    height fit-content
+    display flex
+    transform translateY(-50%)
+    top 50%
+    position relative
+    justify-content space-around
+
+.AD-sbct-object-top-right-object
+    width fit-content
+    height fit-content
+    input
+        width: 80px;
+        height: 40px;
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid #6d7092;
+        color: #fff;
+        cursor: pointer;
+        outline: none;
+        font-family: nunito;
+        font-weight: 300;
+        transition .3s
+        &.selected
+            font-weight 900
+            border-bottom: 3px solid white;
+            padding-top 3px
+        &:hover
+            border-bottom: 1px solid white;
+            padding-top 1px
+    
+.AD-sbct-object-container
+    width 90%
+    height 100%
+    right 0px
+    position absolute
+
+.AD-sbct-object-bottom-obj-bottom
+    width 100%
+    height calc(100% - 40px)
+
+.AD-sbct-object-bottom-obj
+    width 100%
+    height 40px
+    background #202231
+    display -webkit-box
+
+.AD-sbct-object-bottom-obj-top
+    width 100%
+    height 40px
+    display -webkit-box
+    
+.AD-sbct-obot-one
+    width 40%
+    height 100%
+    p
+        margin 0
+        color white
+        font-size: 13px;
+        margin-left 20px
+        transform translateY(-50%)
+        top 50%
+        position relative
+        
+.AD-sbct-obot-two
+    width 30%
+    height 100%
+    p
+        margin 0
+        color white
+        font-size: 13px;
+        margin-left 10px
+        transform translateY(-50%)
+        top 50%
+        position relative
+        
+.AD-sbct-obot-three
+    width 15%
+    height 100%
+    p
+        margin 0
+        color white
+        font-size: 13px;
+        // margin-left 10px
+        transform translateY(-50%)
+        top 50%
+        text-align center
+        position relative
+        
+.AD-sbct-obot-four
+    width 15%
+    height 100%
+    p
+        margin 0
+        color white
+        font-size: 13px;
+        // margin-left 10px
+        text-align center
+        transform translateY(-50%)
+        top 50%
+        position relative
+        
+.pos
+    width 10px
+    height 10px
+    transform translate(-50%, -50%)
+    top 50%
+    left 50%
+    position relative
+    border-radius 50%
+    background limegreen
+    
+.AD-sbct-object-bottom-runner
+    width: 100%;
+    height: calc(97% - 100px);
+    overflow-y scroll
+
+.AD-sbcb-header
+    width 100%
+    height 100px
+    position relative
+    p
+        margin 0
+        transform translateY(-50%)
+        top 50%
+        position absolute
+        color: #fff;
+        font-family: nunito;
+        font-weight: 700;
+        font-size: 24px;
+        margin-left: 5px;
+        
+.AD-sbcb-bottom
+    width 100%
+    height calc(100% - 100px)
+    
+.AD-sbcb-bottom-container
+    width 100%
+    height 90%
+    
+.RSE-object
+    width: 100%;
+    height: 70px;
+    background: #202231;
+    border-radius: 4px;
+    position relative
+    margin-bottom 10px
+    display: -webkit-box;
+    transition .4s
+    overflow-x scroll
+    p
+        margin 0
+        transform translateY(-50%)
+        top 50%
+        position relative
+        margin-left 20px
+        color white
+    &::-webkit-scrollbar { height: 0 !important }     
+    .pre
+        height 0px
+        
+.tac
+    text-align center
+    margin 0
+    
+.RSE-objects-wrapper
+    width 100%
+    height fit-content
+    max-height 85%
+    overflow-y scroll
+    &::-webkit-scrollbar 
+        display: none; 
+    
+.RSE-titles
+    width 100%
+    height 50px
+    display -webkit-box
+    p
+        color: #73747b;
+        margin: 0;
+        transform: translateY(-50%);
+        top: 50%;
+        position: relative;
+        font-size: 15px;
+        margin-left: 20px;
+        font-weight: 800;
+    
+.RSE-titles-one, .RSE-object-one
+    width 5%
+    height 100%
+    position relative
+    p  
+        margin 0
+        text-align center
+    
+.RSE-titles-two, .RSE-object-two
+    width 20%
+    height 100%
+    position relative
+    
+.RSE-titles-three, .RSE-object-three
+    width 33%
+    height 100%
+    position relative  
+    
+.RSE-titles-four, .RSE-object-four
+    width 7%
+    height 100%
+    position relative
+    p
+        margin 0
+        text-align center
+    
+.RSE-titles-five, .RSE-object-five
+    width 10%
+    height 100%
+    position relative
+    p
+        margin 0
+        text-align center
+    
+.RSE-titles-six, .RSE-object-six
+    width 25%
+    height 100%
+    position relative
+    
+.RSEEOA
+    margin: 0;
+    margin-top: 40px;
+    text-align: center;
+    color: white;
+    font-weight: 100;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    
+.RSE-object-six
+    display -webkit-box
+
+.RSE-OS-input   
+    width fit-content
+    height fit-content
+    transform translateY(-50%)
+    top 50%
+    position relative
+    margin-left 20px
+    input
+        width: fit-content;
+        background: #474a5f;
+        padding-left: 15px;
+        padding-right: 15px;
+        height: 27px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family nunito
+        outline: none;
+        transition .3s
+        &.ms
+            background: #3778d0;
+            &:hover
+                background #d03737
+            
+.AD-sbct-object-left
+    width 50%
+    height 100%
+    position relative
+    p  
+        color white
+        margin 0
+        font-weight 600
+        font-size 1.6vw
+        text-transform uppercase
+        transform translate(-50%, -50%)
+        top 50%
+        left 50%
+        margin-left 5%
+        position absolute
+        // margin-left 15%
+.AD-sbct-object-right
+    width 50%
+    height 100%
+    position relative
+
+.AD-sbct-object-right-icon-wrapper
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #2c3156;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    background-image: url(/img/admin/eye.svg);
+    background-size: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 4px solid #006cff;
+    &.door
+        background-image: url(/img/admin/door.svg);
+    &.world
+        background-image: url(/img/admin/world.svg);
+    &.secbadge
+        background-image: url(/img/admin/secbadge.svg);
+    &.copcap
+        background-image: url(/img/admin/speaker.svg);
+    &.system
+        background-image: url(/img/admin/branchsystem.svg);
+    &.online
+        border: 4px solid #0dff00; 
+    &.offline
+        border: 4px solid #ff3100;

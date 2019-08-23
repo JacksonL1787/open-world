@@ -1,0 +1,129 @@
+doctype html
+html
+	head
+		title= title
+		link(rel="stylesheet", href="/css/admin/alerterController.css")
+		link(rel='stylesheet', href='/css/main.css')
+		script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous")
+	body
+		.alerterC-background
+		.alerterC-mwrapper
+			.alerterC-controls
+				.alerterC-controls-container
+					.alerterC-object
+						.alerterC-object-header
+							.alerterC-object-header-icon
+							.alerterC-object-header-title
+								p Fire
+						.alerterC-object-body
+							.alerterC-object-body-shortcuts
+								.alerterC-object-body-shortcuts-header
+									p Quick Actions
+								.alerterC-object-body-shortcuts-body
+									.alerterC-object-body-shortcuts-object-wrapper
+										.alerterC-object-body-shortcuts-object.evac
+										.alerterC-object-body-shortcuts-object.PA
+										.alerterC-object-body-shortcuts-object.cancel
+										
+							.alerterC-object-body-actions
+								.alerterC-object-body-actions-header
+									p Status
+								.alerterC-object-body-actions-body
+									.alerterC-fire-stat-object-key
+										.afsok-one
+											p Location
+										.afsok-two
+											p Region
+										.afsok-three
+											p Status
+									.alerterC-fire-stat-object-container
+									
+										
+						
+						
+					.alerterC-object
+					.alerterC-object
+				
+			.alerterC-auth
+				.alerterC-auth-top
+					.alerterC-auth-top-icon
+				.alerterC-auth-middle
+					.alerterC-auth-middle-text
+						h6 Authorize to continue
+						p Please put in your Branch password or your Branch 4-digit alerter code.
+					.alerterC-auth-middle-input
+						input(type="password" placeholder="Password")
+				.alerterC-auth-bottom
+					input(type="button" value="Cancel")
+				
+	
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
+script(src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js")
+script(src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.js")
+script.
+	$(document).ready(function(){
+		$('.alerterC-auth-middle-input input').on('keyup', function(){
+			if($(this).val().length != 0) {
+				$('.alerterC-auth-bottom input').val('Proceed')	
+			} else {
+				$('.alerterC-auth-bottom input').val('Cancel')	
+			}
+		})
+		
+		$('.alerterC-auth-middle-input input').focusin(function(){
+		
+		
+			var e = $.Event( "keypress", { which: 13 } );
+			$('.alerterC-auth-bottom input').trigger(e);
+		});
+		
+		$('.alerterC-auth-bottom input').click(function(){
+			if($('.alerterC-auth-middle-input input').val().length != 0) {
+				$(this).val('Authorizing')
+				var passID = $('.alerterC-auth-middle-input input').val()
+				var email = "#{user.email}"
+				var data = {"email": email, "password": passID}
+				$.when( $.ajax({type: "POST", url: "/admin/security/check/password", data: data}) ).then(function() {
+					$('.alerterC-auth-bottom input').val('Authorized')
+					setTimeout(function(){
+						$('.alerterC-auth').fadeOut()
+						setTimeout(function(){
+							$(".alerterC-controls").fadeIn()
+							runAlerterC()
+						},500)
+					}, 500)
+				}).catch(function() {
+					$('.alerterC-auth-bottom input').val('Incorrect')
+					setTimeout(function(){
+						$('.alerterC-auth-bottom input').val('Proceed')
+					},1000)
+				});
+			} else {
+				$('.alerterC-background, .alerterC-mwrapper').fadeOut()
+			}
+		})	
+	})
+	
+	function EMERGSYS(data) {
+		$('.alerterC-background, .alerterC-mwrapper').fadeIn()	
+	}
+	
+	function runAlerterC(id) {
+		for(var i = 0; i < fire.length; i++) {
+			$('.alerterC-fire-stat-object-container').prepend('<div class="alerterC-fire-stat-object" id="'+fire[i]._id+'"> <div class="afsok-one"> <p>'+fire[i].location+'</p> </div> <div class="afsok-two"> <p>'+fire[i].region+'</p> </div> <div class="afsok-three"> <div class="afsok-status-wrapper" id="sw'+fire[i]._id+'"> <p>Pending</p> <div class="afsok-status-background"></div> </div> </div> </div>')
+			if(fire[i].sensorStatus) {
+				$('.sw' + fire[i]._id).addClass('red')
+				// $('.sw' + fire[i]._id).find('p').text('Fire')
+			} else {
+				$('.sw' + fire[i]._id).addClass('green')
+				// $('.sw' + fire[i]._id).find('p').text('Nominal')
+			}
+			// $('sw'+ fire[i]._id)
+			
+		}
+	}

@@ -6,7 +6,9 @@
             input.profile-picture-upload(type="file" style="display: none;")
             .profile-pic
             .hover-wrap
-                p.change-pic Change
+                .content
+                    p.change-pic Change
+                    p.file-inpt-info Only Accepts JPG and PNG
         .settings-option-wrap
             label First Name
             input.firstname(type="text")
@@ -29,7 +31,7 @@
             label Confirm New Password
             input.confirm-password(type="password")
         button.change-password-btn Change Password
-
+    
 .dashboard-settings-widget.widget-wrap.settings-page-widget
     .top-container
         h1.title Dashboard Settings

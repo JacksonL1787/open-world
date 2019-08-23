@@ -65,5 +65,67 @@ module.exports = {
                 
             })
         }
+    },
+    addStudentNote: (req,res,next) => {
+        if(req.user && req.user.permission == "teacher") {
+            MongoClient.connect("mongodb://localhost:27017", function(err, client) {
+                if(err) throw err
+                var db = client.db('OpenWorld');
+                db.collection('students').updateOne({"studentID": parseInt(req.body.student)}, { $push: {notes: {"creator": req.body.creator, "date": req.body.date, "message": req.body.message, "noteID": req.body.noteID}}})
+                res.send(200)
+            })
+        }
+    },
+    deleteStudentNote: (req,res,next) => {
+        if(req.user && req.user.permission == "teacher") {
+            MongoClient.connect("mongodb://localhost:27017", function(err, client) {
+                if(err) throw err
+                var db = client.db('OpenWorld');
+                db.collection('students').update({"studentID": parseInt(req.body.student)}, { $pull: {notes: {noteID: req.body.noteID}}})
+                res.send(200)
+            })
+        }
+    },
+    updateLightingColor: (data) => {
+        MongoClient.connect("mongodb://localhost:27017", function(err, client) {
+                if(err) throw err
+                var db = client.db('OpenWorld');
+                db.collection('classrooms').update({'roomNumber': data.room}, {$set: {"devices.lightingColor": data.color}})
+            })
+    },
+    updateLightBrightness: (data) => {
+        MongoClient.connect("mongodb://localhost:27017", function(err, client) {
+                if(err) throw err
+                var db = client.db('OpenWorld');
+                db.collection('classrooms').update({'roomNumber': data.room}, {$set: {"devices.lightBrightness": data.value}})
+            })
+    },
+    updateLightSwitch: (data) => {
+        MongoClient.connect("mongodb://localhost:27017", function(err, client) {
+                if(err) throw err
+                var db = client.db('OpenWorld');
+                db.collection('classrooms').update({'roomNumber': data.room}, {$set: {"devices.lightSwitch": data.state}})
+            })
+    },
+    updateProjector: (data) => {
+        MongoClient.connect("mongodb://localhost:27017", function(err, client) {
+                if(err) throw err
+                var db = client.db('OpenWorld');
+                db.collection('classrooms').update({'roomNumber': data.room}, {$set: {"devices.projector": data.state}})
+            })
+    },
+    updateDoorLock: (data) => {
+        MongoClient.connect("mongodb://localhost:27017", function(err, client) {
+                if(err) throw err
+                var db = client.db('OpenWorld');
+                db.collection('classrooms').update({'roomNumber': data.room}, {$set: {"devices.doorLock": data.state}})
+            })
+    },
+    updateSetTemp: (data) => {
+        MongoClient.connect("mongodb://localhost:27017", function(err, client) {
+                if(err) throw err
+                var db = client.db('OpenWorld');
+                db.collection('classrooms').update({'roomNumber': data.room}, {$set: {"devices.setTemp": data.value}})
+            })
     }
 }

@@ -40,7 +40,7 @@ function removeFilter(filterClass, filterName) {
 }
 
 function appendStudent(data) { // Appends student to students widget
-    $('.all-students-widget .students-container').append('<div class="student-wrap"><div class="student-content"><div class="student-info name-info"><label>Name</label><p class="name">'+data.firstName+' '+data.lastName+'</p></div><div class="student-info email-info"><label>Email</label><a class="email" href="mailto:'+data.email+'">'+data.email+'</a></div><div class="student-info grade-info"><label>Grade</label><p class="grade">'+data.grade+'</p></div><div class="student-info advisor-info"><label>Advisor</label><p class="advisor">'+data.advisor.lastName+', '+data.advisor.firstName+'</p></div><button class="manage-student">Manage</button></div></div>')
+    $('.all-students-widget .students-container').append('<div class="student-wrap" id="'+data.studentID+'"><div class="student-content"><div class="student-info name-info"><label>Name</label><p class="name">'+data.firstName+' '+data.lastName+'</p></div><div class="student-info email-info"><label>Email</label><a class="email" href="mailto:'+data.email+'">'+data.email+'</a></div><div class="student-info grade-info"><label>Grade</label><p class="grade">'+data.grade+'</p></div><div class="student-info advisor-info"><label>Advisor</label><p class="advisor">'+data.advisor.lastName+', '+data.advisor.firstName+'</p></div><button class="manage-student">Manage</button></div></div>')
 }
 
 function showStudents() { // Shows students based on what is in search bar and filters
@@ -109,6 +109,9 @@ $('.search-bar-widget .filter-wrap .filters-menu').click(function(e) {
     e.stopPropagation() // Stop from closing the menu
 })
 
+$(document).on('click', '.all-students-widget .student-wrap .manage-student', function() {
+    window.location.href = "/teacher/student/" + $(this).parent('.student-content').parent('.student-wrap').attr('id')
+});
 
 // Checks for adding filter from filter menu
 $('.filters-menu .change-filter-state-wrap').click(function() {

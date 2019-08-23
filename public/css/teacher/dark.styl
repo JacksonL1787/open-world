@@ -1,9 +1,14 @@
 body
     background #2b2b2b !important
 
+.home-title
+    color #DADADA !important
+
 .side-nav
     background #2f2f2f !important
     .top
+        .close-nav-btn
+            color white !important
         .icon
             background-image url('../../img/BranchLogoVerticalDark.png') !important
     .bottom
@@ -13,7 +18,8 @@ body
     .message-wrap
         background #2f2f2f !important
         border 1px solid #232323 !important
-        color #fdfeff !important
+        p.message
+            color #fdfeff !important
 .mainDashboard
     background #2b2b2b !important
     .top
@@ -43,13 +49,33 @@ body
                     color #fdfdfd !important
                 .close-filter
                     background-image url('../../img/teacher/close-light.svg') !important
-        .all-students-widget
-            .student-wrap
+        .all-students-widget,
+        .previous-emergencies-widget
+            .student-wrap,
+            .emergency-box
                 background #2b2b2b !important
                 border 1px solid rgba(0,0,0,0.05) !important
-                .student-info
+                .student-info,
+                .info-wrap
                     p
                         color #cecece !important
+        .basic-info-widget,
+        .schedule-widget
+            p
+                color white !important
+        .schedule-widget
+            h2
+                color #cecece !important
+            .period-info-menu
+                background #2b2b2b !important
+                border 1px solid #252525 !important
+        .notes-widget
+            .note-wrap
+                border 1px solid #292929 !important
+                box-shadow none !important
+                background #2A2A2A !important
+                p
+                    color white !important
 .loader
     background rgba(0,0,0,0.2) !important
 
@@ -61,8 +87,72 @@ body
         .blinds-down-btn
             background #565656 !important
 
+.lockdown-widget
+    .top-container .icon
+        background-image: url('/img/teacher/security/lockdown-icon-dark.svg') !important
+.fire-alarm-widget
+    .top-container .icon
+        background-image: url('/img/teacher/security/fire-alarm-icon-dark.svg') !important
+.earthquake-alert-widget
+    .top-container .icon
+        background-image url('/img/teacher/security/earthquake-alert-icon-dark.svg') !important
+.medical-emergency-widget
+    .top-container .icon
+        background-image url('/img/teacher/security/medical-emergency-icon-dark.svg') !important
+
+.previous-emergencies-widget
+    .emergency-box
+        .lockdown-icon
+            top calc(50% + 8px)
+            background-image url('/img/teacher/security/lockdown-icon-dark.svg') !important
+        .fire-alarm-icon
+            top calc(50% + 8px)
+            background-image url('/img/teacher/security/fire-alarm-icon-dark.svg') !important
+        .earthquake-icon
+            top calc(50% + 7px)
+            background-image url('/img/teacher/security/earthquake-alert-icon-dark.svg') !important
+        .medical-icon
+            top calc(50% + 6px)
+            background-image url('/img/teacher/security//medical-emergency-icon-dark.svg') !important
+
+.climate-control-widget
+    .outer-climate-guage-wrap
+        .cover,
+        .climate-guage-wrap
+            border 5px solid #262626 !important
+            border-bottom none !important
+        .cover
+            background #2F2F2F !important
+            .current-temp
+                color #dadada !important
+        .border-cover
+            background #2b2b2b !important
+        .box
+            background #1b1b1b !important
+    .set-climate-wrap
+        .current-set-temp
+            color #dadada !important
+        .climate-control
+            border 1px solid #262626 !important
+            &:hover
+                background #2b2b2b !important
+            .icon
+                background-image url('/img/teacher/climate-arrow-white.svg') !important
 .overlay
     background rgba(0,0,0,0.5) !important
+
+.modal
+    background #212121 !important
+    .modal-top
+        h2.modal-title
+            color #dadada !important
+        .close
+            &:hover
+                color white !important
+    .modal-main
+        p
+            color white !important
+        
 
 input[type="text"],
 input[type="password"],

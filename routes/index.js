@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
-var routing = require("./indexRouter")
-var logUpdate = require("./logs")
+const routing = require("./indexRouter")
+const logUpdate = require("./logs")
+const lockdown = require('./lockdown')
 
 /* GET home page. */
 const { forwardAuthenticated } = require('../config/auth')
@@ -14,8 +15,10 @@ router.get('/', forwardAuthenticated, function(req, res, next) {
 
 router.get('/dashboard', function(req, res, next) {
   routing.dashboardRouter(req, res, next)
-  //logUpdate.login(req, res, next)
-  console.log(req.user)
 });
+
+router.post('/end-lockdown', function(req, res,next) {
+  lockdown.endLockdownAuth(req,res,next)
+})
 
 module.exports = router;

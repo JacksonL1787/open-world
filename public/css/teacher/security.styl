@@ -1,0 +1,283 @@
+.lockdown-overlay
+    position fixed
+    top 0
+    left 0
+    right 0
+    bottom 0
+    z-index 100
+    background rgba(0,0,0,0.4)
+    opacity 0
+    visibility hidden
+    transition opacity .3s, visibility .3s
+    &.active
+        opacity 1
+        visibility visible
+
+.lockdown-modal
+    width 350px
+    height fit-content
+    position fixed
+    left 50%
+    z-index 125
+    top calc(50% + 20px)
+    visibility hidden
+    background white
+    padding 10px 20px 20px
+    opacity 0
+    transform translate(-50%, -50%)
+    border-radius .3em
+    transition top .5s, opacity .3s, visibility .3s
+    &.active
+        top 50%
+        opacity 1
+        visibility visible
+    .modal-top
+        margin-top 30px
+        position relative
+        h2.modal-title
+            margin 0
+            color #4C4C4C
+            font-size 23px
+        .close
+            cursor pointer
+            position absolute
+            right -6px
+            color #a0a0a0
+            top -32px
+            transition color .3s
+            &:hover
+                color black
+    .modal-main
+        margin-top 10px
+        p
+            margin 0 0 5px
+            color #333
+            font-size 13px
+        .lockdown-inpt
+            background #fdfeff
+            border solid 1px #e6eaec
+            color #4c4c4c
+            outline none
+            font-size 14px
+            padding 7px 10px
+            width calc(100% - 20px)
+        .extra-info-textarea
+            background #fdfeff
+            border solid 1px #e6eaec
+            color #4c4c4c
+            outline none
+            font-size 14px
+            padding 7px 10px
+            width calc(100% - 20px)
+            height 150px
+            resize none
+        .incorrect
+            color red
+            font-size 12px
+            opacity 0
+            visibility hidden
+            margin 3px 0 0 2px
+            display inline
+            transition opacity .2s, visibility .2s
+            &.active
+                opacity 1
+                visibility visible
+        .confirm-begin-lockdown
+            border none
+            font-size 13px
+            color white
+            background #16BDF4
+            cursor pointer
+            outline none
+            height 29px
+            margin-top 10px
+            padding 0 15px
+            float right
+            transition background .3s
+            &:hover
+                background #14afe2
+
+.lockdown-widget
+    .top-container .icon
+        background-image: url('/img/teacher/security/lockdown-icon.svg')
+    .content
+        position absolute
+        top calc(50% + 25px)
+        left 50%
+        transform translate(-50%, -50%)
+        width fit-content
+        text-align center
+        height fit-content
+        .open-lockdown-prompt
+            background #16BDF4
+            color white
+            padding 7px 12px
+            font-size 14px
+            border none
+            outline none
+            cursor pointer
+            margin-bottom 5px
+            transition background .25s
+            &:hover
+                background #14afe2
+        .warning
+            color grey
+            font-size 12px
+            margin 0
+.fire-alarm-widget
+    .top-container .icon
+        background-image: url('/img/teacher/security/fire-alarm-icon.svg')
+.earthquake-alert-widget
+    .top-container .icon
+        background-image url('/img/teacher/security/earthquake-alert-icon.svg')
+.medical-emergency-widget
+    .top-container .icon
+        background-image url('/img/teacher/security/medical-emergency-icon.svg')
+
+.lockdown-widget,
+.earthquake-alert-widget
+    width calc(50% - 5px)
+    margin-right 5px
+    height 150px
+    display inline-block
+    position relative
+
+.fire-alarm-widget,
+.medical-emergency-widget
+    width calc(50% - 5px)
+    float right
+    height 150px
+    margin-left 5px
+    position relative
+
+.medical-emergency-widget,
+.previous-emergencies-widget,
+.earthquake-alert-widget
+    margin-top 10px
+
+.previous-emergencies-widget
+    margin-bottom 30px
+    .widget-content
+        width calc(100% - 40px)
+        margin-left 20px
+        .select-emergency-wrap
+            display flex
+            justify-content left
+            width fit-content
+            margin 0 0 20px
+            .option-wrap
+                width fit-content
+                height fit-content
+                margin-right 20px
+                &.active
+                    button
+                        margin-top 2px
+                        color #16BDF4
+                        border-bottom 3px solid #16BDF4
+                button
+                    background none
+                    padding 0 0 5px
+                    font-size 15px
+                    font-weight bold
+                    border none
+                    border-bottom 1px solid #b0b0b0
+                    outline none
+                    color #b0b0b0
+                    cursor pointer
+                    margin-top 0
+                    transition border-bottom .3s, margin-top .3s, color .3s
+                    &:hover
+                        margin-top 2px
+                        color #16BDF4
+                        border-bottom 3px solid #16BDF4
+        .emergencies-wrap
+            .emergency-box
+                background #F5F9FB
+                width 90%
+                margin-left 5%
+                border 1px solid rgba(0,0,0,0.07)
+                border-radius .3em
+                padding 15px 0
+                position relative
+                margin-bottom 10px
+                .emergency-icon
+                    background-size cover
+                    background-repeat no-repeat
+                    background-position center
+                    opacity 0.3
+                    width 30px
+                    height 35px
+                    left 10px
+                    position absolute
+                    transform translateY(-50%)
+                    &.lockdown-icon
+                        top calc(50% + 8px)
+                        background-image url('/img/teacher/security/lockdown-icon.svg')
+                    &.fire-alarm-icon
+                        top calc(50% + 8px)
+                        background-image url('/img/teacher/security/fire-alarm-icon.svg')
+                    &.earthquake-icon
+                        top calc(50% + 7px)
+                        background-image url('/img/teacher/security/earthquake-alert-icon.svg')
+                    &.medical-icon
+                        top calc(50% + 6px)
+                        background-image url('/img/teacher/security//medical-emergency-icon.svg')
+                .emergency-content
+                    width calc(100% - 50px)
+                    margin-left 25px
+                    display flex
+                    position relative
+                    justify-content left
+                    .name-wrap
+                        margin-left 25px
+                    .info-wrap
+                        height fit-content
+                        margin-right 20px
+                        label
+                            color grey
+                            font-weight bold
+                            font-size 11px
+                            text-transform uppercase
+                        a,p
+                            margin 0
+                            color #333
+                            font-size 15px
+                            display block
+                    .see-info-btn
+                        position absolute
+                        top 50%
+                        transform translateY(-50%)
+                        right 0
+                        background #16BDF4
+                        color white
+                        padding 7px 12px
+                        font-size 14px
+                        border none
+                        outline none
+                        cursor pointer
+                        transition background .25s
+                        &:hover
+                            background #14afe2
+.security-widget
+    .top-container
+        height fit-content
+        width calc(100% - 10px)
+        margin-left 10px
+        padding 15px 0
+        position relative
+        .title
+            color #4c4c4c
+            font-weight bold
+            font-size 25px
+            margin 0 10px 0 10px
+        .icon
+            background-size cover
+            background-position center
+            background-repeat no-repeat
+            opacity 0.3
+            top calc(50% + 3px)
+            position absolute
+            transform translateY(-50%)
+            right 20px
+            width 35px
+            height 41px

@@ -32,13 +32,13 @@ function projectorOff() {
 
 // Door Locking Functions
 
-function lock() { // Lock Door
+function lockDoor() { // Lock Door
     $('.door-control-widget .lock-status').text('Locked')
     $('.door-control-widget .change-lock-status-btn').text('Unlock')
     socket.emit('doorLock', 'doorLock')
 }
 
-function unlock() { // Unlock Door
+function unlockDoor() { // Unlock Door
     $('.door-control-widget .lock-status').text('Unlocked')
     $('.door-control-widget .change-lock-status-btn').text('Lock')
     socket.emit('doorUnlock', 'doorUnlock')
@@ -99,28 +99,65 @@ function changeBrightness(msg) {
     socket.emit('lightsBrightness', msg)
 }
 
+function mapTemp(num, in_min, in_max, out_min, out_max) {
+    return (num - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
+function updateClimateGuage(temp) {
+    if(temp > 85) {
+        temp = 85
+        $('.climate-guage-wrap .cover .current-temp').text(`>${temp}°F`)
+    } else if(temp < 55) {
+        temp = 55
+        $('.climate-guage-wrap .cover .current-temp').text(`<${temp}°F`)
+    } else {
+        $('.climate-guage-wrap .cover .current-temp').text(`${temp}°F`)
+    }
+    const rotate = mapTemp(temp, 55, 85, 10, 180)
+    $('.climate-guage-wrap .border-cover').css('transform', `translateX(-50%) rotate(${rotate}deg`)
+}
+
+updateClimateGuage(73)
 
 
 /*
     EVENT LISTENERS
 */
 
+$(document).ready(function() {
+    let room = window.data.rooms[0]
+    if(room.devices.lightSwitch) {
+        $('.lighting-control-widget .lighting-controls .light-switch-wrap .switch').addClass('active')
+    }
+    if(room.devices.projector) {
+        projectorOn()
+    }
+    if(room.devices.doorLock) {
+        lockDoor()
+    }
+    $('.lighting-control-widget .lighting-controls .brightness-range-input').val(room.devices.lightBrightness)
+    $('.climate-control-widget .set-climate-wrap .current-set-temp').text(`${room.devices.setTemp}°F`);
+})
+
 // Listen for click on turn on or off projector button
 $('.projector-control-widget .change-projector-status-btn').click(function() {
     if($('.status-light').hasClass('on')) {
         loading('.change-projector-status-btn', 1500, projectorOff, projectorWaiting,'top: calc(50% + 17px)')
+        socket.emit('projectorUpdateDB', {room: data.rooms[0].roomNumber, state: false})
     } else {
         loading('.change-projector-status-btn', 1500, projectorOn, projectorWaiting,'top: calc(50% + 17px)')
+        socket.emit('projectorUpdateDB', {room: data.rooms[0].roomNumber, state: true})
     }
 })
 
 // Listen for click on click on lock or unlock button
 $('.door-control-widget .change-lock-status-btn').click(function() {
-    console.log($('.door-control-widget .lock-status').text())
     if($('.door-control-widget .lock-status').text() == "Locked") {
-        loading('.change-lock-status-btn', 1500, unlock, unlockingDoor, 'top: calc(50% + 17px)')
+        loading('.change-lock-status-btn', 1500, unlockDoor, unlockingDoor, 'top: calc(50% + 17px)')
+        socket.emit('doorLockUpdateDB', {room: data.rooms[0].roomNumber, state: false})
     } else {
-        loading('.change-lock-status-btn', 1500, lock, lockingDoor, 'top: calc(50% + 17px)')
+        loading('.change-lock-status-btn', 1500, lockDoor, lockingDoor, 'top: calc(50% + 17px)')
+        socket.emit('doorLockUpdateDB', {room: data.rooms[0].roomNumber, state: true})
     }
 })
 
@@ -144,15 +181,35 @@ $('.blinds-control-widget .preset-controls .close-blinds-btn').click(function() 
 $('.lighting-control-widget .lighting-controls .light-switch-wrap .switch').click(function() {
     if($(this).hasClass('active')) {
         turnOffLights()
+        socket.emit('lightSwitchUpdateDB', {room: data.rooms[0].roomNumber, state: false})
     } else {
         turnOnLights()
+        socket.emit('lightSwitchUpdateDB', {room: data.rooms[0].roomNumber, state: true})
     }
     $(this).toggleClass('active')
 })
 
 $('.lighting-control-widget .lighting-controls .brightness-range-input').on('input', function() {
     const brightness = Math.round($(this).val() * 2.55)
+    socket.emit('lightBrightnessUpdateDB', {room: data.rooms[0].roomNumber, value: $(this).val()})
     changeBrightness('lightingBrightness:' + brightness)
+})
+
+$('.climate-control-widget .set-climate-wrap .climate-control').click(function() {
+    if($(this).hasClass('climate-up')) {
+        let newTemp = parseInt($('.climate-control-widget .set-climate-wrap .current-set-temp').text().split("°")[0]) + 1
+        if(newTemp <= 80) {
+            $('.climate-control-widget .set-climate-wrap .current-set-temp').text(`${newTemp}°F`);
+            socket.emit('setTempUpdateDB', {room: data.rooms[0].roomNumber, value: newTemp})
+        }
+    } else if ($(this).hasClass('climate-down')) {
+        let newTemp = parseInt($('.climate-control-widget .set-climate-wrap .current-set-temp').text().split("°")[0]) - 1
+        if(newTemp >= 60) {
+            $('.climate-control-widget .set-climate-wrap .current-set-temp').text(`${newTemp}°F`);
+            socket.emit('setTempUpdateDB', {room: data.rooms[0].roomNumber, value: newTemp})
+        }
+        
+    }
 })
 
 var colorPicker = new iro.ColorPicker('#color-picker-container', {
@@ -166,8 +223,23 @@ var colorPicker = new iro.ColorPicker('#color-picker-container', {
     ]
 });
 
+colorPicker.color.hexString = window.data.rooms[0].devices.lightingColor // Set Color Picker color to hex string saved in Database
+
 colorPicker.on('color:change', function(color, changes){
     var msg = "lightingColor:" + color.rgb.r + "," + color.rgb.g + "," + color.rgb.b
-    console.log(msg)
+    window.data.rooms[0].devices.lightingColor = color.hexString
+    socket.emit('lightingColorUpdateDB', {room: window.data.rooms[0].roomNumber,color: color.hexString})
     socket.emit('lightingColor', msg)
+})
+
+
+
+/*
+
+    SOCKET FUNCTIONS
+    
+*/
+
+socket.on('updateCurrentTemperature', function(data) {
+    updateClimateGuage(Math.round(parseInt(data.temperature)))
 })

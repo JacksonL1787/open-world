@@ -2,6 +2,12 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const randomstring = require('randomstring');
+const logs = require('./logs')
+const colors = require('colors');
+const MongoClient = require('mongodb').MongoClient;
+const assert = require("assert")
+
 // Load User model
 const User = require('../models/Users');
 const { forwardAuthenticated } = require('../config/auth');
@@ -55,14 +61,35 @@ router.post('/register', (req, res) => {
           firstName,
           lastName,
           email,
+          password,
           profilePicture: "user.png",
           darkMode: false,
           rooms: ["test"],
+          chqID: randomstring.generate({
+            length: 4,
+            charset: 'numeric'
+          }),
           permission: "teacher",
           permissionLevel: "1",
           school: "TBD",
           position: "TBD",
-          password
+          activeTFA: false,
+          visibility: true,
+          activity: {
+            status: "offline",
+            lastSeen: Date.now()
+          },
+          checks: {
+            completedSecurityIntro: false,
+            completedAccountSetup: false,
+            accountSetupProgress: 0
+          },
+          TFA: {
+            method: "Pending",
+            metadata1: "Pending",
+            metadata2: "Pending",
+            lastChecked: Date.now()
+          },
         });
 
         bcrypt.genSalt(10, (err, salt) => {
@@ -85,11 +112,49 @@ router.post('/register', (req, res) => {
 
 // Login
 router.post('/login', (req, res, next) => {
-  passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/'
-  })(req, res, next);
+  passport.authenticate('local', function(err, user, info) {
+		if (err) {
+		  logs.failedLogin(req, res, next)
+  		res.redirect('/')
+		}
+		if (!user) {
+		  logs.blockedLogin(req, res, next)
+		  res.redirect('/')
+		}
+		req.login(user, loginErr => {
+		  if (loginErr) {
+		    return next(loginErr);
+		  }
+		  MongoClient.connect("mongodb://localhost:27017", { useNewUrlParser: true }, function(err, client) {
+        var db = client.db('OpenWorld');
+        assert.equal(null, err);
+        function getArr() {
+            return new Promise(function(resolve,reject) {
+                var data = db.collection('users').find({"email": req.user.email}).toArray()
+                data.then(function(result) {
+                    resolve(result)
+                })
+            })
+        }
+        
+        async function run() {
+            var arr1 = await getArr()
+            var curuser = arr1[0]
+            if(curuser.activeTFA) {
+      		    res.redirect('/2FA')
+      		  } else {
+      		    logs.login(req, res, next)
+      		    res.redirect('/dashboard')
+      		  }
+            
+        }
+        
+        run();
+    })
+		});
+	})(req, res, next);
 });
+
 
 // Logout
 router.get('/logout', (req, res) => {

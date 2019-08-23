@@ -1,195 +1,137 @@
-
-.AD-left-nav
-    width 75px
+.AD-nav-wrapper
+    position absolute
+    left 0px
     height -webkit-fill-available
-    position absolute
-    -webkit-box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.4);
-    -moz-box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.4);
-    background white
-    z-index 10
-    box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.4);
-    transition .5s
-    &.activeHover
-        width 300px
-    
-.AD-top-nav
+    width 325px
+    background #f4f6f9
+    -webkit-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 18px 0px rgba(0,0,0,0.2);
+    transition 1s
+    &.securityPage
+        left -325px
+
+.AD-nav-wrapper-top
     width 100%
-    height 75px
-    position absolute
-    background white
-    z-index 1
-    top 0px
-    -webkit-box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.4);
-    -moz-box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.4);
-    box-shadow: 0px 0px 28px 0px rgba(0,0,0,0.4);
-    
-.AD-top-nav-logo
-    width 100%
-    height 75px
+    height 30%
     position relative
     
-.AD-branch-logo
-    width 50px
-    height 50px
-    background-image url('/img/gradCap.svg')
-    background-size cover
-    background-position center
-    background-repeat no-repeat
-    transform translate(-50%, -50%)
-    top 50%
-    left 50%
-    position absolute
-
-.AD-center-left-nav
+.AD-nav-wrapper-top-header
     width 100%
     height fit-content
     transform translateY(-50%)
     top 50%
     position absolute
-
-.AD-center-left-nav-object-wrapper
+    p
+        font-family: Nunito;
+        font-weight: 800;
+        color: #525252;
+        margin: 0;
+        margin-left: 90px;
+        letter-spacing: 0px;
+        font-size: 22px;
+    
+.AD-nav-wrapper-navi
     width 100%
-    height 75px
+    height 50%
     position relative
-    // background gray
-    cursor pointer
-    display -webkit-box
-    transition .3s
-    &:hover
-        background #ececec
-        transform scale(1.2)
-        
-.selectedNAV        
-    background #ececec  
-.AD-center-left-nav-object-container
-    transform translate(-50%, -50%)
-    top 50%
-    left 50%
+    
+.AD-nav-wrapper-navi-object
+    width 100%
+    height 70px
     position relative
-    width fit-content
-    height fit-content
     display -webkit-box
-                
-.AD-center-left-nav-object-icon
-    width 35px
-    height 35px
-    background-image url('/img/admin/speedometer.svg')
-    background-size cover
-    background-position center
-    background-repeat no-repeat
 
-.AD-top-nav-right-wrapper
-    width 50%
-    height 100%
+.AD-nav-wrapper-navi-object-wrapper
+    width calc(100% - 40px)
+    height 50px
+    cursor pointer
     right 0px
     position absolute
-    display -webkit-box
-
-.AD-top-nav-right-user-wrapper    
-    width fit-content
-    height 100%
-    position absolute
-    display -webkit-box
-    right 10%
-    
-.AD-top-nav-right-avatar-wrapper
-    width fit-content
-    height fit-content
     transform translateY(-50%)
     top 50%
+    display -webkit-box
+        
+.AD-nav-wrapper-navi-object-icon-wrapper
+    width 50px
+    height 50px
     position relative
     
-.user-avatar
-    width 40px
-    height 40px
-    border-radius 50%
-    background-image url("/img/dashboard/profile-picture.jpeg")
+.AD-nav-wrapper-navi-object-icon
+    width 20px
+    height 20px
+    transform translate(-50%, -50%)
+    top 50%
+    left 50%
+    position relative
+    background-image url('/img/admin/dashboard.svg')
     background-size cover
     background-position center
     background-repeat no-repeat
-    cursor pointer
     
-.AD-top-nav-right-user-PMP
-    width fit-content
-    height fit-content
+.AD-nav-wrapper-navi-object-desc-wrapper
+    width calc(100% - 50px)
+    height 100%
+    position relative
+    p
+        margin: 0;
+        transform: translateY(-50%);
+        top: 50%;
+        position: relative;
+        margin-left: 10px;
+        font-family: roboto;
+        font-weight: 300;
+        letter-spacing: 1.7px;
+        color: #505050;
+    
+.AD-nav-wrapper-hover-object
+    width: 0px
+    height: 50px;
+    background: #85b9ff;
+    right: 0px;
+    position: absolute;
+    transition .3s
     transform translateY(-50%)
     top 50%
-    position relative
-    margin-left 20px
-    display -webkit-box
-    p
-        font-family helvetica
-        font-weight 300
-        margin 0
-        cursor pointer
+    &.selected
+        width 7px !important
+    &.base
+        width 7px
+    &.selectedDouble
+        width 12px
+    &.hide
+        width 0px
+        
+.naviIcon-2
+    background-image url('/img/admin/school.svg')
+    background-size: 26px;
+    
+.naviIcon-3
+    background-image url('/img/admin/students.svg')
+    background-size: 26px;
+    
+.naviIcon-4
+    background-image url('/img/admin/system.svg')
+    
+.naviIcon-5
+    background-image url('/img/admin/security.svg')
+    
+.naviIcon-6
+    background-image url('/img/admin/logout.svg')
 
-.dropdown-AD-wrapper
-    width: 15px;
-    height: 19px;
-    background-image: url(/img/admin/dropdown.svg);
+.AD-nav-wrapper-top-header-icon
+    width: 100px;
+    height: 100px;
+    background-image: url(/img/gradCap.svg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    margin-left: 20px;
-    cursor pointer
-    
-.AD-top-nav-right-notifications-wrapper
-    width: 100px;
-    height 100%
-    position relative
-    float right
-    
-.AD-notifications-bell
-    width 28px
-    height 28px
-    background-image url('/img/admin/notification.svg')
-    background-size cover
-    background-position center
-    background-repeat no-repeat
-    transform translateY(-50%)
-    top 50%
-    position relative
-    cursor pointer
-    
-.AD-top-dropdown
-    width 250px
-    height 100px
-    background #292833
-    right 5%
-    position absolute
-    top 75px
-    display none
-    z-index 10
-    &.active
-        display block
-    input
-        width: 100%;
-        height: 50px;
-        background: transparent;
-        border: none;
-        outline: none;
-        color: #fff;
-        font-family: helvetica;
-        font-weight: 300;
-        font-size: 14px;
-        transition .3s
-        cursor pointer
-        &:hover
-            background #424048
-    
-.AD-navicon-two
-    background-image url('/img/admin/plan.svg')
-    
-.AD-navicon-three
-    background-image url('/img/admin/addressBook.svg')
-    background-size: 43px;
-    
-.AD-navicon-four
-    background-image url('/img/admin/chem.svg')
+    margin: 0 auto;
 
-.AD-navicon-five
-    background-image url('/img/admin/school.svg')
-    
-.AD-navicon-six
-    background-image url('/img/admin/cpg.svg')
+.AD-nav-wrapper-navi-container
+    width 100%
+    height fit-content
+    transform translateY(-50%)
+    top 45%
+    position absolute
     

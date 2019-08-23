@@ -4,13 +4,27 @@
     position absolute
     top 0
     left 0
-    z-index 11
+    z-index 75
     background white
     box-shadow 0 0 5px 3px rgba(0,0,0,0.03)
+    transition left .4s linear
+    
     .top
         width 100%
         height fit-content
         position relative
+        .close-nav-btn
+            position absolute
+            color black
+            opacity 0.5
+            font-size 20px
+            top 2px
+            display none
+            right 10px
+            cursor pointer
+            transition opacity .3s
+            &:hover
+                opacity 0.8
         .icon
             background-image url('../../img/BranchLogoVertical.png')
             background-position center
@@ -18,11 +32,8 @@
             background-repeat no-repeat
             width 100px
             height 100px
-            position absolute
-            left 50%
-            transform translateX(-50%)
+            margin 0 auto
     .nav-content
-        margin-top 150px
         .nav-btn-wrap
             display flex
             justify-content left

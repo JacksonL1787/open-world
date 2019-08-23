@@ -1,0 +1,27 @@
+.dashboard-outer-wrap
+    .top
+        display none
+
+.main-dashboard-content
+    height 100vh
+    height calc((var(--vh, 1vh) * 100) - 40px)
+
+.home-title
+    color #272727
+    width fit-content
+    font-size 40px
+    position absolute
+    text-align center
+    top calc(50% - 10px)
+    left 50%
+    transform translate(-50%, -50%)
+    margin 0
+    animation fadeIn .75s
+
+@keyframes fadeIn
+    0%
+        top calc(50% - 30px)
+        opacity 0
+    100%
+        top calc(50% - 10px)
+        opacity 1

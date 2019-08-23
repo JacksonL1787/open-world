@@ -1,0 +1,199 @@
+doctype html
+html
+    head
+        link(rel='stylesheet', href='/css/admin/introFS.css')
+        script(src="/js/qrcode.min.js")
+    body
+        .IFS-FS
+        .IFS-center-container
+            .IFS-center-wrapper
+                .IFS-center-wrapper-objOne
+                    .IFS-objOne-top
+                        .IFS-objOne-top-icon
+                    .IFS-objOne-middle
+                        .IFS-objOne-middle-wrapper
+                            h6 Branch Security
+                            p As an administrator of your school, security within the school and in the cyber space around it is key to a safe environment for both the students and facalty within the premisis. We <b>Highly</b> recommend using Two Factor Authentication for the best security of your account. 
+                    .IFS-objOne-bottom
+                        input.setup2FAB(type="button" value="Setup 2FA")
+                        input.Dsetup2FAB(type="button" value="Don't Setup 2FA")
+                .IFS-center-wrapper-objTwo
+                    .IFS-center-wrapper-objTwo-container
+                        .IFS-center-wrapper-objTwo-center
+                            p.s2d Select 2FA Device
+                            .IFS-center-wrapper-objTwo-center-choices
+                                .IFS-center-wrapper-objTwo-center-choice#sms
+                                    .IFS-center-wrapper-objTwo-center-choice-icon.sms
+                                    .IFS-center-wrapper-objTwo-center-choice-footer
+                                        p SMS
+                                .IFS-center-wrapper-objTwo-center-choice#authy
+                                    .IFS-center-wrapper-objTwo-center-choice-icon.authy
+                                    .IFS-center-wrapper-objTwo-center-choice-footer
+                                        p Authenticator
+                                .IFS-center-wrapper-objTwo-center-choice#email
+                                    .IFS-center-wrapper-objTwo-center-choice-icon.email
+                                    .IFS-center-wrapper-objTwo-center-choice-footer
+                                        p Email
+                                        
+                        .IFS-center-wrapper-objTwo-centerTwo
+                            .IFS-center-wrapper-objTwo-centerTwo-container
+                                h6 Your QR Code
+                                p Scan this with your authenticator and select <i>Next Step</i>
+                                canvas(id="myCanvas" width="250" height="250")
+                            .IFS-center-wrapper-objTwo-NS-wrapper
+                                p Next Step
+                                .IFS-center-wrapper-objTwo-NS
+                                    
+                        .IFS-center-wrapper-objTwo-centerThree
+                            .IFS-center-wrapper-objTwo-centerThree-container
+                                h5 Authenticate
+                                p Please enter the 6 digit code given by your authenticator
+                                .IFS-center-wrapper-objTwo-centerThree-wrap
+                                    input(type="text" maxlength="1")
+                                    input(type="text" maxlength="1")
+                                    input(type="text" maxlength="1")
+                                    // h6 -
+                                    input(type="text" maxlength="1")
+                                    input(type="text" maxlength="1")
+                                    input(type="text" maxlength="1")
+                                    
+                                input(type="button" value="Verify")
+script.
+
+    var currentUserRaw = "#{currentUser}"
+    var user = JSON.parse(currentUserRaw.replace(/&quot;/g,'"'));
+    
+    if(!user[0].checks.completedSecurityIntro) {
+        $('.IFS-center-container').show()
+        $('.IFS-FS').show()
+    } else {
+        if(!user[0].checks.completedIntroduction) {
+            var data = {"msg": "You haven't fully setup your account yet, click here to setup your account", "button1": "/admin/account"}
+            notificationAlert(data)
+        }
+    }
+    
+    $(".IFS-center-wrapper-objTwo-centerThree-wrap input").on('keyup', function(){
+        if($(this).val().length == 1) {
+            $(this).next('input').focus();
+        }
+        if($(this).val().length == 0) {
+            $(this).prev('input').focus();
+        }
+    })
+
+    $('.setup2FAB').click(function(){
+        twoFactorSWI()
+        // var data = {"check": "completedIntro", "state": true}
+        // $.ajax({
+        //   type: "POST",
+        //   url: "/admin/update/checks",
+        //   data: data
+        // });
+    })
+    
+    function twoFactorSWI() {
+        $('.IFS-center-wrapper-objOne').fadeOut(700)
+        setTimeout(function(){
+          $('.IFS-center-wrapper-objTwo').fadeIn(700)  
+        }, 1200)
+    }
+    
+    $('.IFS-center-wrapper-objTwo-center-choice').click(function(){
+        var sel = $(this).attr('id')
+        if(sel == "authy") {
+            var response;
+            var data = {"authentication": "authy"}
+            $.ajax({
+              type: "POST",
+              url: "/2FA/db/user/update",
+              data: data,
+              success : function(text)
+              {
+                 response = text
+                 createQR(response)
+              }
+            });
+            $('.IFS-center-wrapper-objTwo-center').fadeOut()
+            $('.IFS-center-wrapper-objTwo-centerTwo').fadeIn()
+            
+        }
+        if(sel == "sms") {
+            console.log("Currently not supporting sms verification")
+        }
+        if(sel == "email") {
+            console.log("Currently not supporting email verification")
+        }
+    })
+    
+    // Create QR 
+    
+    function createQR(response){
+        console.log(response)
+        QRCode.toCanvas(document.getElementById('myCanvas'), response, function (error) {
+            if (error) console.error(error)
+            
+        })
+    }
+    
+    // Step Three Sel
+    
+    $('.IFS-center-wrapper-objTwo-NS-wrapper').click(function(){
+        $('.IFS-center-wrapper-objTwo-centerTwo').fadeOut()
+        $('.IFS-center-wrapper-objTwo-centerThree').fadeIn()
+    })
+    
+    // Prevent Numerical Input
+    
+    $(".IFS-center-wrapper-objTwo-centerThree-wrap input").on("keypress keyup blur",function (event) {    
+        $(this).val($(this).val().replace(/[^\d].+/, ""));
+        if ((event.which < 48 || event.which > 57)) {
+            event.preventDefault();
+        }
+    });
+    
+    // Verify Code
+    
+    $('.IFS-center-wrapper-objTwo-centerThree-container input[type="button"]').click(function(){
+        $(this).val('Verifying')
+        var val = ""
+        $('.IFS-center-wrapper-objTwo-centerThree-wrap').find('input[type=text]').each(function(){
+            var selVal = $(this).val()
+            val = val + selVal
+        
+        });
+        var data = {val}
+        var response;
+        $.ajax({
+            type: "POST",
+            url: "/2FA/verification",
+            data: data,
+            success : function(text)
+            {
+                response = text
+                gotResponse(response)
+                
+            }
+        });
+    })
+    
+    function gotResponse(response) {
+        if(response == "verified") {
+            $('.IFS-center-wrapper-objTwo').fadeOut(700)
+            $('.IFS-center-wrapper-objTwo-centerThree-container input[type="button"]').val('Verified!')
+            $('.IFS-FS').fadeOut(700)
+            $.ajax({
+                type: "POST",
+                url: "/2FA/verified",
+            });
+            
+        } else {
+            $('.IFS-center-wrapper-objTwo-centerThree-container input[type="button"]').val('Incorrect!')
+            $(".IFS-center-wrapper-objTwo-centerThree-wrap input").addClass('incorrect')
+            setTimeout(function(){
+                $(".IFS-center-wrapper-objTwo-centerThree-wrap input").removeClass('incorrect')
+                $(".IFS-center-wrapper-objTwo-centerThree-wrap input").val('')
+                $('.IFS-center-wrapper-objTwo-centerThree-container input[type="button"]').val('Verify')
+            }, 500)
+        }
+    }
