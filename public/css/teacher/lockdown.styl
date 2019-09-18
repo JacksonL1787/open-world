@@ -1,6 +1,8 @@
 body
-    overflow hidden
+    overflow-y hidden
     background #2f2f2f
+    height 100vh
+    height: calc(var(--vh, 1vh) * 100);
 
 .modal-overlay
     background rgba(0,0,0,0.5)
@@ -16,6 +18,8 @@ body
     &.active
         opacity 1
         visibility visible
+
+.lockdown-info-modal
 
 .end-lockdown-modal
     width 350px
@@ -101,6 +105,7 @@ body
 .main-wrap
     width calc(100% - 400px)
     height 100vh
+    height: calc(var(--vh, 1vh) * 100);
     position absolute
     top 0
     left 0
@@ -164,7 +169,7 @@ body
             width 100%
             height calc(100% - 255px)
             margin 0 auto 0
-            overflow-y auto
+            overflow-y hidden
             overflow-x hidden
             h1.title
                 color white
@@ -208,6 +213,7 @@ body
     width 400px
     border-left 1px solid #424242
     height 100vh
+    height: calc(var(--vh, 1vh) * 100);
     position absolute
     top 0
     right 0

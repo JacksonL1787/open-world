@@ -27,6 +27,7 @@ const nodeRed = require("./routes/nodered/index")
 const auth = require('./routes/auth');
 const teacherUpdateDB = require('./routes/teacher/updateDB')
 const lockdown = require('./routes/lockdown')
+const MongoClient = require('mongodb').MongoClient;
 
 require('./passport/passport')(passport)
 
@@ -103,10 +104,10 @@ io.on('connection', function(socket){
 		socket.broadcast.emit('commands', 'doorUnlock')
 	})
 	socket.on('blindsOpen', function(msg) {
-		socket.broadcast.emit('commands', 'fanOn')
+		socket.broadcast.emit('commands', 'blindsOpen')
 	})
 	socket.on('blindsClose', function(msg) {
-		socket.broadcast.emit('commands', 'fanOff')
+		socket.broadcast.emit('commands', 'blindsClose')
 	})
 	socket.on('lightingColor', function(msg) {
 		socket.broadcast.emit('commands', msg)
@@ -116,6 +117,13 @@ io.on('connection', function(socket){
 	})
 	socket.on('lightsOn', function(msg) {
 		socket.broadcast.emit('commands', 'roomLightsOn')
+	})
+	socket.on('fanOn', function(msg) {
+		socket.broadcast.emit('commands', 'fanOn')
+		console.log('fanOn')
+	})
+	socket.on('fanOff', function(msg) {
+		socket.broadcast.emit('commands', 'fanOff')
 	})
 	socket.on('lightsBrightness', function(msg) {
 		socket.broadcast.emit('commands', msg)
@@ -146,6 +154,12 @@ io.on('connection', function(socket){
 	})
 	socket.on('setTempUpdateDB', function(msg) {
 		teacherUpdateDB.updateSetTemp(msg)
+	})
+	socket.on('updateBlindsDB', function(msg) {
+		teacherUpdateDB.updateBlinds(msg)
+	})
+	socket.on('currentClimate', function(msg) {
+		teacherUpdateDB.updateCurrentClimate(msg)
 	})
 	socket.on('lockdown-msg', function(msg) {
 		if(msg.message.replace(/ /g, "").length != 0) {

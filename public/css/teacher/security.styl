@@ -13,10 +13,12 @@
         opacity 1
         visibility visible
 
-.lockdown-modal
-    width 350px
+.lockdown-info-modal
+    width 750px
     height fit-content
+    max-height 90vh
     position fixed
+    overflow-y auto
     left 50%
     z-index 125
     top calc(50% + 20px)
@@ -29,6 +31,158 @@
     transition top .5s, opacity .3s, visibility .3s
     &.active
         top 50%
+        opacity 1
+        visibility visible
+    .modal-top
+        margin-top 30px
+        position relative
+        h2.modal-title
+            margin 0
+            color #4C4C4C
+            font-size 23px
+        .close
+            cursor pointer
+            position absolute
+            right -6px
+            color #a0a0a0
+            top -32px
+            transition color .3s
+            &:hover
+                color black
+    .modal-main
+        margin-top 10px
+        h1.title
+            margin 20px 0 5px
+            color #333
+            font-weight 400
+            font-size 20px
+            text-align center
+        .flex-wrap
+            display flex
+            width 100%
+            height fit-content
+            justify-content center
+            .info-wrap
+                margin 0 20px 10px
+                label
+                    color grey
+                    font-weight bold
+                    text-transform uppercase
+                    font-size 11px
+                    margin 0 0 2px 0
+                p
+                    color #333
+                    margin 0
+                    font-size 15px
+        .lockdown-description
+            margin-top 20px
+            text-align center
+            label
+                color grey
+                font-weight bold
+                text-transform uppercase
+                font-size 11px
+                margin 0 0 2px 0
+            p
+                color #333
+                margin 0
+                font-size 15px
+        .live-chat-wrap::-webkit-scrollbar
+            width 0 !important
+        .live-chat-wrap
+            width 100%
+            height fit-content
+            max-height 200px
+            background rgba(0,0,0,0.04)
+            padding 20px 0
+            overflow-y auto
+            .no-messages
+                color grey
+                font-size 15px
+                text-align center
+                margin 0
+            .message-wrap
+                width 95%
+                margin-left 2.5%
+                padding 2.5px 0
+                overflow-x hidden
+                p
+                    margin 0
+                    &.confirm-update
+                        color #808080
+                        font-size 13px
+                    .time
+                        color grey
+                        font-size 11px
+                        font-weight: 500 !important
+                    .name
+                        color #333
+                        font-size 12.5px
+                        font-weight bold !important
+                        letter-spacing 0.3px
+                    .message
+                        color #333
+                        font-size 12.5px
+                        word-wrap break-word
+                        font-weight: 500 !important
+        .updates-wrap::-webkit-scrollbar
+            width 0 !important
+        .updates-wrap
+            width 100%
+            height fit-content
+            overflow-y auto
+            max-height 200px
+            background rgba(0,0,0,0.04)
+            padding 20px 0
+            .no-updates
+                color grey
+                font-size 15px
+                text-align center
+                margin 0
+            .update-wrap
+                width 95%
+                padding 10px 0
+                margin 5px 0 5px 2.5%
+                overflow-x hidden
+                height fit-content
+                background white
+                .top-wrap
+                    display flex
+                    width 90%
+                    height fit-content
+                    margin 0 0 5px 5%
+                    .created-by
+                        color #a7a7a7
+                        margin 0 5px 0 0
+                        font-size 12px
+                        font-weight bold
+                    .time
+                        color grey
+                        margin 0
+                        font-size 11px
+                        margin-top 1px
+                .message
+                    color #333
+                    width 90%
+                    margin-left 5%
+                    font-size 15px
+                    margin 0 0 0 5%
+.lockdown-modal
+    width 350px
+    height fit-content
+    position fixed
+    left 50%
+    z-index 125
+    top 30px
+    visibility hidden
+    background white
+    padding 10px 20px 20px
+    opacity 0
+    transform translateX(-50%)
+    border-radius .3em
+    transition top .5s, opacity .3s, visibility .3s
+    &.active
+        top 50px
         opacity 1
         visibility visible
     .modal-top
@@ -191,6 +345,11 @@
                         color #16BDF4
                         border-bottom 3px solid #16BDF4
         .emergencies-wrap
+            .no-emergencies
+                color #a7a7a7
+                text-align center
+                margin 20px 0
+                display none
             .emergency-box
                 background #F5F9FB
                 width 90%
@@ -281,3 +440,16 @@
             right 20px
             width 35px
             height 41px
+
+@media only screen and (max-width: 1125px)
+    .emergency-box
+        .time-wrap
+            display none !important
+
+@media only screen and (max-width: 900px)
+    .lockdown-info-modal
+        width 90% !important
+        .flex-wrap
+            flex-flow column nowrap !important
+            justify-content center !important
+            text-align center !important

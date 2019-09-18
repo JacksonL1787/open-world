@@ -43,8 +43,30 @@ html
                     .SC-drc
                         .SC-drc-left
                             .SC-drc-left-top
+                                .SC-drc-left-top-wrapper
+                                    .SC-drc-left-top-wrapper-header
+                                        h3 Room 127
+                                        input(type="button" value="Inspect Classroom")
+                                    .SC-drc-left-top-wrapper-body
+                                        .SC-drc-left-top-wrapper-objWrap
+                                            .SC-drc-left-top-wrapper-obj.doorLock
+                                                p Door Lock    
+                                            .SC-drc-left-top-wrapper-obj.blindsUp
+                                                p Blinds Up
+                                            .SC-drc-left-top-wrapper-obj.blindsDown
+                                                p Blinds Down
+                                            .SC-drc-left-top-wrapper-obj.doorUnlock
+                                                p Door Unlock
+                                            .SC-drc-left-top-wrapper-obj.lightsOn
+                                                p Lights On
+                                            .SC-drc-left-top-wrapper-obj.lightsOff
+                                                p Lights Off
+                                    
+                                    
                             .SC-drc-left-bottom
+                                .SC-drc-left-bottom-wrapper
                         .SC-drc-right
+                            .SC-drc-right-wrapper
 script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js")
 script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js")
@@ -53,7 +75,7 @@ script.
     
     // 
     // Global Vars
-    // 
+    //
     
     var rawClassDB = "#{classrooms}"
     var classrooms = JSON.parse(rawClassDB.replace(/&quot;/g,'"'));
@@ -114,3 +136,22 @@ script.
         });
     }
    
+  $(document).on('click', '.doorLock', function() {
+    socket.emit('doorLock', 'doorLock')
+    socket.emit('doorLockUpdateDB', {room: 127, state: true})
+  })
+  
+  $(document).on('click', '.doorUnlock', function() {
+    socket.emit('doorUnlock', 'doorUnlock')
+    socket.emit('doorLockUpdateDB', {room: 127, state: false})
+  })
+  
+  $(document).on('click', '.blindsUp', function(){
+      socket.emit('blindsOpen', 'test')
+      socket.emit('updateBlindsDB', {room: 127, state: "open"})
+  })
+  
+  $(document).on('click', '.blindsDown', function(){
+      socket.emit('blindsClose', 'test')
+      socket.emit('updateBlindsDB', {room: 127, state: "close"})
+  })

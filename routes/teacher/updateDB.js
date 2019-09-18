@@ -127,5 +127,19 @@ module.exports = {
                 var db = client.db('OpenWorld');
                 db.collection('classrooms').update({'roomNumber': data.room}, {$set: {"devices.setTemp": data.value}})
             })
+    },
+    updateCurrentClimate: (data) => {
+        MongoClient.connect("mongodb://localhost:27017", function(err, client) {
+                if(err) throw err
+                var db = client.db('OpenWorld');
+                db.collection('classrooms').update({'roomNumber': data.room}, {$set: {"devices.currentTemp": data.value}})
+            })
+    },
+    updateBlinds: (data) => {
+        MongoClient.connect("mongodb://localhost:27017", function(err, client) {
+                if(err) throw err
+                var db = client.db('OpenWorld');
+                db.collection('classrooms').update({'roomNumber': data.room}, {$set: {"devices.blinds": data.state}})
+            })
     }
 }

@@ -55,33 +55,20 @@ function unlockingDoor() { // Show Unlocking Door Status
 
 // Blind Control Functions
 
-function checkBlinds() {
-    let check = true;
-    if(check) {
-        $('.blinds-control-widget .blinds-control-error').hide()
-    }
-    return check
-}
-
-function moveBlindsUp() {
-    
-}
-
-function moveBlindsDown() {
-    
-}
-
 function openBlinds() {
-    socket.emit('blindsOpen', 'test')
+    if(window.data.rooms[0].devices.blinds != "open") {
+        socket.emit('blindsOpen', 'test')
+        window.data.rooms[0].devices.blinds = "open"
+        socket.emit('updateBlindsDB', {room: data.rooms[0].roomNumber, state: "open"})
+    }
 }
 
 function closeBlinds() {
-    socket.emit('blindsClose', 'test')
-}
-
-function blindsError(msg) {
-    $('.blinds-control-widget .blinds-control-error').show()
-    $('.blinds-control-widget .blinds-control-error').text(msg)
+    if(window.data.rooms[0].devices.blinds != "close") {
+        socket.emit('blindsClose', 'test')
+        window.data.rooms[0].devices.blinds = "close"
+        socket.emit('updateBlindsDB', {room: data.rooms[0].roomNumber, state: "close"})
+    }
 }
 
 
@@ -113,11 +100,12 @@ function updateClimateGuage(temp) {
     } else {
         $('.climate-guage-wrap .cover .current-temp').text(`${temp}°F`)
     }
+    socket.emit('currentClimate', {room: window.data.rooms[0].roomNumber,value: temp})
     const rotate = mapTemp(temp, 55, 85, 10, 180)
     $('.climate-guage-wrap .border-cover').css('transform', `translateX(-50%) rotate(${rotate}deg`)
 }
 
-updateClimateGuage(73)
+
 
 
 /*
@@ -137,6 +125,7 @@ $(document).ready(function() {
     }
     $('.lighting-control-widget .lighting-controls .brightness-range-input').val(room.devices.lightBrightness)
     $('.climate-control-widget .set-climate-wrap .current-set-temp').text(`${room.devices.setTemp}°F`);
+    updateClimateGuage(room.devices.currentTemp)
 })
 
 // Listen for click on turn on or off projector button
@@ -162,20 +151,12 @@ $('.door-control-widget .change-lock-status-btn').click(function() {
 })
 
 $('.blinds-control-widget .preset-controls .open-blinds-btn').click(function() {
-    if(checkBlinds()) {
-        loading('.blind-controls-wrap', 2000, openBlinds, done, 'top: calc(50% + 30px)')
-    } else {
-        blindsError("The blinds are already open.")
-    }
+    loading('.blind-controls-wrap', 2000, openBlinds, done, 'top: calc(50% + 30px)')
     
 })
 
 $('.blinds-control-widget .preset-controls .close-blinds-btn').click(function() {
-    if(checkBlinds()) {
-        loading('.blind-controls-wrap', 2000, closeBlinds, done, 'top: calc(50% + 30px)')
-    } else {
-        blindsError("The blinds are already closed.")
-    }
+    loading('.blind-controls-wrap', 2000, closeBlinds, done, 'top: calc(50% + 30px)')
 })
 
 $('.lighting-control-widget .lighting-controls .light-switch-wrap .switch').click(function() {
@@ -198,14 +179,22 @@ $('.lighting-control-widget .lighting-controls .brightness-range-input').on('inp
 $('.climate-control-widget .set-climate-wrap .climate-control').click(function() {
     if($(this).hasClass('climate-up')) {
         let newTemp = parseInt($('.climate-control-widget .set-climate-wrap .current-set-temp').text().split("°")[0]) + 1
+        
         if(newTemp <= 80) {
             $('.climate-control-widget .set-climate-wrap .current-set-temp').text(`${newTemp}°F`);
+            if(newTemp >= 70) {
+                socket.emit('fanOff')
+            }
             socket.emit('setTempUpdateDB', {room: data.rooms[0].roomNumber, value: newTemp})
         }
     } else if ($(this).hasClass('climate-down')) {
         let newTemp = parseInt($('.climate-control-widget .set-climate-wrap .current-set-temp').text().split("°")[0]) - 1
+        
         if(newTemp >= 60) {
             $('.climate-control-widget .set-climate-wrap .current-set-temp').text(`${newTemp}°F`);
+            if(newTemp < 70) {
+                socket.emit('fanOn')
+            }
             socket.emit('setTempUpdateDB', {room: data.rooms[0].roomNumber, value: newTemp})
         }
         
@@ -241,5 +230,6 @@ colorPicker.on('color:change', function(color, changes){
 */
 
 socket.on('updateCurrentTemperature', function(data) {
-    updateClimateGuage(Math.round(parseInt(data.temperature)))
+    const temp = (parseInt(data) * 1.8) + 32
+    updateClimateGuage(Math.round(temp))
 })

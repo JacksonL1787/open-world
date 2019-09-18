@@ -13,6 +13,34 @@ script.
 			p.enter-lockdown-desc Please type in the word <b>Lockdown</b> to proceed.
 			input.lockdown-inpt(type="text" placeholder="Lockdown")
 			button.confirm-begin-lockdown Begin Lockdown
+.lockdown-info-modal
+	.modal-content
+		.modal-top
+			span.close &#10005;
+			h2.modal-title Lockdown Info
+	.modal-main
+		.flex-wrap
+			.info-wrap
+				label Started By
+				p.started-by 
+			.info-wrap
+				label Start Time
+				p.start-time
+			.info-wrap
+				label End Time
+				p.end-time
+			.info-wrap
+				label Total Time
+				p.total-time 31:43
+		.lockdown-description
+			label Description
+			p.lockdown-desc
+		h1.title Live Chat
+		.live-chat-wrap
+			p.no-messages No Messages
+		h1.title Updates
+		.updates-wrap
+			p.no-updates No Updates
 .lockdown-widget.widget-wrap.security-widget
 	.top-container
 		h1.title Lockdown
@@ -51,3 +79,4 @@ script.
 			.option-wrap.medical-emergency
 				button Medical
 		.emergencies-wrap
+			p.no-emergencies No Previous Emergencies

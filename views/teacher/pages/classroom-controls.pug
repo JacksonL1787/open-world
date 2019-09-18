@@ -2,11 +2,11 @@ script.
     const classroomsraw = "#{classrooms}"
     window.data.rooms = JSON.parse(classroomsraw.replace(/&quot;/g,'"'));
 
-.projector-control-widget.widget-wrap.classroom-controls-widget
-    .top-container
-        h1.title Projector
-        .status-light.off
-    button.change-projector-status-btn Turn On
+// .projector-control-widget.widget-wrap.classroom-controls-widget
+//     .top-container
+//         h1.title Projector
+//         .status-light.off
+//     button.change-projector-status-btn Turn On
 
 .door-control-widget.widget-wrap.classroom-controls-widget
     .top-container
@@ -56,11 +56,6 @@ script.
         h1.title Blinds
     h2.controls-title Controls
     .blind-controls-wrap
-        .up-down-wrap
-            .blinds-up-btn
-                .icon
-            .blinds-down-btn
-                .icon
         .preset-controls
             button.open-blinds-btn Open Blinds
             button.close-blinds-btn Close Blinds
